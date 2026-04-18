@@ -78,6 +78,21 @@ Microsoft SharePoint is a web-based collaborative platform providing enterprise 
 
 11 example JSON files in [examples/](examples/).
 
+## Capabilities
+
+Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
+
+### Shared Per-API Definitions
+
+- [Sites and Lists](capabilities/shared/sites-and-lists.yaml) — 10 operations for site, list, and item management
+- [Files and Search](capabilities/shared/files-and-search.yaml) — 5 operations for file management, search, and user profiles
+
+### Workflow Capabilities
+
+| Workflow | APIs Combined | Tools | Persona |
+|----------|--------------|-------|---------|
+| [Content Management](capabilities/content-management.yaml) | Sites/Lists + Files/Search | 12 | Content Manager / Site Admin |
+
 ## Vocabulary
 
 - [SharePoint Vocabulary](vocabulary/sharepoint-vocabulary.yaml) — 10 resources, 4 APIs, 5 domains, 5 personas

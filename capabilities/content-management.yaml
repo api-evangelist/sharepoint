@@ -1,0 +1,202 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SharePoint Content Management"
+  description: "Unified workflow for managing SharePoint content including sites, lists, items, files, and search. Used by content managers, site admins, and collaboration teams."
+  tags:
+    - SharePoint
+    - Content Management
+    - Collaboration
+    - Document Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      SHAREPOINT_ACCESS_TOKEN: SHAREPOINT_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: sp-sites-lists
+      location: ./shared/sites-and-lists.yaml
+    - import: sp-files-search
+      location: ./shared/files-and-search.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: sp-content-api
+      description: "Unified REST API for SharePoint content management."
+      resources:
+        - path: /v1/sites
+          name: sites
+          operations:
+            - method: GET
+              name: get-web
+              call: "sp-sites-lists.get-web"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/lists
+          name: lists
+          operations:
+            - method: GET
+              name: get-lists
+              call: "sp-sites-lists.get-lists"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-list
+              call: "sp-sites-lists.create-list"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/lists/{title}/items
+          name: items
+          operations:
+            - method: GET
+              name: get-list-items
+              call: "sp-sites-lists.get-list-items"
+              with:
+                list_title: "rest.title"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-list-item
+              call: "sp-sites-lists.create-list-item"
+              with:
+                list_title: "rest.title"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/files
+          name: files
+          operations:
+            - method: GET
+              name: get-files
+              call: "sp-files-search.get-files-in-folder"
+              with:
+                folder_url: "rest.folder_url"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          operations:
+            - method: GET
+              name: search
+              call: "sp-files-search.search-query"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: sp-content-mcp
+      transport: http
+      description: "MCP server for AI-assisted SharePoint content management."
+      tools:
+        - name: get-web
+          description: "Get SharePoint site properties"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-sites-lists.get-web"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-lists
+          description: "List all SharePoint lists"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-sites-lists.get-lists"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-list
+          description: "Create a new SharePoint list"
+          hints: {readOnly: false, idempotent: false}
+          call: "sp-sites-lists.create-list"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-list-items
+          description: "Get items from a SharePoint list"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-sites-lists.get-list-items"
+          with:
+            list_title: "tools.list_title"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-list-item
+          description: "Add an item to a SharePoint list"
+          hints: {readOnly: false, idempotent: false}
+          call: "sp-sites-lists.create-list-item"
+          with:
+            list_title: "tools.list_title"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-list-item
+          description: "Update a SharePoint list item"
+          hints: {readOnly: false, idempotent: true}
+          call: "sp-sites-lists.update-list-item"
+          with:
+            list_title: "tools.list_title"
+            item_id: "tools.item_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-list-item
+          description: "Delete a SharePoint list item"
+          hints: {readOnly: false, destructive: true, idempotent: true}
+          call: "sp-sites-lists.delete-list-item"
+          with:
+            list_title: "tools.list_title"
+            item_id: "tools.item_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-files-in-folder
+          description: "List files in a SharePoint folder"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-files-search.get-files-in-folder"
+          with:
+            folder_url: "tools.folder_url"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: upload-file
+          description: "Upload a file to SharePoint"
+          hints: {readOnly: false, idempotent: false}
+          call: "sp-files-search.upload-file"
+          with:
+            folder_url: "tools.folder_url"
+            file_name: "tools.file_name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: download-file
+          description: "Download a file from SharePoint"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-files-search.download-file"
+          with:
+            file_url: "tools.file_url"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-query
+          description: "Search across all SharePoint content"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-files-search.search-query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-my-user-profile
+          description: "Get current user's SharePoint profile"
+          hints: {readOnly: true, idempotent: true}
+          call: "sp-files-search.get-my-user-profile"
+          outputParameters:
+            - type: object
+              mapping: "$."
