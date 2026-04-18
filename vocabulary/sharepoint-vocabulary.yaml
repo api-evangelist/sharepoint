@@ -1,0 +1,120 @@
+vocabulary: 1.0.0
+info:
+  provider: Microsoft SharePoint
+  description: Vocabulary for the SharePoint API ecosystem covering REST, Graph, CSOM,
+    and Webhooks.
+  created: '2026-04-17'
+  modified: '2026-04-17'
+operational:
+  apis:
+  - name: SharePoint REST API
+    namespace: sp-rest
+    baseUrl: https://{site}/_api
+    status: active
+  - name: Microsoft Graph (SharePoint)
+    namespace: sp-graph
+    baseUrl: https://graph.microsoft.com/v1.0
+    status: active
+  - name: SharePoint CSOM
+    namespace: sp-csom
+    status: active
+  - name: SharePoint Webhooks
+    namespace: sp-webhooks
+    status: active
+  resources:
+  - name: sites
+    description: SharePoint sites and subsites.
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: lists
+    description: Lists and document libraries.
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: items
+    description: List items and documents.
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: files
+    description: Files in document libraries.
+    actions:
+    - upload
+    - download
+    - checkout
+    - checkin
+    - delete
+  - name: folders
+    description: Folder hierarchies.
+    actions:
+    - get
+    - create
+    - delete
+  - name: permissions
+    description: Role assignments and access control.
+    actions:
+    - get
+    - add
+    - remove
+    - break-inheritance
+  - name: content-types
+    description: Content types and site columns.
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: search
+    description: Full-text search queries.
+    actions:
+    - query
+  - name: user-profiles
+    description: User profile properties.
+    actions:
+    - get
+  - name: webhooks
+    description: Change notification subscriptions.
+    actions:
+    - create
+    - get
+    - update
+    - delete
+capability:
+  personas:
+  - id: sharepoint-admin
+    name: SharePoint Administrator
+  - id: developer
+    name: SharePoint Developer
+  - id: content-manager
+    name: Content Manager
+  - id: integration-developer
+    name: Integration Developer
+  - id: power-user
+    name: Power User
+  domains:
+  - name: content-management
+    resources:
+    - sites
+    - lists
+    - items
+    - files
+    - folders
+  - name: security
+    resources:
+    - permissions
+  - name: search
+    resources:
+    - search
+  - name: identity
+    resources:
+    - user-profiles
+  - name: events
+    resources:
+    - webhooks

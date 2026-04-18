@@ -1,0 +1,10 @@
+{
+  "__metadata": {
+    "type": "SP.List"
+  },
+  "Title": "My New List",
+  "Description": "A custom list",
+  "BaseTemplate": 100,
+  "AllowContentTypes": true,
+  "ContentTypesEnabled": true
+}

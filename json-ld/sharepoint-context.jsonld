@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sp": "https://learn.microsoft.com/en-us/sharepoint/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "File": "sp:File",
+    "FileCollection": "sp:FileCollection",
+    "List": "sp:List",
+    "ListCollection": "sp:ListCollection",
+    "ListCreateRequest": "sp:ListCreateRequest",
+    "ListItem": "sp:ListItem",
+    "ListItemCollection": "sp:ListItemCollection",
+    "ListItemCreateRequest": "sp:ListItemCreateRequest",
+    "SearchResult": "sp:SearchResult",
+    "UserProfile": "sp:UserProfile",
+    "Web": "sp:Web",
+    "AccountName": {
+      "@id": "sp:AccountName",
+      "@type": "xsd:string"
+    },
+    "AllowContentTypes": {
+      "@id": "sp:AllowContentTypes",
+      "@type": "xsd:boolean"
+    },
+    "AuthorId": {
+      "@id": "sp:AuthorId",
+      "@type": "xsd:integer"
+    },
+    "BaseTemplate": {
+      "@id": "sp:BaseTemplate",
+      "@type": "xsd:integer"
+    },
+    "CheckOutType": {
+      "@id": "sp:CheckOutType",
+      "@type": "xsd:integer"
+    },
+    "ContentTypesEnabled": {
+      "@id": "sp:ContentTypesEnabled",
+      "@type": "xsd:boolean"
+    },
+    "Created": {
+      "@id": "sp:Created",
+      "@type": "xsd:dateTime"
+    },
+    "Department": {
+      "@id": "sp:Department",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "sp:Description",
+      "@type": "xsd:string"
+    },
+    "DisplayName": {
+      "@id": "sp:DisplayName",
+      "@type": "xsd:string"
+    },
+    "EditorId": {
+      "@id": "sp:EditorId",
+      "@type": "xsd:integer"
+    },
+    "Email": {
+      "@id": "sp:Email",
+      "@type": "xsd:string"
+    },
+    "EnableVersioning": {
+      "@id": "sp:EnableVersioning",
+      "@type": "xsd:boolean"
+    },
+    "Hidden": {
+      "@id": "sp:Hidden",
+      "@type": "xsd:boolean"
+    },
+    "Id": {
+      "@id": "sp:Id",
+      "@type": "xsd:string"
+    },
+    "ItemCount": {
+      "@id": "sp:ItemCount",
+      "@type": "xsd:integer"
+    },
+    "Language": {
+      "@id": "sp:Language",
+      "@type": "xsd:integer"
+    },
+    "LastItemModifiedDate": {
+      "@id": "sp:LastItemModifiedDate",
+      "@type": "xsd:dateTime"
+    },
+    "Length": {
+      "@id": "sp:Length",
+      "@type": "xsd:integer"
+    },
+    "MajorVersion": {
+      "@id": "sp:MajorVersion",
+      "@type": "xsd:integer"
+    },
+    "MinorVersion": {
+      "@id": "sp:MinorVersion",
+      "@type": "xsd:integer"
+    },
+    "Modified": {
+      "@id": "sp:Modified",
+      "@type": "xsd:dateTime"
+    },
+    "Name": {
+      "@id": "sp:Name",
+      "@type": "xsd:string"
+    },
+    "PersonalUrl": {
+      "@id": "sp:PersonalUrl",
+      "@type": "xsd:string"
+    },
+    "PictureUrl": {
+      "@id": "sp:PictureUrl",
+      "@type": "xsd:string"
+    },
+    "PrimaryQueryResult": {
+      "@id": "sp:PrimaryQueryResult",
+      "@type": "@id"
+    },
+    "ServerRelativeUrl": {
+      "@id": "sp:ServerRelativeUrl",
+      "@type": "xsd:string"
+    },
+    "TimeCreated": {
+      "@id": "sp:TimeCreated",
+      "@type": "xsd:dateTime"
+    },
+    "TimeLastModified": {
+      "@id": "sp:TimeLastModified",
+      "@type": "xsd:dateTime"
+    },
+    "Title": {
+      "@id": "sp:Title",
+      "@type": "xsd:string"
+    },
+    "UniqueId": {
+      "@id": "sp:UniqueId",
+      "@type": "xsd:string"
+    },
+    "Url": {
+      "@id": "sp:Url",
+      "@type": "xsd:string"
+    },
+    "WebTemplate": {
+      "@id": "sp:WebTemplate",
+      "@type": "xsd:string"
+    },
+    "__metadata": {
+      "@id": "sp:__metadata",
+      "@type": "@id"
+    },
+    "value": {
+      "@id": "sp:value",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

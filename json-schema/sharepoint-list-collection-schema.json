@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-list-collection-schema.json",
+  "title": "ListCollection",
+  "description": "ListCollection from SharePoint API",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/List"
+      }
+    }
+  }
+}

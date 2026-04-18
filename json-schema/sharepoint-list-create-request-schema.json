@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-list-create-request-schema.json",
+  "title": "ListCreateRequest",
+  "description": "Request to create a new SharePoint list.",
+  "type": "object",
+  "properties": {
+    "__metadata": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "SP.List"
+        }
+      }
+    },
+    "Title": {
+      "type": "string",
+      "example": "My New List"
+    },
+    "Description": {
+      "type": "string",
+      "example": "A custom list"
+    },
+    "BaseTemplate": {
+      "type": "integer",
+      "example": 100,
+      "description": "100=Generic List, 101=Document Library, 104=Announcements"
+    },
+    "AllowContentTypes": {
+      "type": "boolean",
+      "example": true
+    },
+    "ContentTypesEnabled": {
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "required": [
+    "Title",
+    "BaseTemplate"
+  ]
+}

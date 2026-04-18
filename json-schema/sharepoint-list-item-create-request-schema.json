@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-list-item-create-request-schema.json",
+  "title": "ListItemCreateRequest",
+  "description": "ListItemCreateRequest from SharePoint API",
+  "type": "object",
+  "properties": {
+    "__metadata": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "SP.Data.MyListListItem"
+        }
+      }
+    },
+    "Title": {
+      "type": "string",
+      "example": "New Item"
+    }
+  }
+}

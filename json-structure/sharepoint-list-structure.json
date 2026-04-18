@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-structure/sharepoint-list-structure.json",
+  "name": "List",
+  "description": "SharePoint list or document library.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    },
+    "Title": {
+      "type": "string",
+      "example": "Documents"
+    },
+    "Description": {
+      "type": "string",
+      "example": "Shared documents library"
+    },
+    "BaseTemplate": {
+      "type": "int32",
+      "example": 101
+    },
+    "ItemCount": {
+      "type": "int32",
+      "example": 42
+    },
+    "Created": {
+      "type": "datetime",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "LastItemModifiedDate": {
+      "type": "datetime"
+    },
+    "Hidden": {
+      "type": "boolean",
+      "example": false
+    },
+    "EnableVersioning": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

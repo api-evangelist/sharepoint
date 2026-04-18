@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-file-schema.json",
+  "title": "File",
+  "description": "SharePoint file.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "example": "report.pdf"
+    },
+    "ServerRelativeUrl": {
+      "type": "string",
+      "example": "/sites/mysite/Shared Documents/report.pdf"
+    },
+    "Length": {
+      "type": "integer",
+      "example": 1048576
+    },
+    "TimeCreated": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T09:00:00Z"
+    },
+    "TimeLastModified": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T10:30:00Z"
+    },
+    "CheckOutType": {
+      "type": "integer",
+      "example": 2
+    },
+    "MajorVersion": {
+      "type": "integer",
+      "example": 3
+    },
+    "MinorVersion": {
+      "type": "integer",
+      "example": 0
+    },
+    "UniqueId": {
+      "type": "string",
+      "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    }
+  }
+}

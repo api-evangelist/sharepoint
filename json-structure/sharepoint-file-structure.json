@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-structure/sharepoint-file-structure.json",
+  "name": "File",
+  "description": "SharePoint file.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "example": "report.pdf"
+    },
+    "ServerRelativeUrl": {
+      "type": "string",
+      "example": "/sites/mysite/Shared Documents/report.pdf"
+    },
+    "Length": {
+      "type": "int32",
+      "example": 1048576
+    },
+    "TimeCreated": {
+      "type": "datetime",
+      "example": "2026-04-17T09:00:00Z"
+    },
+    "TimeLastModified": {
+      "type": "datetime",
+      "example": "2026-04-17T10:30:00Z"
+    },
+    "CheckOutType": {
+      "type": "int32",
+      "example": 2
+    },
+    "MajorVersion": {
+      "type": "int32",
+      "example": 3
+    },
+    "MinorVersion": {
+      "type": "int32",
+      "example": 0
+    },
+    "UniqueId": {
+      "type": "string",
+      "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    }
+  }
+}

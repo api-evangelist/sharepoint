@@ -1,0 +1,524 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST API
+  description: >-
+    The SharePoint REST API enables developers to interact remotely with SharePoint
+    data using any technology that supports REST web requests. Provides CRUD operations
+    on sites, lists, items, files, folders, permissions, and user profiles using
+    OData protocol standards.
+  version: "1.0"
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+  - url: https://{site_url}/_api
+    description: SharePoint REST API endpoint
+    variables:
+      site_url:
+        default: contoso.sharepoint.com/sites/mysite
+        description: SharePoint site URL
+tags:
+  - name: Sites
+    description: Site and web operations
+  - name: Lists
+    description: List and library operations
+  - name: Items
+    description: List item operations
+  - name: Files
+    description: File upload, download, and management
+  - name: Folders
+    description: Folder operations
+  - name: Permissions
+    description: Permission and role assignment operations
+  - name: Search
+    description: Search query operations
+  - name: User Profiles
+    description: User profile operations
+paths:
+  /web:
+    get:
+      operationId: getWeb
+      summary: SharePoint Get Web
+      description: Retrieve properties of the current site.
+      tags: [Sites]
+      parameters:
+        - name: $select
+          in: query
+          schema: {type: string}
+          description: Comma-separated list of properties to return.
+          example: Title,Url,Description
+      responses:
+        '200':
+          description: Site properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Web'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/title:
+    get:
+      operationId: getWebTitle
+      summary: SharePoint Get Web Title
+      description: Retrieve the title of the current site.
+      tags: [Sites]
+      responses:
+        '200':
+          description: Site title.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value: {type: string, example: My SharePoint Site}
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/lists:
+    get:
+      operationId: getLists
+      summary: SharePoint Get Lists
+      description: Retrieve all lists on the current site.
+      tags: [Lists]
+      parameters:
+        - name: $select
+          in: query
+          schema: {type: string}
+          description: Properties to return.
+        - name: $filter
+          in: query
+          schema: {type: string}
+          description: OData filter expression.
+        - name: $top
+          in: query
+          schema: {type: integer}
+          description: Maximum results to return.
+          example: 10
+      responses:
+        '200':
+          description: Collection of lists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollection'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+    post:
+      operationId: createList
+      summary: SharePoint Create List
+      description: Create a new list on the current site.
+      tags: [Lists]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListCreateRequest'
+      responses:
+        '201':
+          description: List created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/lists/getbytitle('{list_title}'):
+    get:
+      operationId: getListByTitle
+      summary: SharePoint Get List by Title
+      description: Retrieve a list by its title.
+      tags: [Lists]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+          description: Title of the list.
+          example: Documents
+      responses:
+        '200':
+          description: List metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/lists/getbytitle('{list_title}')/items:
+    get:
+      operationId: getListItems
+      summary: SharePoint Get List Items
+      description: Retrieve items from a list.
+      tags: [Items]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+          description: Title of the list.
+          example: Tasks
+        - name: $select
+          in: query
+          schema: {type: string}
+        - name: $filter
+          in: query
+          schema: {type: string}
+        - name: $orderby
+          in: query
+          schema: {type: string}
+        - name: $top
+          in: query
+          schema: {type: integer}
+        - name: $skip
+          in: query
+          schema: {type: integer}
+        - name: $expand
+          in: query
+          schema: {type: string}
+      responses:
+        '200':
+          description: Collection of list items.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItemCollection'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+    post:
+      operationId: createListItem
+      summary: SharePoint Create List Item
+      description: Add a new item to a list.
+      tags: [Items]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListItemCreateRequest'
+      responses:
+        '201':
+          description: Item created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItem'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/lists/getbytitle('{list_title}')/items({item_id}):
+    get:
+      operationId: getListItemById
+      summary: SharePoint Get List Item by ID
+      description: Retrieve a specific list item by ID.
+      tags: [Items]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+        - name: item_id
+          in: path
+          required: true
+          schema: {type: integer}
+          example: 1
+      responses:
+        '200':
+          description: List item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItem'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+    post:
+      operationId: updateListItem
+      summary: SharePoint Update List Item
+      description: Update properties of a list item.
+      tags: [Items]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+        - name: item_id
+          in: path
+          required: true
+          schema: {type: integer}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListItemCreateRequest'
+      responses:
+        '204':
+          description: Item updated.
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+    delete:
+      operationId: deleteListItem
+      summary: SharePoint Delete List Item
+      description: Delete a list item (moves to recycle bin).
+      tags: [Items]
+      parameters:
+        - name: list_title
+          in: path
+          required: true
+          schema: {type: string}
+        - name: item_id
+          in: path
+          required: true
+          schema: {type: integer}
+      responses:
+        '200':
+          description: Item deleted.
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/getfolderbyserverrelativeurl('{folder_url}')/files:
+    get:
+      operationId: getFilesInFolder
+      summary: SharePoint Get Files in Folder
+      description: Retrieve files in a folder.
+      tags: [Files]
+      parameters:
+        - name: folder_url
+          in: path
+          required: true
+          schema: {type: string}
+          description: Server-relative folder URL.
+          example: /sites/mysite/Shared Documents
+      responses:
+        '200':
+          description: Collection of files.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileCollection'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/getfolderbyserverrelativeurl('{folder_url}')/files/add(url='{file_name}',overwrite=true):
+    post:
+      operationId: uploadFile
+      summary: SharePoint Upload File
+      description: Upload a file to a document library folder.
+      tags: [Files]
+      parameters:
+        - name: folder_url
+          in: path
+          required: true
+          schema: {type: string}
+        - name: file_name
+          in: path
+          required: true
+          schema: {type: string}
+          example: document.docx
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: File uploaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /web/getfilebyserverrelativeurl('{file_url}')/$value:
+    get:
+      operationId: downloadFile
+      summary: SharePoint Download File
+      description: Download file content.
+      tags: [Files]
+      parameters:
+        - name: file_url
+          in: path
+          required: true
+          schema: {type: string}
+          example: /sites/mysite/Shared Documents/report.pdf
+      responses:
+        '200':
+          description: File content.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /search/query:
+    get:
+      operationId: searchQuery
+      summary: SharePoint Search Query
+      description: Execute a search query.
+      tags: [Search]
+      parameters:
+        - name: querytext
+          in: query
+          required: true
+          schema: {type: string}
+          description: Search query text.
+          example: "SharePoint"
+        - name: selectproperties
+          in: query
+          schema: {type: string}
+          description: Properties to return.
+        - name: rowlimit
+          in: query
+          schema: {type: integer}
+          description: Maximum results.
+          example: 10
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+  /SP.UserProfiles.PeopleManager/GetMyProperties:
+    get:
+      operationId: getMyUserProfile
+      summary: SharePoint Get My User Profile
+      description: Retrieve the current user's profile properties.
+      tags: [User Profiles]
+      responses:
+        '200':
+          description: User profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+      x-microcks-operation: {delay: 0, dispatcher: FALLBACK}
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.
+  schemas:
+    Web:
+      type: object
+      description: SharePoint site (web) properties.
+      properties:
+        Id: {type: string, example: "3fa85f64-5717-4562-b3fc-2c963f66afa6"}
+        Title: {type: string, example: "My SharePoint Site"}
+        Description: {type: string, example: "Team collaboration site"}
+        Url: {type: string, example: "https://contoso.sharepoint.com/sites/mysite"}
+        WebTemplate: {type: string, example: "STS"}
+        Created: {type: string, format: date-time, example: "2024-01-15T12:00:00Z"}
+        LastItemModifiedDate: {type: string, format: date-time, example: "2026-04-17T08:30:00Z"}
+        Language: {type: integer, example: 1033}
+        ServerRelativeUrl: {type: string, example: "/sites/mysite"}
+    List:
+      type: object
+      description: SharePoint list or document library.
+      properties:
+        Id: {type: string, example: "3fa85f64-5717-4562-b3fc-2c963f66afa6"}
+        Title: {type: string, example: "Documents"}
+        Description: {type: string, example: "Shared documents library"}
+        BaseTemplate: {type: integer, example: 101}
+        ItemCount: {type: integer, example: 42}
+        Created: {type: string, format: date-time, example: "2024-01-15T12:00:00Z"}
+        LastItemModifiedDate: {type: string, format: date-time}
+        Hidden: {type: boolean, example: false}
+        EnableVersioning: {type: boolean, example: true}
+    ListCreateRequest:
+      type: object
+      description: Request to create a new SharePoint list.
+      required: [Title, BaseTemplate]
+      properties:
+        __metadata: {type: object, properties: {type: {type: string, example: "SP.List"}}}
+        Title: {type: string, example: "My New List"}
+        Description: {type: string, example: "A custom list"}
+        BaseTemplate: {type: integer, example: 100, description: "100=Generic List, 101=Document Library, 104=Announcements"}
+        AllowContentTypes: {type: boolean, example: true}
+        ContentTypesEnabled: {type: boolean, example: true}
+    ListCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items: {$ref: '#/components/schemas/List'}
+    ListItem:
+      type: object
+      description: SharePoint list item.
+      properties:
+        Id: {type: integer, example: 1}
+        Title: {type: string, example: "My Task"}
+        Created: {type: string, format: date-time, example: "2026-04-17T09:00:00Z"}
+        Modified: {type: string, format: date-time, example: "2026-04-17T10:30:00Z"}
+        AuthorId: {type: integer, example: 7}
+        EditorId: {type: integer, example: 7}
+    ListItemCreateRequest:
+      type: object
+      properties:
+        __metadata: {type: object, properties: {type: {type: string, example: "SP.Data.MyListListItem"}}}
+        Title: {type: string, example: "New Item"}
+    ListItemCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items: {$ref: '#/components/schemas/ListItem'}
+    File:
+      type: object
+      description: SharePoint file.
+      properties:
+        Name: {type: string, example: "report.pdf"}
+        ServerRelativeUrl: {type: string, example: "/sites/mysite/Shared Documents/report.pdf"}
+        Length: {type: integer, example: 1048576}
+        TimeCreated: {type: string, format: date-time, example: "2026-04-17T09:00:00Z"}
+        TimeLastModified: {type: string, format: date-time, example: "2026-04-17T10:30:00Z"}
+        CheckOutType: {type: integer, example: 2}
+        MajorVersion: {type: integer, example: 3}
+        MinorVersion: {type: integer, example: 0}
+        UniqueId: {type: string, example: "3fa85f64-5717-4562-b3fc-2c963f66afa6"}
+    FileCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items: {$ref: '#/components/schemas/File'}
+    SearchResult:
+      type: object
+      description: SharePoint search results.
+      properties:
+        PrimaryQueryResult:
+          type: object
+          properties:
+            RelevantResults:
+              type: object
+              properties:
+                TotalRows: {type: integer, example: 42}
+                RowCount: {type: integer, example: 10}
+                Table:
+                  type: object
+                  properties:
+                    Rows:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Cells:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                Key: {type: string, example: "Title"}
+                                Value: {type: string, example: "Sample Document"}
+    UserProfile:
+      type: object
+      description: SharePoint user profile.
+      properties:
+        AccountName: {type: string, example: "i:0#.f|membership|user@contoso.com"}
+        DisplayName: {type: string, example: "Jane Smith"}
+        Email: {type: string, example: "jane.smith@contoso.com"}
+        Title: {type: string, example: "Senior Developer"}
+        Department: {type: string, example: "Engineering"}
+        PictureUrl: {type: string, example: "https://contoso.sharepoint.com/_layouts/15/userphoto.aspx?size=L&accountname=user@contoso.com"}
+        PersonalUrl: {type: string, example: "https://contoso-my.sharepoint.com/personal/user_contoso_com/"}

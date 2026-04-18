@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-user-profile-schema.json",
+  "title": "UserProfile",
+  "description": "SharePoint user profile.",
+  "type": "object",
+  "properties": {
+    "AccountName": {
+      "type": "string",
+      "example": "i:0#.f|membership|user@contoso.com"
+    },
+    "DisplayName": {
+      "type": "string",
+      "example": "Jane Smith"
+    },
+    "Email": {
+      "type": "string",
+      "example": "jane.smith@contoso.com"
+    },
+    "Title": {
+      "type": "string",
+      "example": "Senior Developer"
+    },
+    "Department": {
+      "type": "string",
+      "example": "Engineering"
+    },
+    "PictureUrl": {
+      "type": "string",
+      "example": "https://contoso.sharepoint.com/_layouts/15/userphoto.aspx?size=L&accountname=user@contoso.com"
+    },
+    "PersonalUrl": {
+      "type": "string",
+      "example": "https://contoso-my.sharepoint.com/personal/user_contoso_com/"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "AccountName": "i:0#.f|membership|user@contoso.com",
+  "DisplayName": "Jane Smith",
+  "Email": "jane.smith@contoso.com",
+  "Title": "Senior Developer",
+  "Department": "Engineering",
+  "PictureUrl": "https://contoso.sharepoint.com/_layouts/15/userphoto.aspx?size=L&accountname=user@contoso.com",
+  "PersonalUrl": "https://contoso-my.sharepoint.com/personal/user_contoso_com/"
+}

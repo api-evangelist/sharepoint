@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-web-schema.json",
+  "title": "Web",
+  "description": "SharePoint site (web) properties.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    },
+    "Title": {
+      "type": "string",
+      "example": "My SharePoint Site"
+    },
+    "Description": {
+      "type": "string",
+      "example": "Team collaboration site"
+    },
+    "Url": {
+      "type": "string",
+      "example": "https://contoso.sharepoint.com/sites/mysite"
+    },
+    "WebTemplate": {
+      "type": "string",
+      "example": "STS"
+    },
+    "Created": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "LastItemModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T08:30:00Z"
+    },
+    "Language": {
+      "type": "integer",
+      "example": 1033
+    },
+    "ServerRelativeUrl": {
+      "type": "string",
+      "example": "/sites/mysite"
+    }
+  }
+}

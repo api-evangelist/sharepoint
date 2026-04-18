@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-structure/sharepoint-search-result-structure.json",
+  "name": "SearchResult",
+  "description": "SharePoint search results.",
+  "type": "object",
+  "properties": {
+    "PrimaryQueryResult": {
+      "type": "object",
+      "properties": {
+        "RelevantResults": {
+          "type": "object",
+          "properties": {
+            "TotalRows": {
+              "type": "int32",
+              "example": 42
+            },
+            "RowCount": {
+              "type": "int32",
+              "example": 10
+            },
+            "Table": {
+              "type": "object",
+              "properties": {
+                "Rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Cells": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "Key": {
+                              "type": "string",
+                              "example": "Title"
+                            },
+                            "Value": {
+                              "type": "string",
+                              "example": "Sample Document"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

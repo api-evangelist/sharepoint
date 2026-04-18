@@ -1,0 +1,11 @@
+{
+  "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "Title": "My SharePoint Site",
+  "Description": "Team collaboration site",
+  "Url": "https://contoso.sharepoint.com/sites/mysite",
+  "WebTemplate": "STS",
+  "Created": "2024-01-15T12:00:00Z",
+  "LastItemModifiedDate": "2026-04-17T08:30:00Z",
+  "Language": 1033,
+  "ServerRelativeUrl": "/sites/mysite"
+}

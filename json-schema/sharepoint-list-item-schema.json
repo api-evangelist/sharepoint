@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-schema/sharepoint-list-item-schema.json",
+  "title": "ListItem",
+  "description": "SharePoint list item.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "example": 1
+    },
+    "Title": {
+      "type": "string",
+      "example": "My Task"
+    },
+    "Created": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T09:00:00Z"
+    },
+    "Modified": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T10:30:00Z"
+    },
+    "AuthorId": {
+      "type": "integer",
+      "example": 7
+    },
+    "EditorId": {
+      "type": "integer",
+      "example": 7
+    }
+  }
+}

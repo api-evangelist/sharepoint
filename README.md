@@ -1,94 +1,93 @@
 # Microsoft SharePoint (sharepoint)
-Microsoft SharePoint is a web-based collaborative platform that integrates with Microsoft Office. It provides enterprise content management, document management, and collaboration capabilities.
+Microsoft SharePoint is a web-based collaborative platform providing enterprise content management, document management, and collaboration capabilities with comprehensive REST and Graph APIs.
 
-**URL:** [Visit APIs.json URL](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/apis.yml)
+
+**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
 
 ## Tags:
 
- - Collaboration, Document Management, Enterprise Content Management, Microsoft, Intranet
+ - Collaboration, Document Management, Enterprise Content Management, Intranet, Microsoft
 
 ## Timestamps
 
-- **Created:** 2024 
-- **Modified:** 2024 
+- **Created:** 2024-01-01
+- **Modified:** 2026-04-17
 
 ## APIs
 
-### SharePoint REST API
-The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests.
+4 APIs: SharePoint REST API, Microsoft Graph API (SharePoint), SharePoint CSOM, SharePoint Webhooks API.
 
-**Human URL:** [https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service)
+## Features
 
+| Name | Description |
+|------|-------------|
+| Sites and Webs | Create, read, update, and delete SharePoint sites and subsites. |
+| Lists and Libraries | Full CRUD operations on lists, document libraries, and list items. |
+| Document Management | Upload, download, check in/out, and manage documents and versions. |
+| Folders and Files | Create folder hierarchies and manage files within libraries. |
+| Permissions and Security | Manage site, list, and item-level permissions. |
+| Search | Full-text search across sites, documents, and content. |
+| User Profiles | Access user profile properties and organizational data. |
+| Content Types | Manage content types, site columns, and metadata schemas. |
+| Webhooks | Subscribe to change notifications for lists and libraries. |
+| Microsoft Graph Integration | Access SharePoint through unified Microsoft 365 API. |
+| Batch Requests | Combine multiple REST operations in a single request. |
+| OData Query Support | Filter, select, expand, and order using OData operators. |
 
-#### Tags:
+## Use Cases
 
- - REST, Lists, Documents, Sites
+| Name | Description |
+|------|-------------|
+| Document Automation | Automate upload, metadata tagging, and approval workflows. |
+| Intranet Content Management | Manage site pages, news posts, and navigation. |
+| Data Integration | Sync list data with external databases and applications. |
+| Migration | Migrate content between sites or from file shares. |
+| Custom Applications | Build SPFx web parts and extensions. |
+| Compliance and Governance | Manage retention policies and audit logs. |
+| Search Integration | Build custom search with facets and refiners. |
+| Power Automate Flows | Trigger workflows based on SharePoint events. |
 
-#### Properties
+## Solutions
 
-- [Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints)
-- [OpenAPI](https://example.com/sharepoint-rest-openapi.json)
-- [Authentication](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins)
+| Name | Description |
+|------|-------------|
+| SharePoint Online | Cloud-hosted SharePoint with REST and Graph APIs. |
+| SharePoint Server | On-premises with REST, CSOM, and server-side APIs. |
+| SharePoint Framework (SPFx) | Modern client-side development for web parts and extensions. |
 
-### Microsoft Graph API (SharePoint)
-Access SharePoint sites, lists, and documents through the Microsoft Graph unified API endpoint.
+## Artifacts
 
-**Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/sharepoint](https://docs.microsoft.com/en-us/graph/api/resources/sharepoint)
+### OpenAPI
 
+- [SharePoint REST API](openapi/sharepoint-rest-api.yaml) — 14 endpoints, 11 schemas (generated from documentation)
 
-#### Tags:
+### JSON Schema
 
- - Graph, Sites, Lists, Drive, Modern
+11 standalone JSON Schema files in [json-schema/](json-schema/).
 
-#### Properties
+### JSON Structure
 
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/sharepoint)
-- [OpenAPI](https://example.com/graph-sharepoint-openapi.json)
-- [SDK](https://docs.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Authentication](https://docs.microsoft.com/en-us/graph/auth/)
+11 JSON Structure files in [json-structure/](json-structure/).
 
-### SharePoint CSOM (Client-Side Object Model)
-Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed or JavaScript libraries.
+### JSON-LD
 
-**Human URL:** [https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code)
+- [SharePoint Context](json-ld/sharepoint-context.jsonld) — 11 types, 35 properties
 
+### Examples
 
-#### Tags:
+11 example JSON files in [examples/](examples/).
 
- - CSOM, .NET, JavaScript, Client Library
+## Vocabulary
 
-#### Properties
+- [SharePoint Vocabulary](vocabulary/sharepoint-vocabulary.yaml) — 10 resources, 4 APIs, 5 domains, 5 personas
 
-- [Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code)
-- [NuGet Package](https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/)
-- [JavaScript Reference](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint)
+## Rules
 
-### SharePoint Webhooks API
-SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
-
-**Human URL:** [https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks](https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
-
-
-#### Tags:
-
- - Webhooks, Notifications, Events, Real-time
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
-- [Getting Started](https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks)
-
-## Common Properties
-
-- [Developer Portal](https://developer.microsoft.com/en-us/sharepoint)
-- [Code Samples](https://pnp.github.io/)
-- [Community](https://techcommunity.microsoft.com/t5/sharepoint/ct-p/SharePoint)
-- [Support](https://support.microsoft.com/en-us/sharepoint)
-- [Pricing](https://www.microsoft.com/en-us/microsoft-365/sharepoint/compare-sharepoint-plans)
-- [Status](https://status.cloud.microsoft/)
+- [SharePoint Spectral Rules](rules/sharepoint-spectral-rules.yml) — 17 rules
 
 ## Maintainers
 
-**FN:** Microsoft
+**FN:** Kin Lane
 
-**Email:** support@microsoft.com
+**Email:** kin@apievangelist.com

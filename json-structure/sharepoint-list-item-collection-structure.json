@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/json-structure/sharepoint-list-item-collection-structure.json",
+  "name": "ListItemCollection",
+  "description": "ListItemCollection from SharePoint API",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ListItem"
+      }
+    }
+  }
+}
