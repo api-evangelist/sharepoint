@@ -4,101 +4,189 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft SharePoint
 providerId: sharepoint
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Collaboration
-  - Document Management
-  - Enterprise Content Management
-  - Intranet
-  - Microsoft
+  - SharePoint
+  - Microsoft 365
+  - Microsoft Graph
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft SharePoint API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: SharePoint Online enforces multi-layered throttling across user, tenant, application, and
+  per-site scopes. Limits are expressed in Resource Units (RUs) for Microsoft Graph (1 RU per single-item
+  query, 2 RUs per multi-item or write, 5 RUs for permission operations); CSOM and REST do not have a
+  fixed RU cost but are subject to additional internal limits. On throttling, SharePoint returns 429
+  or 503 with a Retry-After header. Optional preview RateLimit headers (RateLimit-Limit / -Remaining
+  / -Reset) are returned when an app reaches >=80% of its 1-minute resource-unit budget.
+sources:
+  - https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: RateLimit-Limit
+  remaining: RateLimit-Remaining
+  reset: RateLimit-Reset
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - SharePoint REST API
-      - Microsoft Graph API (SharePoint)
-      - SharePoint CSOM (Client-Side Object Model)
-      - SharePoint Webhooks API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - SharePoint REST API
-      - Microsoft Graph API (SharePoint)
-      - SharePoint CSOM (Client-Side Object Model)
-      - SharePoint Webhooks API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: User — Requests
+    scope: user
+    metric: requests
+    limit: 3000
+    timeFrame: 5-minute
+  - name: User — Ingress
+    scope: user
+    metric: GB
+    limit: 50
+    timeFrame: hour
+  - name: User — Egress
+    scope: user
+    metric: GB
     limit: 100
-    burst: 200
+    timeFrame: hour
+  - name: User — Delegation Token Request
+    scope: user
+    metric: requests
+    limit: 50
+    timeFrame: 5-minute
+  - name: User — External Sharing Emails
+    scope: user
+    metric: emails
+    limit: 200
+    timeFrame: hour
+  - name: Tenant — Resource Units (5 min, 0–1,000 licenses)
+    scope: tenant
+    metric: resource_units
+    limit: 18750
+    timeFrame: 5-minute
+  - name: Tenant — Resource Units (5 min, 1,001–5,000 licenses)
+    scope: tenant
+    metric: resource_units
+    limit: 37500
+    timeFrame: 5-minute
+  - name: Tenant — Resource Units (5 min, 5,001–15,000 licenses)
+    scope: tenant
+    metric: resource_units
+    limit: 56250
+    timeFrame: 5-minute
+  - name: Tenant — Resource Units (5 min, 15,001–50,000 licenses)
+    scope: tenant
+    metric: resource_units
+    limit: 75000
+    timeFrame: 5-minute
+  - name: Tenant — Resource Units (5 min, 50,000+ licenses)
+    scope: tenant
+    metric: resource_units
+    limit: 93750
+    timeFrame: 5-minute
+  - name: Tenant — Assign Sensitivity Label
+    scope: tenant
+    metric: requests
+    limit: 100
+    timeFrame: 5-minute
+  - name: Tenant — PeopleManager APIs (5 min, 0–1,000 licenses)
+    scope: tenant
+    metric: requests
+    limit: 3000
+    timeFrame: 5-minute
+  - name: Tenant — PeopleManager APIs (5 min, 50,000+ licenses)
+    scope: tenant
+    metric: requests
+    limit: 15000
+    timeFrame: 5-minute
+  - name: Per App per Tenant — Resource Units (24 H, 0–1,000 licenses)
+    scope: tenant/app
+    metric: resource_units
+    limit: 1200000
+    timeFrame: day
+  - name: Per App per Tenant — Resource Units (24 H, 50,000+ licenses)
+    scope: tenant/app
+    metric: resource_units
+    limit: 6000000
+    timeFrame: day
+  - name: Per App per Tenant — Resource Units (1 min, 0–1,000 licenses)
+    scope: tenant/app
+    metric: resource_units
+    limit: 1250
     timeFrame: minute
-    applies:
-      - SharePoint REST API
-      - Microsoft Graph API (SharePoint)
-      - SharePoint CSOM (Client-Side Object Model)
-      - SharePoint Webhooks API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - SharePoint REST API
-      - Microsoft Graph API (SharePoint)
-      - SharePoint CSOM (Client-Side Object Model)
-      - SharePoint Webhooks API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
+  - name: Per App per Tenant — Resource Units (1 min, 50,000+ licenses)
+    scope: tenant/app
+    metric: resource_units
+    limit: 6250
     timeFrame: minute
-    applies:
-      - SharePoint REST API
-      - Microsoft Graph API (SharePoint)
-      - SharePoint CSOM (Client-Side Object Model)
-      - SharePoint Webhooks API
+  - name: Per App per Tenant — Ingress
+    scope: tenant/app
+    metric: GB
+    limit: 400
+    timeFrame: hour
+  - name: Per App per Tenant — Egress
+    scope: tenant/app
+    metric: GB
+    limit: 400
+    timeFrame: hour
+  - name: Per App per Tenant — Specific Sharing APIs
+    scope: tenant/app
+    metric: requests
+    limit: 300
+    timeFrame: 5-minute
+  - name: SharePoint Embedded Containers — Resource Units
+    scope: container
+    metric: resource_units
+    limit: 3000
+    timeFrame: minute
+  - name: Per Site — Anonymous Link
+    scope: site
+    metric: requests
+    limit: 3000
+    timeFrame: 5-minute
+  - name: Per Site — Anonymous Egress (Download)
+    scope: site
+    metric: GB
+    limit: 100
+    timeFrame: 2-hour
+  - name: Per Site — External Sharing Emails
+    scope: site
+    metric: emails
+    limit: 200
+    timeFrame: hour
+  - name: Search — App-only with Sites.Read.All
+    scope: app
+    metric: requests_per_second
+    limit: 25
+    timeFrame: second
+  - name: Search — Delegated user
+    scope: user
+    metric: requests_per_second
+    limit: 10
+    timeFrame: second
+  - name: People Search — Org-wide
+    scope: tenant
+    metric: requests_per_second
+    limit: 25
+    timeFrame: second
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Resource-unit cost model
+    description: Microsoft Graph requests are priced in Resource Units (1 = single item / delta with
+      token / file download, 2 = multi-item / write, 5 = permission operations). CSOM and REST have no
+      fixed RU cost and are typically more expensive per request — prefer Microsoft Graph.
+  - name: Honor Retry-After
+    description: On 429 or 503, honor the Retry-After header. Throttled requests still count toward usage
+      limits, so aggressive retry loops worsen throttling.
+  - name: RateLimit headers (preview)
+    description: At >=80% of the app 1-minute resource-unit limit, SharePoint returns RateLimit-Limit,
+      RateLimit-Remaining, and RateLimit-Reset (IETF draft-03). Use them to throttle pre-emptively.
+  - name: Decorate traffic
+    description: Send User-Agent in the form ISV|CompanyName|AppName/Version (or NONISV|... for enterprise
+      apps) and register an Entra (Azure AD) AppID to receive priority over undecorated traffic.
+  - name: Multi-Geo
+    description: Each geo has its own usage measurement; license-bound limits use the total tenant license
+      count across all geos.
+  - name: Peak vs off-peak
+    description: Throttling is more aggressive during regional peak hours; bulk scanning workloads should
+      run during off-peak windows where possible.
+  - name: Block escalation
+    description: Sustained excessive traffic can result in the app or tenant being blocked (continuous
+      503); Microsoft notifies the customer via Office 365 Message Center and requires remediation before
+      lifting the block.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

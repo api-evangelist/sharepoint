@@ -4,147 +4,140 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft SharePoint
 providerId: sharepoint
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - SharePoint
+  - Microsoft 365
   - Collaboration
   - Document Management
-  - Enterprise Content Management
-  - Intranet
-  - Microsoft
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Cloud Storage
+description: SharePoint Online is licensed per-user as a standalone plan or bundled into Microsoft 365
+  / Office 365 enterprise SKUs. Standalone "SharePoint (Plan 1)" is the entry-level commercial offering;
+  larger organizations typically license SharePoint via Microsoft 365 Business Standard or Office 365
+  E-tier plans where SharePoint is included as a workload. Per-user prices reflect annual commitment;
+  monthly subscriptions carry a higher rate. Public sector and student/developer SKUs are not represented
+  here.
+sources:
+  - https://www.microsoft.com/en-us/microsoft-365/sharepoint/compare-sharepoint-plans
 plans:
-  - id: sharepoint-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Microsoft SharePoint API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: sharepoint-plan-1
+    name: SharePoint (Plan 1)
+    type: subscription
+    description: Standalone SharePoint Online subscription. Includes SharePoint, OneDrive, and Microsoft
+      Lists with secure file share and real-time co-authoring.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: seat
+        limit: 1
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
+        price: '$5.00 per user/month (annual)'
+        userMultiplied: true
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: SharePoint REST API
-      - name: Microsoft Graph API (SharePoint)
-      - name: SharePoint CSOM (Client-Side Object Model)
-      - name: SharePoint Webhooks API
-  - id: sharepoint-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft SharePoint. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: SharePoint Online
+      - name: OneDrive
+      - name: Microsoft Lists
+      - name: Real-time co-authoring
+      - name: External sharing
+  - id: sharepoint-m365-business-standard
+    name: Microsoft 365 Business Standard
+    type: subscription
+    description: Mid-market bundle that includes SharePoint plus desktop Office apps, custom business
+      email, Microsoft Teams, and 1 TB OneDrive storage per user.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$12.50 per user/month (annual)'
+        userMultiplied: true
+      - label: OneDrive Storage
+        name: onedrive_storage
         type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
+        metric: TB
+        limit: 1
         geo: global
-        domains: []
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+        price: included
+        userMultiplied: true
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: SharePoint REST API
-      - name: Microsoft Graph API (SharePoint)
-      - name: SharePoint CSOM (Client-Side Object Model)
-      - name: SharePoint Webhooks API
+      - name: SharePoint Online
+      - name: OneDrive (1 TB / user)
+      - name: Microsoft 365 Apps (desktop Office)
+      - name: Microsoft Teams
+      - name: Custom business email
+      - name: Chat / Call / Meet
+  - id: sharepoint-m365-business-standard-no-teams
+    name: Microsoft 365 Business Standard (no Teams)
+    type: subscription
+    description: Same as Business Standard but with Microsoft Teams excluded (EU-driven SKU).
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$9.29 per user/month (annual)'
+        userMultiplied: true
+    elements:
+      - name: SharePoint Online
+      - name: OneDrive (1 TB / user)
+      - name: Microsoft 365 Apps (desktop Office)
+      - name: Custom business email
+      - name: Excludes Microsoft Teams
+  - id: sharepoint-m365-copilot-addon
+    name: Microsoft 365 Copilot (add-on)
+    type: subscription
+    description: Generative-AI add-on layered on top of an eligible Microsoft 365 plan; surfaces Copilot
+      across Word, Excel, PowerPoint, Outlook, Teams, and SharePoint.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$30.00 per user/month (annual commitment)'
+        userMultiplied: true
+    elements:
+      - name: Copilot in Word, Excel, PowerPoint, Outlook, Teams, SharePoint
+      - name: Requires eligible Microsoft 365 base plan
   - id: sharepoint-enterprise
-    name: Enterprise
+    name: Office 365 / Microsoft 365 Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Microsoft SharePoint. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+    description: SharePoint is also included in Office 365 E1/E3/E5 and Microsoft 365 E3/E5 enterprise
+      SKUs. Pricing for these tiers is published on the Microsoft 365 enterprise pricing page and via
+      Microsoft volume licensing partners; treat as enterprise / contact sales for exact contract terms.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: seat
+        limit: 1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
+        price: see Microsoft 365 enterprise pricing
+        userMultiplied: true
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: SharePoint REST API
-      - name: Microsoft Graph API (SharePoint)
-      - name: SharePoint CSOM (Client-Side Object Model)
-      - name: SharePoint Webhooks API
+      - name: SharePoint Online
+      - name: OneDrive
+      - name: Microsoft Teams
+      - name: Office Apps
+      - name: Advanced compliance / security (E5 tier)
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
