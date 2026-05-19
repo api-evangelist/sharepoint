@@ -91,6 +91,8 @@ apis:
     url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
   aid: sharepoint:webhooks-api
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sharepoint
 - type: Developer Portal
   url: https://developer.microsoft.com/en-us/sharepoint
 - type: Code Samples

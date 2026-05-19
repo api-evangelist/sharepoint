@@ -1,0 +1,285 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SharePoint REST API — Items
+  description: 'SharePoint REST API — Items. 5 operations. Lead operation: SharePoint Get List Items. Self-contained Naftiko
+    capability covering one Sharepoint business surface.'
+  tags:
+  - Sharepoint
+  - Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SHAREPOINT_API_KEY: SHAREPOINT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-items
+    baseUri: https://{site_url}/_api
+    description: SharePoint REST API — Items business capability. Self-contained, no shared references.
+    resources:
+    - name: web-lists-getbytitle('{list_title}')-items
+      path: /web/lists/getbytitle('{list_title}')/items
+      operations:
+      - name: getlistitems
+        method: GET
+        description: SharePoint Get List Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: list_title
+          in: path
+          type: string
+          description: Title of the list.
+          required: true
+        - name: $select
+          in: query
+          type: string
+        - name: $filter
+          in: query
+          type: string
+        - name: $orderby
+          in: query
+          type: string
+        - name: $top
+          in: query
+          type: integer
+        - name: $skip
+          in: query
+          type: integer
+        - name: $expand
+          in: query
+          type: string
+      - name: createlistitem
+        method: POST
+        description: SharePoint Create List Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: list_title
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: web-lists-getbytitle('{list_title}')-items({item_id})
+      path: /web/lists/getbytitle('{list_title}')/items({item_id})
+      operations:
+      - name: getlistitembyid
+        method: GET
+        description: SharePoint Get List Item by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: list_title
+          in: path
+          type: string
+          required: true
+        - name: item_id
+          in: path
+          type: integer
+          required: true
+      - name: updatelistitem
+        method: POST
+        description: SharePoint Update List Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: list_title
+          in: path
+          type: string
+          required: true
+        - name: item_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletelistitem
+        method: DELETE
+        description: SharePoint Delete List Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: list_title
+          in: path
+          type: string
+          required: true
+        - name: item_id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SHAREPOINT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-items-rest
+    port: 8080
+    description: REST adapter for SharePoint REST API — Items. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/web/lists/getbytitle-list-title/items
+      name: web-lists-getbytitle-list-title-items
+      description: REST surface for web-lists-getbytitle('{list_title}')-items.
+      operations:
+      - method: GET
+        name: getlistitems
+        description: SharePoint Get List Items
+        call: rest-items.getlistitems
+        with:
+          list_title: rest.list_title
+          $select: rest.$select
+          $filter: rest.$filter
+          $orderby: rest.$orderby
+          $top: rest.$top
+          $skip: rest.$skip
+          $expand: rest.$expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createlistitem
+        description: SharePoint Create List Item
+        call: rest-items.createlistitem
+        with:
+          list_title: rest.list_title
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/web/lists/getbytitle-list-title/items-item-id
+      name: web-lists-getbytitle-list-title-items-item-id
+      description: REST surface for web-lists-getbytitle('{list_title}')-items({item_id}).
+      operations:
+      - method: GET
+        name: getlistitembyid
+        description: SharePoint Get List Item by ID
+        call: rest-items.getlistitembyid
+        with:
+          list_title: rest.list_title
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatelistitem
+        description: SharePoint Update List Item
+        call: rest-items.updatelistitem
+        with:
+          list_title: rest.list_title
+          item_id: rest.item_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletelistitem
+        description: SharePoint Delete List Item
+        call: rest-items.deletelistitem
+        with:
+          list_title: rest.list_title
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SharePoint REST API — Items. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: sharepoint-get-list-items
+      description: SharePoint Get List Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-items.getlistitems
+      with:
+        list_title: tools.list_title
+        $select: tools.$select
+        $filter: tools.$filter
+        $orderby: tools.$orderby
+        $top: tools.$top
+        $skip: tools.$skip
+        $expand: tools.$expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-create-list-item
+      description: SharePoint Create List Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-items.createlistitem
+      with:
+        list_title: tools.list_title
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-get-list-item-id
+      description: SharePoint Get List Item by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-items.getlistitembyid
+      with:
+        list_title: tools.list_title
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-update-list-item
+      description: SharePoint Update List Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-items.updatelistitem
+      with:
+        list_title: tools.list_title
+        item_id: tools.item_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-delete-list-item
+      description: SharePoint Delete List Item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-items.deletelistitem
+      with:
+        list_title: tools.list_title
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SharePoint REST API — Files
+  description: 'SharePoint REST API — Files. 3 operations. Lead operation: SharePoint Download File. Self-contained Naftiko
+    capability covering one Sharepoint business surface.'
+  tags:
+  - Sharepoint
+  - Files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SHAREPOINT_API_KEY: SHAREPOINT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-files
+    baseUri: https://{site_url}/_api
+    description: SharePoint REST API — Files business capability. Self-contained, no shared references.
+    resources:
+    - name: web-getfilebyserverrelativeurl('{file_url}')-$value
+      path: /web/getfilebyserverrelativeurl('{file_url}')/$value
+      operations:
+      - name: downloadfile
+        method: GET
+        description: SharePoint Download File
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: file_url
+          in: path
+          type: string
+          required: true
+    - name: web-getfolderbyserverrelativeurl('{folder_url}')-files
+      path: /web/getfolderbyserverrelativeurl('{folder_url}')/files
+      operations:
+      - name: getfilesinfolder
+        method: GET
+        description: SharePoint Get Files in Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folder_url
+          in: path
+          type: string
+          description: Server-relative folder URL.
+          required: true
+    - name: web-getfolderbyserverrelativeurl('{folder_url}')-files-add(url='{file_name}',ove
+      path: /web/getfolderbyserverrelativeurl('{folder_url}')/files/add(url='{file_name}',overwrite=true)
+      operations:
+      - name: uploadfile
+        method: POST
+        description: SharePoint Upload File
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folder_url
+          in: path
+          type: string
+          required: true
+        - name: file_name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SHAREPOINT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-files-rest
+    port: 8080
+    description: REST adapter for SharePoint REST API — Files. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/web/getfilebyserverrelativeurl-file-url/value
+      name: web-getfilebyserverrelativeurl-file-url-value
+      description: REST surface for web-getfilebyserverrelativeurl('{file_url}')-$value.
+      operations:
+      - method: GET
+        name: downloadfile
+        description: SharePoint Download File
+        call: rest-files.downloadfile
+        with:
+          file_url: rest.file_url
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/web/getfolderbyserverrelativeurl-folder-url/files
+      name: web-getfolderbyserverrelativeurl-folder-url-files
+      description: REST surface for web-getfolderbyserverrelativeurl('{folder_url}')-files.
+      operations:
+      - method: GET
+        name: getfilesinfolder
+        description: SharePoint Get Files in Folder
+        call: rest-files.getfilesinfolder
+        with:
+          folder_url: rest.folder_url
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/web/getfolderbyserverrelativeurl-folder-url/files/add-url-file-name-overwrite-true
+      name: web-getfolderbyserverrelativeurl-folder-url-files-add-url-file-name-ove
+      description: REST surface for web-getfolderbyserverrelativeurl('{folder_url}')-files-add(url='{file_name}',ove.
+      operations:
+      - method: POST
+        name: uploadfile
+        description: SharePoint Upload File
+        call: rest-files.uploadfile
+        with:
+          folder_url: rest.folder_url
+          file_name: rest.file_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SharePoint REST API — Files. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: sharepoint-download-file
+      description: SharePoint Download File
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-files.downloadfile
+      with:
+        file_url: tools.file_url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-get-files-folder
+      description: SharePoint Get Files in Folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-files.getfilesinfolder
+      with:
+        folder_url: tools.folder_url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sharepoint-upload-file
+      description: SharePoint Upload File
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-files.uploadfile
+      with:
+        folder_url: tools.folder_url
+        file_name: tools.file_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
