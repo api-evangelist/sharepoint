@@ -91,6 +91,10 @@ apis:
       url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
     aid: sharepoint:webhooks-api
 common:
+  - type: Authentication
+    url: authentication/sharepoint-authentication.yml
+  - type: OAuthScopes
+    url: scopes/sharepoint-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/SharePoint
   - type: LinkedIn

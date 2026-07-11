@@ -1,0 +1,36 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sharepoint-rest-api.yaml
+schemes:
+- name: oauth2
+  source: openapi/sharepoint-rest-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+scopes:
+- scope: Sites.FullControl.All
+  description: Full control of all site collections.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/sharepoint-rest-api.yaml
+- scope: Sites.Manage.All
+  description: Create, edit, and delete items and lists.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/sharepoint-rest-api.yaml
+- scope: Sites.Read.All
+  description: Read all site collections.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/sharepoint-rest-api.yaml
+- scope: Sites.ReadWrite.All
+  description: Read and write all site collections.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/sharepoint-rest-api.yaml
