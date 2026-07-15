@@ -91,6 +91,8 @@ apis:
       url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
     aid: sharepoint:webhooks-api
 common:
+  - type: AgenticAccess
+    url: agentic-access/sharepoint-agentic-access.yml
   - type: Authentication
     url: authentication/sharepoint-authentication.yml
   - type: OAuthScopes
