@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for SharePoint REST API
+  version: 1.0.0
+extends: openapi/sharepoint-rest-api.yaml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: sharepoint
+      x-apievangelist-round: '2026-06-20'
+      x-api-protocol: OData
+      x-authentication: authentication/sharepoint-authentication.yml
+      x-oauth-scopes: scopes/sharepoint-scopes.yml
+  - target: $.info
+    update:
+      x-conventions: conventions/sharepoint-conventions.yml
+      x-lifecycle: lifecycle/sharepoint-lifecycle.yml
+      x-data-model: data-model/sharepoint-data-model.yml
+      x-error-catalog: errors/sharepoint-problem-types.yml
+  - target: $.info
+    update:
+      x-mcp-server: mcp/sharepoint-mcp.yml
+      x-packages: packages/sharepoint-packages.yml
+      x-conformance: conformance/sharepoint-conformance.yml

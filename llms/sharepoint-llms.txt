@@ -1,0 +1,37 @@
+# Microsoft SharePoint
+
+> Microsoft SharePoint is a web-based collaborative platform integrated with Microsoft 365. It provides enterprise content management, document management, and collaboration, exposed programmatically through the SharePoint REST API (OData), Microsoft Graph, the Client-Side Object Model (CSOM), and change webhooks. Authentication is OAuth 2.0 via Microsoft Entra / Azure AD.
+
+## APIs
+
+- [SharePoint REST API](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service): OData REST access to sites, lists, items, files, folders, permissions, and search at https://{site_url}/_api.
+- [Microsoft Graph API (SharePoint)](https://learn.microsoft.com/en-us/graph/api/resources/sharepoint): Access SharePoint sites, lists, and drives through the unified Microsoft 365 endpoint at https://graph.microsoft.com/v1.0.
+- [SharePoint CSOM](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code): .NET and JavaScript client-side object model.
+- [SharePoint Webhooks API](https://learn.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks): Change notifications for lists and document libraries.
+
+## Specs
+
+- [SharePoint REST OpenAPI (API Evangelist)](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/openapi/sharepoint-rest-api.yaml)
+- [Enhancement Overlay](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/overlays/sharepoint-rest-api-overlay.yaml)
+
+## Auth & Security
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/authentication/sharepoint-authentication.yml): OAuth 2.0 authorization code via Microsoft Entra.
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/scopes/sharepoint-scopes.yml): Sites.Read.All, Sites.ReadWrite.All, Sites.Manage.All, Sites.FullControl.All.
+- [OpenID configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration)
+- [security.txt (MSRC)](https://www.microsoft.com/.well-known/security.txt)
+
+## SDKs & Tooling
+
+- [Microsoft Graph SDKs](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview): JavaScript, Python, .NET, Java, Go.
+- [PnPjs](https://pnp.github.io/pnpjs/) and [PnP Core SDK](https://pnp.github.io/pnpcore/): community/PnP libraries.
+- [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/) and [PnP PowerShell](https://pnp.github.io/powershell/).
+- [Microsoft Graph Toolkit (mgt)](https://learn.microsoft.com/en-us/graph/toolkit/overview): embeddable web components.
+
+## Docs
+
+- [SharePoint dev docs](https://learn.microsoft.com/en-us/sharepoint/dev/)
+- [Microsoft Graph changelog](https://developer.microsoft.com/en-us/graph/changelog)
+- [Microsoft 365 Developer Program sandbox](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Service Trust Portal](https://servicetrust.microsoft.com/)
+- [Microsoft 365 status](https://status.cloud.microsoft/)

@@ -1,0 +1,56 @@
+generated: '2026-06-20'
+method: searched
+source: https://pnp.github.io/cli-microsoft365/
+notes: >-
+  SharePoint has three widely used first-party / PnP command surfaces. CLI for Microsoft 365
+  (cross-platform, npm) and PnP PowerShell are PnP community projects sponsored by Microsoft;
+  SharePoint Online Management Shell is the official Microsoft PowerShell module for tenant
+  administration.
+clis:
+  - name: CLI for Microsoft 365
+    binary: m365
+    vendor: PnP (Microsoft-sponsored)
+    docs: https://pnp.github.io/cli-microsoft365/
+    cross_platform: true
+    install:
+      - method: npm
+        command: npm install -g @pnp/cli-microsoft365
+      - method: docker
+        command: docker run --rm -it m365pnp/cli-microsoft365
+    command_groups:
+      - spo (SharePoint Online — sites, lists, files, pages, web parts)
+      - spfx (SharePoint Framework project scaffolding & upgrade)
+      - graph, teams, entra, pp (Power Platform), viva
+    flows:
+      - "m365 login"
+      - "m365 spo site list"
+      - "m365 spo list add --webUrl <url> --title <name>"
+      - "m365 spo file add --webUrl <url> --folder 'Shared Documents' --path ./file.docx"
+  - name: PnP PowerShell
+    binary: PnP.PowerShell (module)
+    vendor: PnP (Microsoft-sponsored)
+    docs: https://pnp.github.io/powershell/
+    cross_platform: true
+    requires: PowerShell 7.2+
+    install:
+      - method: powershell
+        command: Install-Module PnP.PowerShell
+    flows:
+      - "Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/mysite -Interactive"
+      - "Get-PnPList"
+      - "Add-PnPListItem -List 'Tasks' -Values @{Title='New'}"
+    note: 700+ cmdlets across SharePoint Online, Teams, Planner, Power Platform, Entra, Purview, Search.
+  - name: SharePoint Online Management Shell
+    binary: Microsoft.Online.SharePoint.PowerShell (module)
+    vendor: Microsoft (official)
+    docs: https://learn.microsoft.com/en-us/powershell/sharepoint/sharepoint-online/connect-sharepoint-online
+    cross_platform: false
+    install:
+      - method: powershell
+        command: Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Scope CurrentUser
+      - method: download
+        command: https://www.microsoft.com/en-us/download/details.aspx?id=35588
+    flows:
+      - "Connect-SPOService -Url https://contoso-admin.sharepoint.com"
+      - "Get-SPOSite"
+    note: Tenant-administration focused (site collections, tenant settings, sharing policies).

@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+probe: true
+url: https://www.microsoft.com/en-us/trust-center
+service_trust_portal: https://servicetrust.microsoft.com/
+notes: >-
+  SharePoint Online is covered by the Microsoft 365 / Office 365 compliance program. Audit
+  reports (SOC 1/2/3, ISO, FedRAMP) are published behind the Service Trust Portal; most
+  downloads require a signed-in Microsoft Entra org account and NDA acceptance. Certifications
+  below are from the Microsoft compliance offerings documentation for Microsoft 365 services.
+certifications:
+  - SOC 1 Type 2
+  - SOC 2 Type 2
+  - SOC 3
+  - ISO 27001
+  - ISO 27017
+  - ISO 27018
+  - ISO 27701
+  - ISO 22301
+  - ISO 9001
+  - FedRAMP High
+  - HIPAA / HITECH
+  - HITRUST CSF
+  - PCI DSS
+  - GDPR
+  - CSA STAR
+evidence:
+  - {source: https://learn.microsoft.com/en-us/compliance/regulatory/offering-home, keywords: [soc 2, iso 27001, fedramp, hipaa]}
+  - {source: https://servicetrust.microsoft.com/documents/compliancereports, keywords: [audit reports, soc, iso]}

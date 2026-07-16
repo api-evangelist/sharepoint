@@ -1,0 +1,19 @@
+generated: '2026-06-20'
+method: probed
+notes: >-
+  SharePoint REST baseURLs are tenant-templated (https://{site_url}/_api) with no fixed host,
+  so the automated probe reported no-hosts. The hosts below were probed directly: the identity
+  host (login.microsoftonline.com), the Microsoft Graph host (graph.microsoft.com), and the
+  corporate web host (www.microsoft.com). Domain-level DNS records are for microsoft.com.
+hosts:
+  - {host: graph.microsoft.com, https: true, tls_version: TLSv1.3, hsts: true, hsts_max_age: 31536000, hsts_include_subdomains: false}
+  - {host: login.microsoftonline.com, https: true, tls_version: TLSv1.3, hsts: true, hsts_max_age: 31536000, hsts_include_subdomains: true}
+  - {host: www.microsoft.com, https: true, tls_version: TLSv1.3, hsts: false}
+domains:
+  - domain: microsoft.com
+    dnssec: false
+    caa: ['0 contactemail "caarecordaware@microsoft.com"']
+    spf: true
+    spf_record: "v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.msft.net include:_spf1-meo.microsoft.com -all"
+    dmarc: true
+    dmarc_policy: reject

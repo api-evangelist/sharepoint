@@ -1,0 +1,22 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.microsoft.com/en-us/graph/changelog
+notes: >-
+  SharePoint API changes are published primarily through the Microsoft Graph changelog (a
+  dated, RSS-backed feed covering v1.0 and beta, filterable by workload). SharePoint-specific
+  developer changes are also announced via the Microsoft 365 developer blog and sp-dev-docs.
+  The live changelog is the source of truth; this artifact records the scheme and pointers
+  rather than a fabricated entry list.
+scheme: dated-feed
+current_version: v1.0
+channels: [v1.0, beta]
+sources:
+  - name: Microsoft Graph changelog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+    rss: https://developer.microsoft.com/en-us/graph/changelog/rss
+    filterable_by: [workload (SharePoint/Sites), version, changeType]
+  - name: Microsoft 365 Developer Blog
+    url: https://devblogs.microsoft.com/microsoft365dev/
+  - name: sp-dev-docs (SharePoint developer docs repo)
+    url: https://github.com/SharePoint/sp-dev-docs
+entries: []

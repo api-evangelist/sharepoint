@@ -1,0 +1,33 @@
+generated: '2026-06-20'
+method: searched
+notes: >-
+  SharePoint REST baseURLs are tenant-templated (https://{site_url}/_api) so have no
+  fixed well-known surface. Discovery documents below are probed on the identity host
+  (login.microsoftonline.com — Microsoft Entra / Azure AD) that fronts OAuth for both
+  the SharePoint REST API and Microsoft Graph, plus the corporate security.txt.
+hosts:
+  - host: https://login.microsoftonline.com
+    documents:
+      - path: /common/v2.0/.well-known/openid-configuration
+        status: 200
+        file: sharepoint-openid-configuration.json
+        standard: OpenID Connect Discovery
+      - path: /common/.well-known/oauth-authorization-server
+        status: 404
+        standard: RFC 8414
+  - host: https://graph.microsoft.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 401
+        standard: OpenID Connect Discovery
+  - host: https://www.microsoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: sharepoint-security.txt
+        standard: RFC 9116
+  - host: https://developer.microsoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        standard: RFC 9116

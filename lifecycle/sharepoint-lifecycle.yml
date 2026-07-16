@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/versioning-and-support
+notes: >-
+  SharePoint is exposed through two versioning models: the SharePoint REST service (under the
+  tenant _api endpoint, versionless / tied to the SharePoint Online service) and Microsoft
+  Graph (explicit v1.0 and beta channels). Deprecation and breaking-change policy is governed
+  by the Microsoft Graph and Microsoft 365 API deprecation policies.
+versioning:
+  - api: Microsoft Graph (SharePoint)
+    scheme: uri-path
+    current: v1.0
+    channels: [v1.0, beta]
+    docs: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  - api: SharePoint REST API
+    scheme: service-versioned
+    current: SharePoint Online (_api)
+    docs: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/graph/versioning-and-support#deprecation
+  min_notice: "Microsoft Graph: minimum 24 months notice before a deprecated API/feature is removed"
+  sunset_header: false
+  breaking_change_policy: https://learn.microsoft.com/en-us/graph/changelog
+sla:
+  url: https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services
+  uptime_target: "99.9%"
+status_page: https://status.cloud.microsoft/
+changelog: https://developer.microsoft.com/en-us/graph/changelog
+deprecated_operations: []

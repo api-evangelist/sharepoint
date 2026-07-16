@@ -1,0 +1,53 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+format: odata-error
+notes: >-
+  The SharePoint REST OpenAPI in this repo does not declare 4xx/5xx responses, so no problems
+  could be derived from it. SharePoint returns errors using the OData error envelope, not
+  RFC 9457 problem+json. The envelope is {"error": {"code": "<numeric>, <ExceptionType>",
+  "message": {"lang": "en-US", "value": "<text>"}}}. Common HTTP statuses and documented
+  SharePoint exception codes are cataloged below from Microsoft Learn and sp-dev-docs.
+envelope:
+  media_type: application/json;odata=verbose (or application/json;odata=nometadata)
+  shape: '{ "error": { "code": "<numericCode>, <Microsoft.SharePoint...Exception>", "message": { "lang": "en-US", "value": "<human-readable>" } } }'
+problems:
+  - status: 400
+    title: Bad request / invalid OData query
+    remediation: Validate $select/$filter/$expand syntax and request body against the entity schema.
+  - status: 401
+    title: Unauthorized
+    remediation: Provide a valid Microsoft Entra OAuth 2.0 bearer token; refresh expired tokens.
+  - status: 403
+    code: "-2147024891, System.UnauthorizedAccessException"
+    title: Access denied
+    remediation: Ensure the app/user has the required Sites.* permission and site-level access; check X-RequestDigest for writes.
+  - status: 404
+    title: Resource not found
+    remediation: Verify the site URL, list title/GUID, or item id exists.
+  - status: 409
+    code: "-2130246326, Microsoft.SharePoint.SPException"
+    title: Save conflict
+    remediation: Retry after retrieving the latest ETag; another user or process modified the item concurrently.
+  - status: 412
+    title: Precondition failed (ETag mismatch)
+    remediation: Send the current ETag in If-Match, or use If-Match:* to overwrite.
+  - status: 429
+    title: Too many requests (throttled)
+    remediation: Honor the Retry-After header and apply exponential backoff; decorate traffic with a descriptive User-Agent.
+  - status: 500
+    code: "-1, Microsoft.SharePoint.Client.InvalidClientQueryException"
+    title: Invalid client query / server error
+    remediation: Check request payload and OData verbosity; retry idempotent reads.
+  - status: 503
+    title: Service unavailable (throttled or backend busy)
+    remediation: Honor Retry-After; back off and retry.
+documented_codes:
+  - code: ERROR_SHARING_BUFFER_EXCEEDED
+    meaning: The folder cannot be shared because it contains too many items.
+  - code: "-2130246326, Microsoft.SharePoint.SPException"
+    meaning: Save conflict — the item changed since it was read.
+  - code: "-2147024891, System.UnauthorizedAccessException"
+    meaning: Access denied to the requested resource.
+  - code: "-1, Microsoft.SharePoint.Client.InvalidClientQueryException"
+    meaning: The HTTP method or query is not supported for the endpoint.

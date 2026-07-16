@@ -1,0 +1,81 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+packages:
+  - language: javascript
+    registry: npm
+    name: "@microsoft/microsoft-graph-client"
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+    install: npm install @microsoft/microsoft-graph-client
+    official: true
+    description: Official Microsoft Graph JavaScript client library; SharePoint sites, lists, and drives via Graph.
+  - language: typescript
+    registry: npm
+    name: "@microsoft/microsoft-graph-types"
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-types
+    install: npm install --save-dev @microsoft/microsoft-graph-types
+    official: true
+    description: TypeScript type definitions for Microsoft Graph resources.
+  - language: javascript
+    registry: npm
+    name: "@pnp/sp"
+    url: https://www.npmjs.com/package/@pnp/sp
+    install: npm install @pnp/sp
+    official: true
+    description: PnPjs fluent library for the SharePoint REST API (Microsoft-sponsored PnP community project).
+  - language: javascript
+    registry: npm
+    name: "@pnp/graph"
+    url: https://www.npmjs.com/package/@pnp/graph
+    install: npm install @pnp/graph
+    official: true
+    description: PnPjs fluent library for Microsoft Graph (SharePoint via Graph).
+  - language: python
+    registry: pypi
+    name: msgraph-sdk
+    url: https://pypi.org/project/msgraph-sdk/
+    install: pip install msgraph-sdk
+    official: true
+    description: Official Microsoft Graph Python SDK; access SharePoint sites/lists/drives.
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.Graph
+    url: https://www.nuget.org/packages/Microsoft.Graph/
+    install: dotnet add package Microsoft.Graph
+    official: true
+    description: Official Microsoft Graph .NET SDK.
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.SharePointOnline.CSOM
+    url: https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/
+    install: dotnet add package Microsoft.SharePointOnline.CSOM
+    official: true
+    description: SharePoint Online Client-Side Object Model (CSOM) managed library.
+  - language: dotnet
+    registry: nuget
+    name: PnP.Core
+    url: https://www.nuget.org/packages/PnP.Core
+    install: dotnet add package PnP.Core
+    official: true
+    description: PnP Core SDK — modern .NET object model unifying SharePoint REST and Microsoft Graph.
+  - language: dotnet
+    registry: nuget
+    name: PnP.Framework
+    url: https://www.nuget.org/packages/PnP.Framework
+    install: dotnet add package PnP.Framework
+    official: true
+    description: PnP Framework — provisioning engine and CSOM extension methods (successor to SharePointPnPCoreOnline).
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/microsoftgraph/msgraph-sdk-go
+    url: https://pkg.go.dev/github.com/microsoftgraph/msgraph-sdk-go
+    install: go get github.com/microsoftgraph/msgraph-sdk-go
+    official: true
+    description: Official Microsoft Graph SDK for Go.
+  - language: java
+    registry: maven
+    name: com.microsoft.graph:microsoft-graph
+    url: https://central.sonatype.com/artifact/com.microsoft.graph/microsoft-graph
+    install: "implementation 'com.microsoft.graph:microsoft-graph'"
+    official: true
+    description: Official Microsoft Graph SDK for Java.

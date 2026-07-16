@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/toolkit/overview
+notes: >-
+  Client-side / embeddable UI surfaces for SharePoint. The SharePoint Framework (SPFx) is the
+  supported model for building web parts and extensions hosted inside SharePoint pages; the
+  Microsoft Graph Toolkit ships framework-agnostic web components that render SharePoint/Graph
+  data (files, people, search) in any web page. Distinct from the server-side SDKs in packages/.
+component_families:
+  - name: Microsoft Graph Toolkit (mgt)
+    kind: web-components
+    docs: https://learn.microsoft.com/en-us/graph/toolkit/overview
+    loader:
+      - registry: npm
+        package: "@microsoft/mgt"
+        url: https://www.npmjs.com/package/@microsoft/mgt
+      - cdn: https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js
+    components:
+      - mgt-file
+      - mgt-file-list
+      - mgt-search-box
+      - mgt-search-results
+      - mgt-people-picker
+      - mgt-person
+      - mgt-login
+  - name: SharePoint Framework (SPFx)
+    kind: web-parts-and-extensions
+    docs: https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
+    loader:
+      - tooling: "@microsoft/generator-sharepoint (Yeoman generator)"
+      - registry: npm
+        package: "@microsoft/sp-core-library"
+    surfaces:
+      - Client-side web parts
+      - Application customizers (extensions)
+      - Field customizers
+      - Command sets
+      - Adaptive Card Extensions (ACE) for Viva Connections
+  - name: Fluent UI
+    kind: react-component-library
+    docs: https://react.fluentui.dev/
+    loader:
+      - registry: npm
+        package: "@fluentui/react-components"
+    note: Microsoft's design-system component library used across SPFx and Microsoft 365 UIs.

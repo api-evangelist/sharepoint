@@ -1,6 +1,14 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/sharepoint-rest-api.yaml
+docs: https://learn.microsoft.com/en-us/graph/auth/
+docs_sharepoint_rest: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+notes: >-
+  Both the SharePoint REST API and Microsoft Graph authenticate with OAuth 2.0 through
+  Microsoft Entra (Azure AD / Microsoft identity platform). Supports authorization code
+  (delegated), client credentials (app-only), and on-behalf-of flows. Tokens are bearer
+  tokens issued by login.microsoftonline.com. Write operations against the SharePoint REST
+  service additionally require the X-RequestDigest form-digest header.
 summary:
   types:
   - oauth2

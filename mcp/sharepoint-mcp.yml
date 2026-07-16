@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-sharepoint-work-iq
+notes: >-
+  Microsoft ships an official hosted MCP server for SharePoint as part of the Agent 365 /
+  Work IQ MCP catalog (preview). "Work IQ SharePoint" exposes SharePoint file and list
+  operations over MCP (HTTP transport, Microsoft Entra OAuth / On-Behalf-Of). Endpoints are
+  tenant-scoped under agent365.svc.cloud.microsoft and governed via the Microsoft 365 admin
+  center. A Microsoft 365 Copilot license is required. Requires no local install — it is a
+  remote server surfaced in Copilot Studio, Microsoft Foundry, and MCP-capable coding clients.
+server:
+  name: Work IQ SharePoint
+  vendor: Microsoft
+  transport: http
+  url_template: https://agent365.svc.cloud.microsoft/agents/tenants/{tenantId}/servers/{serverName}
+  catalog: https://learn.microsoft.com/en-us/microsoft-agent-365/tooling-servers-overview
+  docs: https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-sharepoint-work-iq
+  auth: Microsoft Entra OAuth (agentic identity or On-Behalf-Of delegated permissions)
+  license_required: Microsoft 365 Copilot
+capabilities:
+  - Upload files
+  - Get file/item metadata
+  - Search across SharePoint content
+  - Manage lists
+related_servers:
+  - name: Work IQ OneDrive
+    docs: https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-onedrive-work-iq
+  - name: Microsoft MCP catalog (open source)
+    url: https://github.com/microsoft/mcp

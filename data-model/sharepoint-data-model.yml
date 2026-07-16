@@ -1,0 +1,66 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/sharepoint-rest-api.yaml
+notes: >-
+  Entity-relationship graph derived from the SharePoint REST OpenAPI schemas and the OData
+  containment model. SharePoint entities are contained by Web (site); lists hold items,
+  document libraries hold files inside folders. Ids are GUIDs (or integer item Ids scoped to a
+  list). Collections (*Collection) are OData wrappers over the base entity.
+entities:
+  - name: Web
+    description: A SharePoint site (web); root container for lists, libraries, and users.
+    id_field: Id
+    id_format: GUID
+  - name: List
+    description: A list or document library within a web.
+    id_field: Id
+    id_format: GUID
+  - name: ListItem
+    description: A row/item within a list.
+    id_field: Id
+    id_format: integer (scoped to parent list)
+  - name: File
+    description: A file stored in a document library folder.
+    id_field: UniqueId
+    id_format: GUID
+    key: ServerRelativeUrl
+  - name: Folder
+    description: A folder within a document library.
+    key: ServerRelativeUrl
+  - name: SearchResult
+    description: A result row returned by the Search REST endpoint.
+  - name: UserProfile
+    description: A user profile with profile properties and organizational data.
+relationships:
+  - from: Web
+    to: List
+    type: has_many
+    via: Lists
+  - from: List
+    to: ListItem
+    type: has_many
+    via: Items
+  - from: ListItem
+    to: List
+    type: belongs_to
+    via: ParentList
+  - from: List
+    to: File
+    type: has_many
+    via: RootFolder/Files (document libraries)
+  - from: Folder
+    to: File
+    type: has_many
+    via: Files
+  - from: File
+    to: ListItem
+    type: has_one
+    via: ListItemAllFields
+  - from: Web
+    to: UserProfile
+    type: has_many
+    via: SiteUsers
+collections:
+  - {name: ListCollection, wraps: List}
+  - {name: ListItemCollection, wraps: ListItem}
+  - {name: FileCollection, wraps: File}

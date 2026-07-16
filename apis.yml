@@ -10,7 +10,7 @@ tags:
   - Intranet
   - Microsoft
 created: '2024'
-modified: '2026-04-17'
+modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/apis.yml
 apis:
   - name: SharePoint REST API
@@ -97,6 +97,42 @@ common:
     url: authentication/sharepoint-authentication.yml
   - type: OAuthScopes
     url: scopes/sharepoint-scopes.yml
+  - type: Packages
+    url: packages/sharepoint-packages.yml
+  - type: WellKnown
+    url: well-known/sharepoint-well-known.yml
+  - type: SecurityTxt
+    url: well-known/sharepoint-security.txt
+  - type: MCPServer
+    url: mcp/sharepoint-mcp.yml
+  - type: LLMsTxt
+    url: llms/sharepoint-llms.txt
+  - type: Overlay
+    url: overlays/sharepoint-rest-api-overlay.yaml
+  - type: Conformance
+    url: conformance/sharepoint-conformance.yml
+  - type: ErrorCatalog
+    url: errors/sharepoint-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/sharepoint-lifecycle.yml
+  - type: DomainSecurity
+    url: security/sharepoint-domain-security.yml
+  - type: VulnerabilityDisclosure
+    url: security/sharepoint-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/sharepoint-trust-center.yml
+  - type: Sandbox
+    url: sandbox/sharepoint-sandbox.yml
+  - type: Conventions
+    url: conventions/sharepoint-conventions.yml
+  - type: ChangeLog
+    url: changelog/sharepoint-changelog.yml
+  - type: CLI
+    url: cli/sharepoint-cli.yml
+  - type: Components
+    url: components/sharepoint-components.yml
+  - type: DataModel
+    url: data-model/sharepoint-data-model.yml
   - type: GitHubOrganization
     url: https://github.com/SharePoint
   - type: LinkedIn

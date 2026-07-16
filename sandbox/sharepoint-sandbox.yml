@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started
+notes: >-
+  SharePoint has no test-card-style sandbox; the equivalent is a free, isolated Microsoft 365
+  developer tenant with pre-provisioned SharePoint sites and sample data, obtained through the
+  Microsoft 365 Developer Program. Developers exercise the real SharePoint REST / Graph APIs
+  against this throwaway tenant rather than a mock endpoint. No test values are invented here.
+sandbox:
+  type: developer-tenant
+  program: Microsoft 365 Developer Program
+  signup: https://developer.microsoft.com/en-us/microsoft-365/dev-program
+  docs: https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started
+  modes:
+    - name: Instant sandbox
+      description: Pre-provisioned Microsoft 365 E5 tenant with SharePoint, Teams, Outlook, Office and sample data pre-installed; ready in seconds.
+    - name: Configurable sandbox
+      description: Empty Microsoft 365 E5 tenant you populate yourself with sample data packs; can take up to two days to provision.
+  entitlements:
+    users: 25 (24 test users + 1 admin)
+    license: Microsoft 365 E5
+    duration: 90 days, auto-renewing with valid development activity
+  sample_data:
+    docs: https://learn.microsoft.com/en-us/office/developer-program/install-sample-packs
+    packs:
+      - Microsoft Graph user, mail, and calendar data
+      - SharePoint Framework sample data
+      - Microsoft Teams sample data
+  base_urls:
+    graph: https://graph.microsoft.com/v1.0
+    sharepoint_rest: https://{yourtenant}.sharepoint.com/_api

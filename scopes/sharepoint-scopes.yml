@@ -1,6 +1,11 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/sharepoint-rest-api.yaml
+docs: https://learn.microsoft.com/en-us/graph/permissions-reference#sites-permissions
+notes: >-
+  SharePoint permissions are Microsoft Graph / Microsoft Entra scopes. The Sites.* set below
+  is documented in the Microsoft Graph permissions reference. Both delegated and application
+  permission variants exist; Sites.Selected additionally supports per-site granular grants.
 schemes:
 - name: oauth2
   source: openapi/sharepoint-rest-api.yaml
@@ -34,3 +39,9 @@ scopes:
   - authorizationCode
   sources:
   - openapi/sharepoint-rest-api.yaml
+- scope: Sites.Selected
+  description: Access only to specific SharePoint site collections granted explicitly by an admin (per-site authorization).
+  flows:
+  - authorizationCode
+  sources:
+  - https://learn.microsoft.com/en-us/graph/permissions-reference#sites-permissions

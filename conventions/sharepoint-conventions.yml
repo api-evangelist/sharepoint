@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+notes: >-
+  Cross-cutting request/response semantics for the SharePoint REST service (OData). Derived
+  from the OpenAPI plus Microsoft Learn documentation. Microsoft Graph shares most conventions
+  (OData query, @odata.nextLink paging, client-request-id tracing, $batch).
+authentication:
+  style: oauth2-bearer
+  detail: OAuth 2.0 bearer token from Microsoft Entra; writes also require the X-RequestDigest form-digest header.
+  ref: authentication/sharepoint-authentication.yml
+protocol: OData (v3/v4 style query semantics)
+odata_query:
+  select: $select
+  filter: $filter
+  expand: $expand
+  orderby: $orderby
+  top: $top
+  skip: $skip
+  count: $inlinecount / $count
+  verbosity_header: "Accept: application/json;odata=verbose | odata=minimalmetadata | odata=nometadata"
+pagination:
+  style: server-driven
+  next_field: "__next (odata=verbose) / @odata.nextLink (Graph & odata=nometadata)"
+  page_control: $top
+concurrency:
+  mechanism: ETag
+  request_header: If-Match
+  overwrite: "If-Match: * to force overwrite"
+  note: Use the MERGE HTTP method (or X-HTTP-Method:MERGE) for partial updates.
+idempotency:
+  supported: false
+  note: No Idempotency-Key header; relies on ETag/If-Match for safe writes.
+request_tracing:
+  headers: [SPRequestGuid (response), client-request-id (Graph), request-id (Graph response)]
+versioning:
+  ref: lifecycle/sharepoint-lifecycle.yml
+batch:
+  supported: true
+  endpoint: /_api/$batch (SharePoint REST) and https://graph.microsoft.com/v1.0/$batch (Graph)
+  format: OData multipart batch (SharePoint REST); JSON batch (Graph)
+rate_limiting:
+  signaled_via: [429 Too Many Requests, 503 Service Unavailable, Retry-After]
+  guidance: Honor Retry-After, apply exponential backoff, and set a descriptive User-Agent to reduce throttling.
+  ref: rate-limits/sharepoint-rate-limits.yml
+error_envelope:
+  format: odata-error
+  shape: '{ "error": { "code": "<numeric>, <ExceptionType>", "message": { "lang": "en-US", "value": "<text>" } } }'
+  ref: errors/sharepoint-problem-types.yml

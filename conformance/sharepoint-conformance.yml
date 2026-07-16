@@ -1,0 +1,33 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/sharepoint-rest-api.yaml
+notes: >-
+  Derived from the OpenAPI securitySchemes and SharePoint/Graph documentation. SharePoint
+  REST is an OData 3.0/4.0 service; identity is Microsoft Entra (OAuth 2.0 + OIDC).
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: openapi securitySchemes type oauth2 (authorizationCode via login.microsoftonline.com)
+  - id: oidc
+    conforms: true
+    evidence: Microsoft Entra publishes /.well-known/openid-configuration (200)
+  - id: odata
+    conforms: true
+    evidence: SharePoint REST uses OData query ($select/$filter/$expand/$top/$orderby) and OData entity/collection shapes
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use the OData error envelope ({error:{code,message}}), not application/problem+json
+  - id: rfc8594-sunset-header
+    conforms: false
+  - id: pagination
+    conforms: true
+    evidence: OData server-driven paging via @odata.nextLink / __next
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key header documented; PUT/MERGE rely on ETag/If-Match for concurrency
+  - id: fhir-r4
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: fapi
+    conforms: false
