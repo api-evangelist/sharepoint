@@ -1,0 +1,162 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Ensure a List Item Exists
+  summary: Find an item by title and create it only when missing, then read it back.
+  description: >-
+    The idempotent write pattern. The workflow resolves the target list, filters
+    it for an item whose Title already matches the supplied value, and branches:
+    a match is read back as-is, and a miss is created and then read back. The
+    read-back is deliberate — the freshly written item is fetched by id so the
+    caller ends up with server-assigned fields such as Created, Modified, and
+    AuthorId rather than only what it sent. Running this twice with the same
+    input produces one item, not two. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: ensure-list-item
+  summary: Idempotently ensure a single list item with a given title exists.
+  description: >-
+    Resolves the list, searches it for an item matching the title, creates the
+    item when absent, and reads back whichever item now exists.
+  inputs:
+    type: object
+    required:
+    - listTitle
+    - itemTitle
+    - listItemEntityType
+    properties:
+      listTitle:
+        type: string
+        description: Title of the list to write into (e.g. "Project Tasks").
+      itemTitle:
+        type: string
+        description: >-
+          The Title value used both to detect an existing item and to create a
+          new one. This is the de-duplication key for the workflow.
+      listItemEntityType:
+        type: string
+        description: >-
+          The OData entity type for items in this list, e.g.
+          "SP.Data.ProjectTasksListItem".
+  steps:
+  - stepId: resolveList
+    description: >-
+      Confirm the target list exists before reading or writing items, and
+      capture its id for logging and correlation.
+    operationId: getListByTitle
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      listId: $response.body#/Id
+      itemCount: $response.body#/ItemCount
+  - stepId: findItem
+    description: >-
+      Filter the list for an item whose Title equals the supplied value,
+      returning at most one match. Title is not unique in SharePoint by
+      default, so this treats the first match as authoritative.
+    operationId: getListItems
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: "$select"
+      in: query
+      value: Id,Title,Created,Modified
+    - name: "$filter"
+      in: query
+      value: "Title eq '$inputs.itemTitle'"
+    - name: "$top"
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedItemId: $response.body#/value/0/Id
+    onSuccess:
+    - name: itemExists
+      type: goto
+      stepId: readBackExisting
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: itemMissing
+      type: goto
+      stepId: createItem
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: createItem
+    description: >-
+      Create the item because no existing item carried the supplied title.
+    operationId: createListItem
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    requestBody:
+      contentType: application/json
+      payload:
+        __metadata:
+          type: $inputs.listItemEntityType
+        Title: $inputs.itemTitle
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      createdItemId: $response.body#/Id
+  - stepId: readBackCreated
+    description: >-
+      Fetch the newly created item by id to capture the server-assigned Created,
+      Modified, and AuthorId values, then end the workflow so the
+      already-existed branch does not also run.
+    operationId: getListItemById
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.createItem.outputs.createdItemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/Id
+      title: $response.body#/Title
+      created: $response.body#/Created
+      authorId: $response.body#/AuthorId
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: readBackExisting
+    description: >-
+      Fetch the pre-existing matched item by id so both branches return the same
+      shape to the caller.
+    operationId: getListItemById
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.findItem.outputs.matchedItemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/Id
+      title: $response.body#/Title
+      created: $response.body#/Created
+      authorId: $response.body#/AuthorId
+  outputs:
+    listId: $steps.resolveList.outputs.listId
+    createdItemId: $steps.readBackCreated.outputs.itemId
+    existingItemId: $steps.readBackExisting.outputs.itemId

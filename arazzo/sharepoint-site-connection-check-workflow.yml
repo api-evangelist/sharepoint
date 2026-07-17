@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Verify Site Connection and Identity
+  summary: Escalate from a cheap reachability probe to identity, site detail, and visible lists.
+  description: >-
+    The first thing any SharePoint integration should run after wiring up Azure
+    AD OAuth. The workflow escalates deliberately: a near-free title read proves
+    the site URL and token are usable at all, the profile read proves which
+    identity the token actually carries, the full web read resolves the site's
+    id and server-relative URL for later steps, and the list enumeration reveals
+    what the granted scopes can genuinely see. Failing early here is far cheaper
+    than failing halfway through a write. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: site-connection-check
+  summary: Confirm the SharePoint site is reachable, the token is valid, and lists are visible.
+  description: >-
+    Probes the site title, resolves the calling user's profile, reads the full
+    site properties, and enumerates the lists the caller is permitted to see.
+  inputs:
+    type: object
+    properties:
+      listPageSize:
+        type: integer
+        description: Maximum number of lists to enumerate in the final step.
+        default: 50
+  steps:
+  - stepId: probeSite
+    description: >-
+      Cheapest possible reachability check. A 200 here proves the site URL
+      resolves and the bearer token is accepted before anything heavier runs.
+    operationId: getWebTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      siteTitle: $response.body#/value
+  - stepId: whoAmI
+    description: >-
+      Resolve the identity behind the token. Confirms the integration is acting
+      as the account you expect rather than a stale or over-scoped principal.
+    operationId: getMyUserProfile
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accountName: $response.body#/AccountName
+      displayName: $response.body#/DisplayName
+      email: $response.body#/Email
+      department: $response.body#/Department
+  - stepId: readSite
+    description: >-
+      Read the full site (web) properties, capturing the site id and the
+      server-relative URL that folder and file operations depend on later.
+    operationId: getWeb
+    parameters:
+    - name: "$select"
+      in: query
+      value: Id,Title,Url,Description,ServerRelativeUrl,Created,LastItemModifiedDate
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      siteId: $response.body#/Id
+      siteUrl: $response.body#/Url
+      serverRelativeUrl: $response.body#/ServerRelativeUrl
+      lastItemModifiedDate: $response.body#/LastItemModifiedDate
+  - stepId: enumerateLists
+    description: >-
+      Enumerate the non-hidden lists and libraries the caller can see. An empty
+      result with a 200 usually means the token's scopes are narrower than
+      intended rather than that the site is empty.
+    operationId: getLists
+    parameters:
+    - name: "$select"
+      in: query
+      value: Id,Title,BaseTemplate,ItemCount,Hidden
+    - name: "$filter"
+      in: query
+      value: Hidden eq false
+    - name: "$top"
+      in: query
+      value: $inputs.listPageSize
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lists: $response.body#/value
+      firstListTitle: $response.body#/value/0/Title
+  outputs:
+    siteTitle: $steps.probeSite.outputs.siteTitle
+    siteId: $steps.readSite.outputs.siteId
+    serverRelativeUrl: $steps.readSite.outputs.serverRelativeUrl
+    accountName: $steps.whoAmI.outputs.accountName
+    lists: $steps.enumerateLists.outputs.lists

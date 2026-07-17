@@ -133,6 +133,27 @@ common:
     url: components/sharepoint-components.yml
   - type: DataModel
     url: data-model/sharepoint-data-model.yml
+  - type: Arazzo
+    url: arazzo/sharepoint-site-connection-check-workflow.yml
+    name: Microsoft SharePoint Verify Site Connection and Identity
+  - type: Arazzo
+    url: arazzo/sharepoint-provision-list-workflow.yml
+    name: Microsoft SharePoint Provision a List and Seed Its First Item
+  - type: Arazzo
+    url: arazzo/sharepoint-ensure-list-item-workflow.yml
+    name: Microsoft SharePoint Ensure a List Item Exists
+  - type: Arazzo
+    url: arazzo/sharepoint-list-item-lifecycle-workflow.yml
+    name: Microsoft SharePoint List Item Full Lifecycle
+  - type: Arazzo
+    url: arazzo/sharepoint-upload-document-workflow.yml
+    name: Microsoft SharePoint Upload a Document and Verify It
+  - type: Arazzo
+    url: arazzo/sharepoint-search-and-download-workflow.yml
+    name: Microsoft SharePoint Search for a Document and Download It
+  - type: Arazzo
+    url: arazzo/sharepoint-site-content-inventory-workflow.yml
+    name: Microsoft SharePoint Site Content Inventory
   - type: GitHubOrganization
     url: https://github.com/SharePoint
   - type: LinkedIn

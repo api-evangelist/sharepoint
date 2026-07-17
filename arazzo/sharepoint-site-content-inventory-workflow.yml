@@ -1,0 +1,139 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Site Content Inventory
+  summary: Walk a site from its title down through lists, recent items, and library files.
+  description: >-
+    The audit walk. Migration planning, governance reviews, and content
+    cleanups all start by answering the same question: what is actually in this
+    site, and when did anyone last touch it? The workflow labels the run with
+    the site title, enumerates the non-hidden lists, drills into one named list
+    for its metadata and most recently modified items, and then lists the files
+    in a document library folder. It is read-only by design and safe to run
+    against production. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: site-content-inventory
+  summary: Produce a read-only inventory of a SharePoint site's lists, items, and files.
+  description: >-
+    Reads the site title, enumerates visible lists, inspects one list and its
+    recently modified items, and lists the files in a library folder.
+  inputs:
+    type: object
+    required:
+    - listTitle
+    - folderUrl
+    properties:
+      listTitle:
+        type: string
+        description: Title of the list to drill into (e.g. "Project Tasks").
+      folderUrl:
+        type: string
+        description: >-
+          Server-relative document library folder to inventory, e.g.
+          "/sites/mysite/Shared Documents".
+      listLimit:
+        type: integer
+        description: Maximum number of lists to enumerate.
+        default: 100
+      itemSampleSize:
+        type: integer
+        description: How many recently modified items to sample from the list.
+        default: 25
+  steps:
+  - stepId: labelRun
+    description: >-
+      Read the site title so the resulting inventory is labelled with the site
+      it describes. Cheapest call in the API and worth it for the audit trail.
+    operationId: getWebTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      siteTitle: $response.body#/value
+  - stepId: enumerateLists
+    description: >-
+      Enumerate the non-hidden lists and libraries, capturing item counts and
+      last-modified dates. This is the breadth pass of the inventory.
+    operationId: getLists
+    parameters:
+    - name: "$select"
+      in: query
+      value: Id,Title,Description,BaseTemplate,ItemCount,Hidden,LastItemModifiedDate
+    - name: "$filter"
+      in: query
+      value: Hidden eq false
+    - name: "$top"
+      in: query
+      value: $inputs.listLimit
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lists: $response.body#/value
+  - stepId: inspectList
+    description: >-
+      Drill into the named list for its authoritative metadata, including
+      whether versioning is enabled — a detail that materially changes any
+      migration or retention plan.
+    operationId: getListByTitle
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      listId: $response.body#/Id
+      itemCount: $response.body#/ItemCount
+      baseTemplate: $response.body#/BaseTemplate
+      enableVersioning: $response.body#/EnableVersioning
+      lastItemModifiedDate: $response.body#/LastItemModifiedDate
+  - stepId: sampleRecentItems
+    description: >-
+      Sample the most recently modified items, newest first. A small sample
+      answers the "is anyone still using this?" question without paging the
+      whole list.
+    operationId: getListItems
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: "$select"
+      in: query
+      value: Id,Title,Created,Modified,AuthorId,EditorId
+    - name: "$orderby"
+      in: query
+      value: Modified desc
+    - name: "$top"
+      in: query
+      value: $inputs.itemSampleSize
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recentItems: $response.body#/value
+      mostRecentModified: $response.body#/value/0/Modified
+  - stepId: inventoryFiles
+    description: >-
+      List the files in the document library folder, capturing size, version,
+      and check-out state so abandoned or checked-out documents surface before a
+      migration rather than during one.
+    operationId: getFilesInFolder
+    parameters:
+    - name: folder_url
+      in: path
+      value: $inputs.folderUrl
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      files: $response.body#/value
+      firstFileUrl: $response.body#/value/0/ServerRelativeUrl
+  outputs:
+    siteTitle: $steps.labelRun.outputs.siteTitle
+    lists: $steps.enumerateLists.outputs.lists
+    listId: $steps.inspectList.outputs.listId
+    itemCount: $steps.inspectList.outputs.itemCount
+    recentItems: $steps.sampleRecentItems.outputs.recentItems
+    files: $steps.inventoryFiles.outputs.files

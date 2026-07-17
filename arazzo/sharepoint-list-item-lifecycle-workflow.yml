@@ -1,0 +1,148 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint List Item Full Lifecycle
+  summary: Create, read, update, verify, and delete a list item as an end-to-end conformance run.
+  description: >-
+    A complete create-read-update-delete round trip over a single list item,
+    useful as a post-deployment smoke test, a permissions check, or a
+    conformance run against a SharePoint Online or SharePoint Server instance.
+    The update is verified rather than assumed: because the update returns 204
+    with no body, the workflow re-reads the item and asserts the new Title
+    actually landed. It cleans up after itself by deleting the item, which in
+    SharePoint moves it to the recycle bin rather than destroying it. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: list-item-lifecycle
+  summary: Exercise create, read, update, re-read, and delete against one list item.
+  description: >-
+    Creates a throwaway item, reads it, updates its title, verifies the update
+    took effect, and deletes the item.
+  inputs:
+    type: object
+    required:
+    - listTitle
+    - listItemEntityType
+    - initialTitle
+    - updatedTitle
+    properties:
+      listTitle:
+        type: string
+        description: Title of the list to exercise (e.g. "Project Tasks").
+      listItemEntityType:
+        type: string
+        description: >-
+          The OData entity type for items in this list, e.g.
+          "SP.Data.ProjectTasksListItem".
+      initialTitle:
+        type: string
+        description: Title the item is created with.
+      updatedTitle:
+        type: string
+        description: Title the item is updated to, and then asserted against.
+  steps:
+  - stepId: createItem
+    description: >-
+      Create the throwaway item that the rest of the lifecycle operates on.
+    operationId: createListItem
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    requestBody:
+      contentType: application/json
+      payload:
+        __metadata:
+          type: $inputs.listItemEntityType
+        Title: $inputs.initialTitle
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      itemId: $response.body#/Id
+      created: $response.body#/Created
+  - stepId: readCreated
+    description: >-
+      Read the item straight back and assert it carries the title it was created
+      with, proving the write is durable and not merely accepted.
+    operationId: getListItemById
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.createItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.Title == "$inputs.initialTitle"
+      type: jsonpath
+    outputs:
+      title: $response.body#/Title
+      modified: $response.body#/Modified
+  - stepId: updateItem
+    description: >-
+      Update the item's title. SharePoint answers this write with 204 and no
+      body, which is exactly why the next step re-reads rather than trusting it.
+    operationId: updateListItem
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.createItem.outputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        __metadata:
+          type: $inputs.listItemEntityType
+        Title: $inputs.updatedTitle
+    successCriteria:
+    - condition: $statusCode == 204
+  - stepId: verifyUpdate
+    description: >-
+      Re-read the item and assert the updated title actually landed. This is the
+      assertion that makes the lifecycle a real test rather than a sequence of
+      hopeful calls.
+    operationId: getListItemById
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.createItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.Title == "$inputs.updatedTitle"
+      type: jsonpath
+    outputs:
+      verifiedTitle: $response.body#/Title
+      modified: $response.body#/Modified
+      editorId: $response.body#/EditorId
+  - stepId: deleteItem
+    description: >-
+      Clean up the throwaway item. In SharePoint this moves the item to the
+      site's recycle bin, so the run leaves a recoverable trace rather than a
+      hard deletion.
+    operationId: deleteListItem
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    - name: item_id
+      in: path
+      value: $steps.createItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    itemId: $steps.createItem.outputs.itemId
+    initialTitle: $steps.readCreated.outputs.title
+    verifiedTitle: $steps.verifyUpdate.outputs.verifiedTitle

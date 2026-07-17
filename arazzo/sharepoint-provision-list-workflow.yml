@@ -1,0 +1,148 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Provision a List and Seed Its First Item
+  summary: Create a list only if it does not already exist, read it back, and seed an item.
+  description: >-
+    The idempotent provisioning pattern every SharePoint deployment script
+    needs. The workflow first asks whether a list with the target title already
+    exists and branches on the answer, so re-running it against an already
+    provisioned site is safe rather than an error. Whichever branch runs, the
+    list is read back by title to capture its authoritative id and item count,
+    then a first item is seeded so downstream integrations have something real
+    to read. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: provision-list
+  summary: Idempotently create a SharePoint list, confirm it, and add its first item.
+  description: >-
+    Checks for an existing list by title, creates it when missing, reads the
+    list back to capture its id, and seeds an initial item.
+  inputs:
+    type: object
+    required:
+    - listTitle
+    - baseTemplate
+    - listItemEntityType
+    - seedItemTitle
+    properties:
+      listTitle:
+        type: string
+        description: Title of the list to provision (e.g. "Project Tasks").
+      listDescription:
+        type: string
+        description: Human readable description stored on the list.
+        default: Provisioned by an Arazzo workflow.
+      baseTemplate:
+        type: integer
+        description: >-
+          SharePoint list template id. 100 = Generic List, 101 = Document
+          Library, 104 = Announcements.
+        default: 100
+      listItemEntityType:
+        type: string
+        description: >-
+          The OData entity type name for items in this list, e.g.
+          "SP.Data.ProjectTasksListItem". Required in the __metadata block of
+          any item write.
+      seedItemTitle:
+        type: string
+        description: Title of the first item written into the new list.
+  steps:
+  - stepId: checkExisting
+    description: >-
+      Ask whether a list with this title already exists. This is what makes the
+      workflow safe to re-run; a match short-circuits the create step.
+    operationId: getLists
+    parameters:
+    - name: "$select"
+      in: query
+      value: Id,Title,ItemCount
+    - name: "$filter"
+      in: query
+      value: "Title eq '$inputs.listTitle'"
+    - name: "$top"
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingListId: $response.body#/value/0/Id
+    onSuccess:
+    - name: listAlreadyExists
+      type: goto
+      stepId: readBackList
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: listMissing
+      type: goto
+      stepId: createTheList
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: createTheList
+    description: >-
+      Create the list. The __metadata type must be SP.List for the SharePoint
+      REST service to accept the entity.
+    operationId: createList
+    requestBody:
+      contentType: application/json
+      payload:
+        __metadata:
+          type: SP.List
+        Title: $inputs.listTitle
+        Description: $inputs.listDescription
+        BaseTemplate: $inputs.baseTemplate
+        AllowContentTypes: true
+        ContentTypesEnabled: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      createdListId: $response.body#/Id
+  - stepId: readBackList
+    description: >-
+      Read the list back by title so both branches converge on the same
+      authoritative id, item count, and versioning posture.
+    operationId: getListByTitle
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      listId: $response.body#/Id
+      itemCount: $response.body#/ItemCount
+      enableVersioning: $response.body#/EnableVersioning
+  - stepId: seedFirstItem
+    description: >-
+      Write the first item so downstream readers have real content. The
+      __metadata type is list specific and must match the list's item entity
+      type.
+    operationId: createListItem
+    parameters:
+    - name: list_title
+      in: path
+      value: $inputs.listTitle
+    requestBody:
+      contentType: application/json
+      payload:
+        __metadata:
+          type: $inputs.listItemEntityType
+        Title: $inputs.seedItemTitle
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      seededItemId: $response.body#/Id
+      seededItemCreated: $response.body#/Created
+  outputs:
+    listId: $steps.readBackList.outputs.listId
+    itemCount: $steps.readBackList.outputs.itemCount
+    seededItemId: $steps.seedFirstItem.outputs.seededItemId

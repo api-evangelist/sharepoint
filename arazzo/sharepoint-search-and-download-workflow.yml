@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Search for a Document and Download It
+  summary: Run a search query, take the top hit's path, and fetch the document bytes.
+  description: >-
+    The retrieval flow behind most SharePoint-backed assistants and RAG
+    pipelines: ask the search index a question, then go get the winning
+    document. The workflow keeps the search deliberately narrow with
+    selectproperties so the result table is predictable, then downloads the top
+    hit. Note the shape of SharePoint search results — each row is an array of
+    Key/Value cells, so the Path cell is addressed positionally and depends on
+    the selectproperties order declared below. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: search-and-download
+  summary: Search SharePoint content and download the highest ranked matching document.
+  description: >-
+    Executes a keyword search restricted to a handful of properties, captures
+    the top result's path, and downloads that file.
+  inputs:
+    type: object
+    required:
+    - queryText
+    properties:
+      queryText:
+        type: string
+        description: >-
+          Keyword Query Language text, e.g. "quarterly report filetype:docx".
+      rowLimit:
+        type: integer
+        description: Maximum number of search rows to return.
+        default: 10
+  steps:
+  - stepId: runSearch
+    description: >-
+      Execute the search query. selectproperties is pinned to a fixed, ordered
+      set so the returned cell positions are stable: cell 0 is Title, cell 1 is
+      Path, cell 2 is FileType, cell 3 is LastModifiedTime. Change that list and
+      the pointers in this step's outputs must change with it.
+    operationId: searchQuery
+    parameters:
+    - name: querytext
+      in: query
+      value: $inputs.queryText
+    - name: selectproperties
+      in: query
+      value: Title,Path,FileType,LastModifiedTime
+    - name: rowlimit
+      in: query
+      value: $inputs.rowLimit
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.PrimaryQueryResult.RelevantResults.RowCount > 0
+      type: jsonpath
+    outputs:
+      totalRows: $response.body#/PrimaryQueryResult/RelevantResults/TotalRows
+      rowCount: $response.body#/PrimaryQueryResult/RelevantResults/RowCount
+      topResultCells: $response.body#/PrimaryQueryResult/RelevantResults/Table/Rows/0/Cells
+      topResultTitle: $response.body#/PrimaryQueryResult/RelevantResults/Table/Rows/0/Cells/0/Value
+      topResultPath: $response.body#/PrimaryQueryResult/RelevantResults/Table/Rows/0/Cells/1/Value
+  - stepId: downloadTopResult
+    description: >-
+      Download the top ranked document using the Path cell from the search
+      result. Search returns Path as an absolute URL, so a caller running this
+      against a live tenant should reduce it to the server-relative form this
+      operation expects.
+    operationId: downloadFile
+    parameters:
+    - name: file_url
+      in: path
+      value: $steps.runSearch.outputs.topResultPath
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    totalRows: $steps.runSearch.outputs.totalRows
+    topResultTitle: $steps.runSearch.outputs.topResultTitle
+    topResultPath: $steps.runSearch.outputs.topResultPath

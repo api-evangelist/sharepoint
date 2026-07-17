@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: SharePoint Upload a Document and Verify It
+  summary: Survey a library folder, upload a file with overwrite, then read the bytes back.
+  description: >-
+    The document management flow that matters most in practice. The upload
+    endpoint hardcodes overwrite=true, so the workflow deliberately surveys the
+    folder first — the caller sees exactly what is about to be replaced instead
+    of discovering it afterwards. After the upload it downloads the file back
+    from its server-relative URL, which is the only real proof the bytes are
+    retrievable rather than merely accepted. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sharepointRestApi
+  url: ../openapi/sharepoint-rest-api.yaml
+  type: openapi
+workflows:
+- workflowId: upload-document
+  summary: Upload a file into a SharePoint document library and verify it downloads.
+  description: >-
+    Lists the target folder to reveal any file that would be overwritten,
+    uploads the document, and downloads it back to confirm the round trip.
+  inputs:
+    type: object
+    required:
+    - folderUrl
+    - fileName
+    - fileContent
+    properties:
+      folderUrl:
+        type: string
+        description: >-
+          Server-relative folder URL, e.g. "/sites/mysite/Shared Documents".
+      fileName:
+        type: string
+        description: File name to write, e.g. "quarterly-report.docx".
+      fileContent:
+        type: string
+        format: binary
+        description: Raw bytes of the file to upload.
+  steps:
+  - stepId: surveyFolder
+    description: >-
+      List the folder before writing. The upload path carries overwrite=true, so
+      this is the caller's only chance to see what an existing file of the same
+      name looks like before it is replaced.
+    operationId: getFilesInFolder
+    parameters:
+    - name: folder_url
+      in: path
+      value: $inputs.folderUrl
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingFiles: $response.body#/value
+      firstExistingName: $response.body#/value/0/Name
+  - stepId: uploadDocument
+    description: >-
+      Upload the document as a raw octet-stream. The operation overwrites any
+      file already at this name and returns the created file's metadata,
+      including the server-relative URL used to read it back.
+    operationId: uploadFile
+    parameters:
+    - name: folder_url
+      in: path
+      value: $inputs.folderUrl
+    - name: file_name
+      in: path
+      value: $inputs.fileName
+    requestBody:
+      contentType: application/octet-stream
+      payload: $inputs.fileContent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serverRelativeUrl: $response.body#/ServerRelativeUrl
+      uniqueId: $response.body#/UniqueId
+      length: $response.body#/Length
+      majorVersion: $response.body#/MajorVersion
+      timeLastModified: $response.body#/TimeLastModified
+  - stepId: verifyDownload
+    description: >-
+      Download the file back from the server-relative URL the upload returned.
+      A 200 here is the proof that the document is stored and retrievable, not
+      merely that the write was accepted.
+    operationId: downloadFile
+    parameters:
+    - name: file_url
+      in: path
+      value: $steps.uploadDocument.outputs.serverRelativeUrl
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    serverRelativeUrl: $steps.uploadDocument.outputs.serverRelativeUrl
+    uniqueId: $steps.uploadDocument.outputs.uniqueId
+    length: $steps.uploadDocument.outputs.length
+    majorVersion: $steps.uploadDocument.outputs.majorVersion
