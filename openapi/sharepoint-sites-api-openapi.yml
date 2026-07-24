@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST Files Sites API
+  description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+- url: https://{site_url}/_api
+  description: SharePoint REST API endpoint
+  variables:
+    site_url:
+      default: contoso.sharepoint.com/sites/mysite
+      description: SharePoint site URL
+tags:
+- name: Sites
+  description: Site and web operations
+paths:
+  /web:
+    get:
+      operationId: getWeb
+      summary: SharePoint Get Web
+      description: Retrieve properties of the current site.
+      tags:
+      - Sites
+      parameters:
+      - name: $select
+        in: query
+        schema:
+          type: string
+        description: Comma-separated list of properties to return.
+        example: Title,Url,Description
+      responses:
+        '200':
+          description: Site properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Web'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /web/title:
+    get:
+      operationId: getWebTitle
+      summary: SharePoint Get Web Title
+      description: Retrieve the title of the current site.
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: Site title.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    example: My SharePoint Site
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Web:
+      type: object
+      description: SharePoint site (web) properties.
+      properties:
+        Id:
+          type: string
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        Title:
+          type: string
+          example: My SharePoint Site
+        Description:
+          type: string
+          example: Team collaboration site
+        Url:
+          type: string
+          example: https://contoso.sharepoint.com/sites/mysite
+        WebTemplate:
+          type: string
+          example: STS
+        Created:
+          type: string
+          format: date-time
+          example: '2024-01-15T12:00:00Z'
+        LastItemModifiedDate:
+          type: string
+          format: date-time
+          example: '2026-04-17T08:30:00Z'
+        Language:
+          type: integer
+          example: 1033
+        ServerRelativeUrl:
+          type: string
+          example: /sites/mysite
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.

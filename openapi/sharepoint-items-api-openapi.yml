@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST Files Items API
+  description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+- url: https://{site_url}/_api
+  description: SharePoint REST API endpoint
+  variables:
+    site_url:
+      default: contoso.sharepoint.com/sites/mysite
+      description: SharePoint site URL
+tags:
+- name: Items
+  description: List item operations
+paths:
+  /web/lists/getbytitle('{list_title}')/items:
+    get:
+      operationId: getListItems
+      summary: SharePoint Get List Items
+      description: Retrieve items from a list.
+      tags:
+      - Items
+      parameters:
+      - name: list_title
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Title of the list.
+        example: Tasks
+      - name: $select
+        in: query
+        schema:
+          type: string
+      - name: $filter
+        in: query
+        schema:
+          type: string
+      - name: $orderby
+        in: query
+        schema:
+          type: string
+      - name: $top
+        in: query
+        schema:
+          type: integer
+      - name: $skip
+        in: query
+        schema:
+          type: integer
+      - name: $expand
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of list items.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItemCollection'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createListItem
+      summary: SharePoint Create List Item
+      description: Add a new item to a list.
+      tags:
+      - Items
+      parameters:
+      - name: list_title
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListItemCreateRequest'
+      responses:
+        '201':
+          description: Item created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItem'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /web/lists/getbytitle('{list_title}')/items({item_id}):
+    get:
+      operationId: getListItemById
+      summary: SharePoint Get List Item by ID
+      description: Retrieve a specific list item by ID.
+      tags:
+      - Items
+      parameters:
+      - name: list_title
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      responses:
+        '200':
+          description: List item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListItem'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateListItem
+      summary: SharePoint Update List Item
+      description: Update properties of a list item.
+      tags:
+      - Items
+      parameters:
+      - name: list_title
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListItemCreateRequest'
+      responses:
+        '204':
+          description: Item updated.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteListItem
+      summary: SharePoint Delete List Item
+      description: Delete a list item (moves to recycle bin).
+      tags:
+      - Items
+      parameters:
+      - name: list_title
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Item deleted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListItemCreateRequest:
+      type: object
+      properties:
+        __metadata:
+          type: object
+          properties:
+            type:
+              type: string
+              example: SP.Data.MyListListItem
+        Title:
+          type: string
+          example: New Item
+    ListItemCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListItem'
+    ListItem:
+      type: object
+      description: SharePoint list item.
+      properties:
+        Id:
+          type: integer
+          example: 1
+        Title:
+          type: string
+          example: My Task
+        Created:
+          type: string
+          format: date-time
+          example: '2026-04-17T09:00:00Z'
+        Modified:
+          type: string
+          format: date-time
+          example: '2026-04-17T10:30:00Z'
+        AuthorId:
+          type: integer
+          example: 7
+        EditorId:
+          type: integer
+          example: 7
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.

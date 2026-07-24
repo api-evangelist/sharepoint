@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST Files User Profiles API
+  description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+- url: https://{site_url}/_api
+  description: SharePoint REST API endpoint
+  variables:
+    site_url:
+      default: contoso.sharepoint.com/sites/mysite
+      description: SharePoint site URL
+tags:
+- name: User Profiles
+  description: User profile operations
+paths:
+  /SP.UserProfiles.PeopleManager/GetMyProperties:
+    get:
+      operationId: getMyUserProfile
+      summary: SharePoint Get My User Profile
+      description: Retrieve the current user's profile properties.
+      tags:
+      - User Profiles
+      responses:
+        '200':
+          description: User profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserProfile:
+      type: object
+      description: SharePoint user profile.
+      properties:
+        AccountName:
+          type: string
+          example: i:0#.f|membership|user@contoso.com
+        DisplayName:
+          type: string
+          example: Jane Smith
+        Email:
+          type: string
+          example: jane.smith@contoso.com
+        Title:
+          type: string
+          example: Senior Developer
+        Department:
+          type: string
+          example: Engineering
+        PictureUrl:
+          type: string
+          example: https://contoso.sharepoint.com/_layouts/15/userphoto.aspx?size=L&accountname=user@contoso.com
+        PersonalUrl:
+          type: string
+          example: https://contoso-my.sharepoint.com/personal/user_contoso_com/
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.

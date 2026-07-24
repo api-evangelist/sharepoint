@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST Files API
+  description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+- url: https://{site_url}/_api
+  description: SharePoint REST API endpoint
+  variables:
+    site_url:
+      default: contoso.sharepoint.com/sites/mysite
+      description: SharePoint site URL
+tags:
+- name: Files
+  description: File upload, download, and management
+paths:
+  /web/getfolderbyserverrelativeurl('{folder_url}')/files:
+    get:
+      operationId: getFilesInFolder
+      summary: SharePoint Get Files in Folder
+      description: Retrieve files in a folder.
+      tags:
+      - Files
+      parameters:
+      - name: folder_url
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Server-relative folder URL.
+        example: /sites/mysite/Shared Documents
+      responses:
+        '200':
+          description: Collection of files.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileCollection'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /web/getfolderbyserverrelativeurl('{folder_url}')/files/add(url='{file_name}',overwrite=true):
+    post:
+      operationId: uploadFile
+      summary: SharePoint Upload File
+      description: Upload a file to a document library folder.
+      tags:
+      - Files
+      parameters:
+      - name: folder_url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: file_name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: document.docx
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: File uploaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /web/getfilebyserverrelativeurl('{file_url}')/$value:
+    get:
+      operationId: downloadFile
+      summary: SharePoint Download File
+      description: Download file content.
+      tags:
+      - Files
+      parameters:
+      - name: file_url
+        in: path
+        required: true
+        schema:
+          type: string
+        example: /sites/mysite/Shared Documents/report.pdf
+      responses:
+        '200':
+          description: File content.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FileCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+    File:
+      type: object
+      description: SharePoint file.
+      properties:
+        Name:
+          type: string
+          example: report.pdf
+        ServerRelativeUrl:
+          type: string
+          example: /sites/mysite/Shared Documents/report.pdf
+        Length:
+          type: integer
+          example: 1048576
+        TimeCreated:
+          type: string
+          format: date-time
+          example: '2026-04-17T09:00:00Z'
+        TimeLastModified:
+          type: string
+          format: date-time
+          example: '2026-04-17T10:30:00Z'
+        CheckOutType:
+          type: integer
+          example: 2
+        MajorVersion:
+          type: integer
+          example: 3
+        MinorVersion:
+          type: integer
+          example: 0
+        UniqueId:
+          type: string
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.

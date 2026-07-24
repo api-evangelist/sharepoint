@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: SharePoint REST Files Search API
+  description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/
+servers:
+- url: https://{site_url}/_api
+  description: SharePoint REST API endpoint
+  variables:
+    site_url:
+      default: contoso.sharepoint.com/sites/mysite
+      description: SharePoint site URL
+tags:
+- name: Search
+  description: Search query operations
+paths:
+  /search/query:
+    get:
+      operationId: searchQuery
+      summary: SharePoint Search Query
+      description: Execute a search query.
+      tags:
+      - Search
+      parameters:
+      - name: querytext
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search query text.
+        example: SharePoint
+      - name: selectproperties
+        in: query
+        schema:
+          type: string
+        description: Properties to return.
+      - name: rowlimit
+        in: query
+        schema:
+          type: integer
+        description: Maximum results.
+        example: 10
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SearchResult:
+      type: object
+      description: SharePoint search results.
+      properties:
+        PrimaryQueryResult:
+          type: object
+          properties:
+            RelevantResults:
+              type: object
+              properties:
+                TotalRows:
+                  type: integer
+                  example: 42
+                RowCount:
+                  type: integer
+                  example: 10
+                Table:
+                  type: object
+                  properties:
+                    Rows:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Cells:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                Key:
+                                  type: string
+                                  example: Title
+                                Value:
+                                  type: string
+                                  example: Sample Document
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via Azure AD / Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Sites.Read.All: Read all site collections.
+            Sites.ReadWrite.All: Read and write all site collections.
+            Sites.Manage.All: Create, edit, and delete items and lists.
+            Sites.FullControl.All: Full control of all site collections.
