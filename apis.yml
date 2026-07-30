@@ -2,6 +2,19 @@ name: Microsoft SharePoint
 description: Microsoft SharePoint is a web-based collaborative platform that integrates
   with Microsoft Office. It provides enterprise content management, document management,
   and collaboration capabilities.
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://example.com/sharepoint-logo.png
 tags:
   - Collaboration
@@ -13,84 +26,171 @@ created: '2024'
 modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/apis.yml
 apis:
-  - name: SharePoint REST API
-    description: The SharePoint REST API enables developers to interact remotely with
-      SharePoint data using any technology that supports REST web requests.
-    image: https://example.com/sharepoint-rest-api.png
-    humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
-    baseUrl: https://{site_url}/_api
-    tags:
-    - Documents
-    - Lists
-    - REST
-    - Sites
-    properties:
-    - type: Documentation
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
-    - type: OpenAPI
-      url: https://example.com/sharepoint-rest-openapi.json
-    - type: Authentication
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
-    aid: sharepoint:rest-api
-  - name: Microsoft Graph API (SharePoint)
-    description: Access SharePoint sites, lists, and documents through the Microsoft
-      Graph unified API endpoint.
-    image: https://example.com/microsoft-graph.png
-    humanUrl: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
-    baseUrl: https://graph.microsoft.com/v1.0
-    tags:
-    - Drive
-    - Graph
-    - Lists
-    - Modern
-    - Sites
-    properties:
-    - type: Documentation
-      url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
-    - type: OpenAPI
-      url: https://example.com/graph-sharepoint-openapi.json
-    - type: SDKs
-      url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
-    - type: Authentication
-      url: https://docs.microsoft.com/en-us/graph/auth/
-    aid: sharepoint:graph-api-sharepoint
-  - name: SharePoint CSOM (Client-Side Object Model)
-    description: Client-side object model for SharePoint that provides access to SharePoint
-      objects through .NET managed or JavaScript libraries.
-    image: https://example.com/sharepoint-csom.png
-    humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
-    baseUrl: N/A
-    tags:
-    - .NET
-    - Client Library
-    - CSOM
-    - JavaScript
-    properties:
-    - type: Documentation
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
-    - type: NuGet Package
-      url: https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/
-    - type: JavaScript Reference
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
-    aid: sharepoint:csom-client-side-object-model
-  - name: SharePoint Webhooks API
-    description: SharePoint webhooks provide a way to get notified about changes to
-      SharePoint lists and document libraries.
-    image: https://example.com/sharepoint-webhooks.png
-    humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
-    baseUrl: https://{site_url}/_api/web/lists('{list-id}')/subscriptions
-    tags:
-    - Events
-    - Notifications
-    - Real-Time
-    - Webhooks
-    properties:
-    - type: Documentation
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
-    - type: GettingStarted
-      url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
-    aid: sharepoint:webhooks-api
+- name: SharePoint CSOM (Client-Side Object Model)
+  description: >-
+    Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed
+    or JavaScript libraries.
+  image: https://example.com/sharepoint-csom.png
+  humanUrl: >-
+    https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+  baseUrl: N/A
+  tags:
+  - .NET
+  - Client Library
+  - CSOM
+  - JavaScript
+  properties:
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+  - type: NuGet Package
+    url: https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/
+  - type: JavaScript Reference
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
+  aid: sharepoint:csom-client-side-object-model
+- name: SharePoint Webhooks API
+  description: >-
+    SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
+  image: https://example.com/sharepoint-webhooks.png
+  humanUrl: >-
+    https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+  baseUrl: https://{site_url}/_api/web/lists('{list-id}')/subscriptions
+  tags:
+  - Events
+  - Notifications
+  - Real-Time
+  - Webhooks
+  properties:
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
+  aid: sharepoint:webhooks-api
+- aid: sharepoint:sharepoint-files-api
+  name: Microsoft SharePoint Files API
+  description: File upload, download, and management
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-files-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: sharepoint:sharepoint-items-api
+  name: Microsoft SharePoint Items API
+  description: List item operations
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-items-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: sharepoint:sharepoint-lists-api
+  name: Microsoft SharePoint Lists API
+  description: List and library operations
+  tags:
+  - Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-lists-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: sharepoint:sharepoint-search-api
+  name: Microsoft SharePoint Search API
+  description: Search query operations
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-search-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: sharepoint:sharepoint-sites-api
+  name: Microsoft SharePoint Sites API
+  description: Site and web operations
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-sites-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: sharepoint:sharepoint-user-profiles-api
+  name: Microsoft SharePoint User Profiles API
+  description: User profile operations
+  tags:
+  - User Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-user-profiles-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+  - type: Authentication
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/microsoft-sharepoint/overview
   - type: AgenticAccess
     url: agentic-access/sharepoint-agentic-access.yml
   - type: Authentication
