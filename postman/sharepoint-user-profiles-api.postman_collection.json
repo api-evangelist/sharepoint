@@ -1,0 +1,112 @@
+{
+  "info": {
+    "_postman_id": "5b1e76c1-7d55-4c68-887a-8695ca50d6b1",
+    "name": "SharePoint REST Files User Profiles API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:33.000Z",
+    "updatedAt": "2026-07-28T02:52:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5b1e76c1-7d55-4c68-887a-8695ca50d6b1"
+  },
+  "item": [
+    {
+      "name": "SP.UserProfiles.PeopleManager",
+      "item": [
+        {
+          "name": "GetMyProperties",
+          "item": [
+            {
+              "name": "SharePoint Get My User Profile",
+              "id": "98a4e069-019a-4310-a493-c0bbe6289c52",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/SP.UserProfiles.PeopleManager/GetMyProperties",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SP.UserProfiles.PeopleManager",
+                    "GetMyProperties"
+                  ]
+                },
+                "description": "Retrieve the current user's profile properties."
+              },
+              "response": [
+                {
+                  "id": "2e97d612-aa26-408b-b7c9-6bf9274b4501",
+                  "name": "User profile.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/SP.UserProfiles.PeopleManager/GetMyProperties",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SP.UserProfiles.PeopleManager",
+                        "GetMyProperties"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"AccountName\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"Department\": \"<string>\",\n  \"PictureUrl\": \"<string>\",\n  \"PersonalUrl\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:52:33.000Z",
+                  "updatedAt": "2026-07-28T02:52:33.000Z",
+                  "uid": "35240-2e97d612-aa26-408b-b7c9-6bf9274b4501"
+                }
+              ],
+              "createdAt": "2026-07-28T02:52:33.000Z",
+              "updatedAt": "2026-07-28T02:52:33.000Z",
+              "uid": "35240-98a4e069-019a-4310-a493-c0bbe6289c52"
+            }
+          ],
+          "id": "1b65a45b-8de5-4d9b-a05e-c2724e5307bc",
+          "createdAt": "2026-07-28T02:52:33.000Z",
+          "updatedAt": "2026-07-28T02:52:33.000Z",
+          "uid": "35240-1b65a45b-8de5-4d9b-a05e-c2724e5307bc"
+        }
+      ],
+      "id": "a53dcb53-796f-4b73-8090-19368bffb724",
+      "createdAt": "2026-07-28T02:52:33.000Z",
+      "updatedAt": "2026-07-28T02:52:33.000Z",
+      "uid": "35240-a53dcb53-796f-4b73-8090-19368bffb724"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    }
+  ]
+}

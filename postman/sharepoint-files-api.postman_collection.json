@@ -1,0 +1,324 @@
+{
+  "info": {
+    "_postman_id": "8a7edbbf-b38f-471c-9fb4-fe81e85b30a2",
+    "name": "SharePoint REST Files API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:09.000Z",
+    "updatedAt": "2026-07-28T02:52:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8a7edbbf-b38f-471c-9fb4-fe81e85b30a2"
+  },
+  "item": [
+    {
+      "name": "web",
+      "item": [
+        {
+          "name": "getfolderbyserverrelativeurl('{folder_url}')",
+          "item": [
+            {
+              "name": "files",
+              "item": [
+                {
+                  "name": "add(url='{file_name}',overwrite=true)",
+                  "item": [
+                    {
+                      "name": "SharePoint Upload File",
+                      "id": "ef67a84f-e9b8-480f-94f3-aca62fd0757b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/octet-stream"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "file",
+                          "file": {}
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/web/getfolderbyserverrelativeurl('{{folder_url}}')/files/add(url='{{file_name}}',overwrite=true)",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "getfolderbyserverrelativeurl('{{folder_url}}')",
+                            "files",
+                            "add(url='{{file_name}}',overwrite=true)"
+                          ]
+                        },
+                        "description": "Upload a file to a document library folder."
+                      },
+                      "response": [
+                        {
+                          "id": "3ff9312a-eb30-4738-93aa-36e04da1775a",
+                          "name": "File uploaded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "file",
+                              "file": {}
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/web/getfolderbyserverrelativeurl('{{folder_url}}')/files/add(url='{{file_name}}',overwrite=true)",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "getfolderbyserverrelativeurl('{{folder_url}}')",
+                                "files",
+                                "add(url='{{file_name}}',overwrite=true)"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Name\": \"<string>\",\n  \"ServerRelativeUrl\": \"<string>\",\n  \"Length\": \"<integer>\",\n  \"TimeCreated\": \"<dateTime>\",\n  \"TimeLastModified\": \"<dateTime>\",\n  \"CheckOutType\": \"<integer>\",\n  \"MajorVersion\": \"<integer>\",\n  \"MinorVersion\": \"<integer>\",\n  \"UniqueId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:52:09.000Z",
+                          "updatedAt": "2026-07-28T02:52:09.000Z",
+                          "uid": "35240-3ff9312a-eb30-4738-93aa-36e04da1775a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:09.000Z",
+                      "updatedAt": "2026-07-28T02:52:09.000Z",
+                      "uid": "35240-ef67a84f-e9b8-480f-94f3-aca62fd0757b"
+                    }
+                  ],
+                  "id": "0fa3bb40-b259-4c89-9519-0a0337d8726a",
+                  "createdAt": "2026-07-28T02:52:09.000Z",
+                  "updatedAt": "2026-07-28T02:52:09.000Z",
+                  "uid": "35240-0fa3bb40-b259-4c89-9519-0a0337d8726a"
+                },
+                {
+                  "name": "SharePoint Get Files in Folder",
+                  "id": "db3aac19-38fb-4154-afa9-ff1cfd052765",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/web/getfolderbyserverrelativeurl('{{folder_url}}')/files",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "getfolderbyserverrelativeurl('{{folder_url}}')",
+                        "files"
+                      ]
+                    },
+                    "description": "Retrieve files in a folder."
+                  },
+                  "response": [
+                    {
+                      "id": "d57034a2-ea98-402a-949a-5aa838e66233",
+                      "name": "Collection of files.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/getfolderbyserverrelativeurl('{{folder_url}}')/files",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "getfolderbyserverrelativeurl('{{folder_url}}')",
+                            "files"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"Name\": \"<string>\",\n      \"ServerRelativeUrl\": \"<string>\",\n      \"Length\": \"<integer>\",\n      \"TimeCreated\": \"<dateTime>\",\n      \"TimeLastModified\": \"<dateTime>\",\n      \"CheckOutType\": \"<integer>\",\n      \"MajorVersion\": \"<integer>\",\n      \"MinorVersion\": \"<integer>\",\n      \"UniqueId\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"ServerRelativeUrl\": \"<string>\",\n      \"Length\": \"<integer>\",\n      \"TimeCreated\": \"<dateTime>\",\n      \"TimeLastModified\": \"<dateTime>\",\n      \"CheckOutType\": \"<integer>\",\n      \"MajorVersion\": \"<integer>\",\n      \"MinorVersion\": \"<integer>\",\n      \"UniqueId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:52:09.000Z",
+                      "updatedAt": "2026-07-28T02:52:09.000Z",
+                      "uid": "35240-d57034a2-ea98-402a-949a-5aa838e66233"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:52:09.000Z",
+                  "updatedAt": "2026-07-28T02:52:09.000Z",
+                  "uid": "35240-db3aac19-38fb-4154-afa9-ff1cfd052765"
+                }
+              ],
+              "id": "26a3da4b-0cc1-49c1-8389-8be72c99d3ac",
+              "createdAt": "2026-07-28T02:52:09.000Z",
+              "updatedAt": "2026-07-28T02:52:09.000Z",
+              "uid": "35240-26a3da4b-0cc1-49c1-8389-8be72c99d3ac"
+            }
+          ],
+          "id": "c21bcf74-71c5-49ee-8fc1-c388c63f9f5a",
+          "createdAt": "2026-07-28T02:52:09.000Z",
+          "updatedAt": "2026-07-28T02:52:09.000Z",
+          "uid": "35240-c21bcf74-71c5-49ee-8fc1-c388c63f9f5a"
+        },
+        {
+          "name": "getfilebyserverrelativeurl('{file_url}')",
+          "item": [
+            {
+              "name": "$value",
+              "item": [
+                {
+                  "name": "SharePoint Download File",
+                  "id": "770eff25-9cb5-4060-96fd-2974bc7f817e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/octet-stream"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/web/getfilebyserverrelativeurl('{{file_url}}')/$value",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "getfilebyserverrelativeurl('{{file_url}}')",
+                        "$value"
+                      ]
+                    },
+                    "description": "Download file content."
+                  },
+                  "response": [
+                    {
+                      "id": "864c4520-104f-44ff-a1ce-9f0fe190c6fa",
+                      "name": "File content.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/getfilebyserverrelativeurl('{{file_url}}')/$value",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "getfilebyserverrelativeurl('{{file_url}}')",
+                            "$value"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/octet-stream"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-07-28T02:52:09.000Z",
+                      "updatedAt": "2026-07-28T02:52:09.000Z",
+                      "uid": "35240-864c4520-104f-44ff-a1ce-9f0fe190c6fa"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:52:09.000Z",
+                  "updatedAt": "2026-07-28T02:52:09.000Z",
+                  "uid": "35240-770eff25-9cb5-4060-96fd-2974bc7f817e"
+                }
+              ],
+              "id": "6367bfca-b20f-4ba1-8716-a25fd4283597",
+              "createdAt": "2026-07-28T02:52:09.000Z",
+              "updatedAt": "2026-07-28T02:52:09.000Z",
+              "uid": "35240-6367bfca-b20f-4ba1-8716-a25fd4283597"
+            }
+          ],
+          "id": "4379ddd6-badf-4ed7-ae68-065dae63213d",
+          "createdAt": "2026-07-28T02:52:09.000Z",
+          "updatedAt": "2026-07-28T02:52:09.000Z",
+          "uid": "35240-4379ddd6-badf-4ed7-ae68-065dae63213d"
+        }
+      ],
+      "id": "6f0ff68e-5b4a-420e-8fc7-9fa6d211b351",
+      "createdAt": "2026-07-28T02:52:09.000Z",
+      "updatedAt": "2026-07-28T02:52:09.000Z",
+      "uid": "35240-6f0ff68e-5b4a-420e-8fc7-9fa6d211b351"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    },
+    {
+      "key": "folder_url",
+      "value": "<string>"
+    },
+    {
+      "key": "file_name",
+      "value": "<string>"
+    },
+    {
+      "key": "file_url",
+      "value": "<string>"
+    }
+  ]
+}

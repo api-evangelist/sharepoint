@@ -1,0 +1,329 @@
+{
+  "info": {
+    "_postman_id": "e0cb89ae-3a7d-4f92-ba2c-74c204f63819",
+    "name": "SharePoint REST Files Lists API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:11.000Z",
+    "updatedAt": "2026-07-28T02:52:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0cb89ae-3a7d-4f92-ba2c-74c204f63819"
+  },
+  "item": [
+    {
+      "name": "web",
+      "item": [
+        {
+          "name": "lists",
+          "item": [
+            {
+              "name": "getbytitle('{list_title}')",
+              "item": [
+                {
+                  "name": "SharePoint Get List by Title",
+                  "id": "4c87f501-bcb3-430b-bce7-8d8a25492da8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "lists",
+                        "getbytitle('{{list_title}}')"
+                      ]
+                    },
+                    "description": "Retrieve a list by its title."
+                  },
+                  "response": [
+                    {
+                      "id": "3f742b2d-5b7a-4f07-8421-96c1f2d0591c",
+                      "name": "List metadata.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"BaseTemplate\": \"<integer>\",\n  \"ItemCount\": \"<integer>\",\n  \"Created\": \"<dateTime>\",\n  \"LastItemModifiedDate\": \"<dateTime>\",\n  \"Hidden\": \"<boolean>\",\n  \"EnableVersioning\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:52:11.000Z",
+                      "updatedAt": "2026-07-28T02:52:11.000Z",
+                      "uid": "35240-3f742b2d-5b7a-4f07-8421-96c1f2d0591c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:52:11.000Z",
+                  "updatedAt": "2026-07-28T02:52:11.000Z",
+                  "uid": "35240-4c87f501-bcb3-430b-bce7-8d8a25492da8"
+                }
+              ],
+              "id": "90f848f2-718d-4ddb-a6d3-bf76662dac90",
+              "createdAt": "2026-07-28T02:52:11.000Z",
+              "updatedAt": "2026-07-28T02:52:11.000Z",
+              "uid": "35240-90f848f2-718d-4ddb-a6d3-bf76662dac90"
+            },
+            {
+              "name": "SharePoint Get Lists",
+              "id": "57c724de-7661-4325-b058-7076f3fc9f15",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/web/lists?$select=<string>&$filter=<string>&$top=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web",
+                    "lists"
+                  ],
+                  "query": [
+                    {
+                      "description": "Properties to return.",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "OData filter expression.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum results to return.",
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all lists on the current site."
+              },
+              "response": [
+                {
+                  "id": "2a81a39b-d3c2-4e1a-a909-2d0f18f9f0f0",
+                  "name": "Collection of lists.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/web/lists?$select=<string>&$filter=<string>&$top=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "lists"
+                      ],
+                      "query": [
+                        {
+                          "description": "Properties to return.",
+                          "key": "$select",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "OData filter expression.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum results to return.",
+                          "key": "$top",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"BaseTemplate\": \"<integer>\",\n      \"ItemCount\": \"<integer>\",\n      \"Created\": \"<dateTime>\",\n      \"LastItemModifiedDate\": \"<dateTime>\",\n      \"Hidden\": \"<boolean>\",\n      \"EnableVersioning\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"BaseTemplate\": \"<integer>\",\n      \"ItemCount\": \"<integer>\",\n      \"Created\": \"<dateTime>\",\n      \"LastItemModifiedDate\": \"<dateTime>\",\n      \"Hidden\": \"<boolean>\",\n      \"EnableVersioning\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:52:11.000Z",
+                  "updatedAt": "2026-07-28T02:52:11.000Z",
+                  "uid": "35240-2a81a39b-d3c2-4e1a-a909-2d0f18f9f0f0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:52:11.000Z",
+              "updatedAt": "2026-07-28T02:52:11.000Z",
+              "uid": "35240-57c724de-7661-4325-b058-7076f3fc9f15"
+            },
+            {
+              "name": "SharePoint Create List",
+              "id": "4a02de2d-933c-4fd9-80b1-ca5c9436b1bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Title\": \"<string>\",\n  \"BaseTemplate\": \"<integer>\",\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Description\": \"<string>\",\n  \"AllowContentTypes\": \"<boolean>\",\n  \"ContentTypesEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web/lists",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web",
+                    "lists"
+                  ]
+                },
+                "description": "Create a new list on the current site."
+              },
+              "response": [
+                {
+                  "id": "ffd0478c-edc0-475d-b556-45c15ba57b75",
+                  "name": "List created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Title\": \"<string>\",\n  \"BaseTemplate\": \"<integer>\",\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Description\": \"<string>\",\n  \"AllowContentTypes\": \"<boolean>\",\n  \"ContentTypesEnabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/web/lists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "lists"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"BaseTemplate\": \"<integer>\",\n  \"ItemCount\": \"<integer>\",\n  \"Created\": \"<dateTime>\",\n  \"LastItemModifiedDate\": \"<dateTime>\",\n  \"Hidden\": \"<boolean>\",\n  \"EnableVersioning\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:52:11.000Z",
+                  "updatedAt": "2026-07-28T02:52:11.000Z",
+                  "uid": "35240-ffd0478c-edc0-475d-b556-45c15ba57b75"
+                }
+              ],
+              "createdAt": "2026-07-28T02:52:11.000Z",
+              "updatedAt": "2026-07-28T02:52:11.000Z",
+              "uid": "35240-4a02de2d-933c-4fd9-80b1-ca5c9436b1bf"
+            }
+          ],
+          "id": "0d359ade-204c-477f-be87-dc1be6f9ee92",
+          "createdAt": "2026-07-28T02:52:11.000Z",
+          "updatedAt": "2026-07-28T02:52:11.000Z",
+          "uid": "35240-0d359ade-204c-477f-be87-dc1be6f9ee92"
+        }
+      ],
+      "id": "32bbe4ab-646b-4de5-838d-f57c34a16b4f",
+      "createdAt": "2026-07-28T02:52:11.000Z",
+      "updatedAt": "2026-07-28T02:52:11.000Z",
+      "uid": "35240-32bbe4ab-646b-4de5-838d-f57c34a16b4f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    },
+    {
+      "key": "list_title",
+      "value": "<string>"
+    }
+  ]
+}

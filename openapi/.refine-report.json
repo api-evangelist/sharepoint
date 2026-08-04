@@ -1,0 +1,24 @@
+{
+  "provider": "sharepoint",
+  "sources": [
+    "sharepoint-files-api-openapi.yml",
+    "sharepoint-items-api-openapi.yml",
+    "sharepoint-lists-api-openapi.yml",
+    "sharepoint-search-api-openapi.yml",
+    "sharepoint-sites-api-openapi.yml",
+    "sharepoint-user-profiles-api-openapi.yml"
+  ],
+  "outputs": [
+    "sharepoint-files-api-openapi.yml",
+    "sharepoint-items-api-openapi.yml",
+    "sharepoint-lists-api-openapi.yml",
+    "sharepoint-search-api-openapi.yml",
+    "sharepoint-sites-api-openapi.yml",
+    "sharepoint-user-profiles-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,194 @@
+{
+  "info": {
+    "_postman_id": "2b7b38f8-bbe4-48e3-98d6-02fd3f88e4e2",
+    "name": "SharePoint REST Files Sites API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:32.000Z",
+    "updatedAt": "2026-07-28T02:52:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2b7b38f8-bbe4-48e3-98d6-02fd3f88e4e2"
+  },
+  "item": [
+    {
+      "name": "web",
+      "item": [
+        {
+          "name": "title",
+          "item": [
+            {
+              "name": "SharePoint Get Web Title",
+              "id": "4ef1367d-52e9-4afa-a866-cbdc0d7df5ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/web/title",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web",
+                    "title"
+                  ]
+                },
+                "description": "Retrieve the title of the current site."
+              },
+              "response": [
+                {
+                  "id": "f66e939a-95b9-444d-bf09-da1558c22a6a",
+                  "name": "Site title.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/web/title",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "web",
+                        "title"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:52:32.000Z",
+                  "updatedAt": "2026-07-28T02:52:32.000Z",
+                  "uid": "35240-f66e939a-95b9-444d-bf09-da1558c22a6a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:52:32.000Z",
+              "updatedAt": "2026-07-28T02:52:32.000Z",
+              "uid": "35240-4ef1367d-52e9-4afa-a866-cbdc0d7df5ba"
+            }
+          ],
+          "id": "d7e7f51e-a81b-43e8-9b93-21cb873e2cfc",
+          "createdAt": "2026-07-28T02:52:32.000Z",
+          "updatedAt": "2026-07-28T02:52:32.000Z",
+          "uid": "35240-d7e7f51e-a81b-43e8-9b93-21cb873e2cfc"
+        },
+        {
+          "name": "SharePoint Get Web",
+          "id": "7aa8485b-abc0-4524-94da-05b3d87d28cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/web?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "web"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to return.",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve properties of the current site."
+          },
+          "response": [
+            {
+              "id": "eee3c63c-eb96-4fc7-a1d9-e542846a6b18",
+              "name": "Site properties.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/web?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to return.",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Id\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Url\": \"<string>\",\n  \"WebTemplate\": \"<string>\",\n  \"Created\": \"<dateTime>\",\n  \"LastItemModifiedDate\": \"<dateTime>\",\n  \"Language\": \"<integer>\",\n  \"ServerRelativeUrl\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:52:32.000Z",
+              "updatedAt": "2026-07-28T02:52:32.000Z",
+              "uid": "35240-eee3c63c-eb96-4fc7-a1d9-e542846a6b18"
+            }
+          ],
+          "createdAt": "2026-07-28T02:52:32.000Z",
+          "updatedAt": "2026-07-28T02:52:32.000Z",
+          "uid": "35240-7aa8485b-abc0-4524-94da-05b3d87d28cd"
+        }
+      ],
+      "id": "7964a92c-1e8f-4a5c-8e3e-d2ef74a50dbf",
+      "createdAt": "2026-07-28T02:52:32.000Z",
+      "updatedAt": "2026-07-28T02:52:32.000Z",
+      "uid": "35240-7964a92c-1e8f-4a5c-8e3e-d2ef74a50dbf"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    }
+  ]
+}

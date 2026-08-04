@@ -1,0 +1,527 @@
+{
+  "info": {
+    "_postman_id": "f9ba65d0-6a8f-4e71-b0c0-706e1b5b5bcd",
+    "name": "SharePoint REST Files Items API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:10.000Z",
+    "updatedAt": "2026-07-28T02:52:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9ba65d0-6a8f-4e71-b0c0-706e1b5b5bcd"
+  },
+  "item": [
+    {
+      "name": "web",
+      "item": [
+        {
+          "name": "lists",
+          "item": [
+            {
+              "name": "getbytitle('{list_title}')",
+              "item": [
+                {
+                  "name": "items",
+                  "item": [
+                    {
+                      "name": "SharePoint Get List Items",
+                      "id": "4390c7db-5393-4084-b7ec-4336e0162ba9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "$orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "$expand",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve items from a list."
+                      },
+                      "response": [
+                        {
+                          "id": "b2a7e04b-a105-4888-a072-b99b579cb480",
+                          "name": "Collection of list items.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items?$select=<string>&$filter=<string>&$orderby=<string>&$top=<integer>&$skip=<integer>&$expand=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "lists",
+                                "getbytitle('{{list_title}}')",
+                                "items"
+                              ],
+                              "query": [
+                                {
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$orderby",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$expand",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"Created\": \"<dateTime>\",\n      \"Modified\": \"<dateTime>\",\n      \"AuthorId\": \"<integer>\",\n      \"EditorId\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"Created\": \"<dateTime>\",\n      \"Modified\": \"<dateTime>\",\n      \"AuthorId\": \"<integer>\",\n      \"EditorId\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:52:10.000Z",
+                          "updatedAt": "2026-07-28T02:52:10.000Z",
+                          "uid": "35240-b2a7e04b-a105-4888-a072-b99b579cb480"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:10.000Z",
+                      "updatedAt": "2026-07-28T02:52:10.000Z",
+                      "uid": "35240-4390c7db-5393-4084-b7ec-4336e0162ba9"
+                    },
+                    {
+                      "name": "SharePoint Create List Item",
+                      "id": "7419de37-1f69-4655-9a63-0e425b33dc9d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')",
+                            "items"
+                          ]
+                        },
+                        "description": "Add a new item to a list."
+                      },
+                      "response": [
+                        {
+                          "id": "467f12a4-1843-4a97-846e-f708cd30d279",
+                          "name": "Item created.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "lists",
+                                "getbytitle('{{list_title}}')",
+                                "items"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Title\": \"<string>\",\n  \"Created\": \"<dateTime>\",\n  \"Modified\": \"<dateTime>\",\n  \"AuthorId\": \"<integer>\",\n  \"EditorId\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:52:10.000Z",
+                          "updatedAt": "2026-07-28T02:52:10.000Z",
+                          "uid": "35240-467f12a4-1843-4a97-846e-f708cd30d279"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:10.000Z",
+                      "updatedAt": "2026-07-28T02:52:10.000Z",
+                      "uid": "35240-7419de37-1f69-4655-9a63-0e425b33dc9d"
+                    }
+                  ],
+                  "id": "f16ed491-94fa-46c6-bfc4-8d722f77ca66",
+                  "createdAt": "2026-07-28T02:52:10.000Z",
+                  "updatedAt": "2026-07-28T02:52:10.000Z",
+                  "uid": "35240-f16ed491-94fa-46c6-bfc4-8d722f77ca66"
+                },
+                {
+                  "name": "items({item_id})",
+                  "item": [
+                    {
+                      "name": "SharePoint Get List Item by ID",
+                      "id": "369b14ce-98e5-4ac6-a4b7-27792ff116ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')",
+                            "items({{item_id}})"
+                          ]
+                        },
+                        "description": "Retrieve a specific list item by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "23ab108d-d26d-425a-95b7-42d6fc763f1e",
+                          "name": "List item.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "lists",
+                                "getbytitle('{{list_title}}')",
+                                "items({{item_id}})"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Title\": \"<string>\",\n  \"Created\": \"<dateTime>\",\n  \"Modified\": \"<dateTime>\",\n  \"AuthorId\": \"<integer>\",\n  \"EditorId\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:52:10.000Z",
+                          "updatedAt": "2026-07-28T02:52:10.000Z",
+                          "uid": "35240-23ab108d-d26d-425a-95b7-42d6fc763f1e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:10.000Z",
+                      "updatedAt": "2026-07-28T02:52:10.000Z",
+                      "uid": "35240-369b14ce-98e5-4ac6-a4b7-27792ff116ac"
+                    },
+                    {
+                      "name": "SharePoint Update List Item",
+                      "id": "f9111618-773e-4320-a78b-ddc5526de8d0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')",
+                            "items({{item_id}})"
+                          ]
+                        },
+                        "description": "Update properties of a list item."
+                      },
+                      "response": [
+                        {
+                          "id": "5ee1d86d-e708-4e78-95f2-262d1fbe329a",
+                          "name": "Item updated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "lists",
+                                "getbytitle('{{list_title}}')",
+                                "items({{item_id}})"
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:52:10.000Z",
+                          "updatedAt": "2026-07-28T02:52:10.000Z",
+                          "uid": "35240-5ee1d86d-e708-4e78-95f2-262d1fbe329a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:10.000Z",
+                      "updatedAt": "2026-07-28T02:52:10.000Z",
+                      "uid": "35240-f9111618-773e-4320-a78b-ddc5526de8d0"
+                    },
+                    {
+                      "name": "SharePoint Delete List Item",
+                      "id": "e65e8986-6565-4ec1-82dc-2961edfcf310",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "web",
+                            "lists",
+                            "getbytitle('{{list_title}}')",
+                            "items({{item_id}})"
+                          ]
+                        },
+                        "description": "Delete a list item (moves to recycle bin)."
+                      },
+                      "response": [
+                        {
+                          "id": "37ca5480-333d-43bc-912e-0472f20796d9",
+                          "name": "Item deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/web/lists/getbytitle('{{list_title}}')/items({{item_id}})",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "web",
+                                "lists",
+                                "getbytitle('{{list_title}}')",
+                                "items({{item_id}})"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:52:10.000Z",
+                          "updatedAt": "2026-07-28T02:52:10.000Z",
+                          "uid": "35240-37ca5480-333d-43bc-912e-0472f20796d9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:52:10.000Z",
+                      "updatedAt": "2026-07-28T02:52:10.000Z",
+                      "uid": "35240-e65e8986-6565-4ec1-82dc-2961edfcf310"
+                    }
+                  ],
+                  "id": "19c26a8f-045f-4c5c-8801-3b4164b56ce7",
+                  "createdAt": "2026-07-28T02:52:10.000Z",
+                  "updatedAt": "2026-07-28T02:52:10.000Z",
+                  "uid": "35240-19c26a8f-045f-4c5c-8801-3b4164b56ce7"
+                }
+              ],
+              "id": "5ee9db47-210b-452e-a6c2-b057e181d88d",
+              "createdAt": "2026-07-28T02:52:10.000Z",
+              "updatedAt": "2026-07-28T02:52:10.000Z",
+              "uid": "35240-5ee9db47-210b-452e-a6c2-b057e181d88d"
+            }
+          ],
+          "id": "6d8622ff-89af-40e7-8f33-02be7495fca6",
+          "createdAt": "2026-07-28T02:52:10.000Z",
+          "updatedAt": "2026-07-28T02:52:10.000Z",
+          "uid": "35240-6d8622ff-89af-40e7-8f33-02be7495fca6"
+        }
+      ],
+      "id": "c7778281-952c-44d8-903e-00e1e0dc65b1",
+      "createdAt": "2026-07-28T02:52:10.000Z",
+      "updatedAt": "2026-07-28T02:52:10.000Z",
+      "uid": "35240-c7778281-952c-44d8-903e-00e1e0dc65b1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    },
+    {
+      "key": "list_title",
+      "value": "<string>"
+    },
+    {
+      "key": "item_id",
+      "value": "<integer>"
+    }
+  ]
+}

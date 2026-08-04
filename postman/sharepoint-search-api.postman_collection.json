@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "0acbfef2-9b53-4de1-b1d7-2a2a30313aef",
+    "name": "SharePoint REST Files Search API",
+    "description": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:52:12.000Z",
+    "updatedAt": "2026-07-28T02:52:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0acbfef2-9b53-4de1-b1d7-2a2a30313aef"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "query",
+          "item": [
+            {
+              "name": "SharePoint Search Query",
+              "id": "0667a1da-eeef-45de-b70b-d7a52fcc142c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search/query?querytext=<string>&selectproperties=<string>&rowlimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query text.",
+                      "key": "querytext",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Properties to return.",
+                      "key": "selectproperties",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum results.",
+                      "key": "rowlimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Execute a search query."
+              },
+              "response": [
+                {
+                  "id": "64012ad0-e9e6-4f35-be9a-0905a91b059f",
+                  "name": "Search results.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/search/query?querytext=<string>&selectproperties=<string>&rowlimit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "search",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Search query text.",
+                          "key": "querytext",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Properties to return.",
+                          "key": "selectproperties",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum results.",
+                          "key": "rowlimit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"PrimaryQueryResult\": {\n    \"RelevantResults\": {\n      \"TotalRows\": \"<integer>\",\n      \"RowCount\": \"<integer>\",\n      \"Table\": {\n        \"Rows\": [\n          {\n            \"Cells\": [\n              {\n                \"Key\": \"<string>\",\n                \"Value\": \"<string>\"\n              },\n              {\n                \"Key\": \"<string>\",\n                \"Value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"Cells\": [\n              {\n                \"Key\": \"<string>\",\n                \"Value\": \"<string>\"\n              },\n              {\n                \"Key\": \"<string>\",\n                \"Value\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:52:12.000Z",
+                  "updatedAt": "2026-07-28T02:52:12.000Z",
+                  "uid": "35240-64012ad0-e9e6-4f35-be9a-0905a91b059f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:52:12.000Z",
+              "updatedAt": "2026-07-28T02:52:12.000Z",
+              "uid": "35240-0667a1da-eeef-45de-b70b-d7a52fcc142c"
+            }
+          ],
+          "id": "275587c0-0ec2-4c82-aeff-c247d9f20825",
+          "createdAt": "2026-07-28T02:52:12.000Z",
+          "updatedAt": "2026-07-28T02:52:12.000Z",
+          "uid": "35240-275587c0-0ec2-4c82-aeff-c247d9f20825"
+        }
+      ],
+      "id": "95a3bf4b-5a8e-4688-88c9-151c22961750",
+      "createdAt": "2026-07-28T02:52:12.000Z",
+      "updatedAt": "2026-07-28T02:52:12.000Z",
+      "uid": "35240-95a3bf4b-5a8e-4688-88c9-151c22961750"
+    }
+  ],
+  "variable": [
+    {
+      "key": "site_url",
+      "value": "contoso.sharepoint.com/sites/mysite"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site_url}}/_api"
+    }
+  ]
+}
