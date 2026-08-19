@@ -260,7 +260,7 @@ common:
     url: https://www.linkedin.com/company/sharepoint
   - type: DeveloperPortal
     url: https://developer.microsoft.com/en-us/sharepoint
-  - type: Code Samples
+  - type: CodeExamples
     url: https://pnp.github.io/
   - type: Community
     url: https://techcommunity.microsoft.com/t5/sharepoint/ct-p/SharePoint
@@ -348,4 +348,4 @@ maintainers:
     email: kin@apievangelist.com
 aid: sharepoint
 type: Index
-specificationVersion: '0.19'
+specificationVersion: '0.23'
