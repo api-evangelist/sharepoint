@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "07e24b90-3545-4427-8a1e-306b959dd422",
+      "name": "Lists",
+      "description": {
+        "content": "List and library operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "197dde2a-15e3-42d5-b476-6b8b327b830e",
+          "name": "SharePoint Get Lists",
+          "request": {
+            "name": "SharePoint Get Lists",
+            "description": {
+              "content": "Retrieve all lists on the current site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Properties to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum results to return."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8c60701-92a2-4fa9-855d-d0c9fe1ed744",
+              "name": "Collection of lists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"Title\": \"Documents\",\n      \"Description\": \"Shared documents library\",\n      \"BaseTemplate\": 101,\n      \"ItemCount\": 42,\n      \"Created\": \"2024-01-15T12:00:00Z\",\n      \"LastItemModifiedDate\": \"2018-05-04T00:56:13.340Z\",\n      \"Hidden\": false,\n      \"EnableVersioning\": true\n    },\n    {\n      \"Id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"Title\": \"Documents\",\n      \"Description\": \"Shared documents library\",\n      \"BaseTemplate\": 101,\n      \"ItemCount\": 42,\n      \"Created\": \"2024-01-15T12:00:00Z\",\n      \"LastItemModifiedDate\": \"1952-10-19T00:02:16.522Z\",\n      \"Hidden\": false,\n      \"EnableVersioning\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afa65e34-100e-409f-9454-c313276f22ef",
+          "name": "SharePoint Create List",
+          "request": {
+            "name": "SharePoint Create List",
+            "description": {
+              "content": "Create a new list on the current site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Title\": \"<string>\",\n  \"BaseTemplate\": \"<integer>\",\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Description\": \"<string>\",\n  \"AllowContentTypes\": \"<boolean>\",\n  \"ContentTypesEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b932dc4b-7bef-42d5-8ea1-8076ee3bd46a",
+              "name": "List created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Title\": \"My New List\",\n  \"BaseTemplate\": 100,\n  \"__metadata\": {\n    \"type\": \"SP.List\"\n  },\n  \"Description\": \"A custom list\",\n  \"AllowContentTypes\": true,\n  \"ContentTypesEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"Title\": \"Documents\",\n  \"Description\": \"Shared documents library\",\n  \"BaseTemplate\": 101,\n  \"ItemCount\": 42,\n  \"Created\": \"2024-01-15T12:00:00Z\",\n  \"LastItemModifiedDate\": \"1981-12-18T22:24:43.332Z\",\n  \"Hidden\": false,\n  \"EnableVersioning\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6f7ebfb-4280-4eaf-b9e9-0a7e1cd07aa5",
+          "name": "SharePoint Get List by Title",
+          "request": {
+            "name": "SharePoint Get List by Title",
+            "description": {
+              "content": "Retrieve a list by its title.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "135207cf-b3f6-47c2-b352-7786f2c6905d",
+              "name": "List metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"Title\": \"Documents\",\n  \"Description\": \"Shared documents library\",\n  \"BaseTemplate\": 101,\n  \"ItemCount\": 42,\n  \"Created\": \"2024-01-15T12:00:00Z\",\n  \"LastItemModifiedDate\": \"1981-12-18T22:24:43.332Z\",\n  \"Hidden\": false,\n  \"EnableVersioning\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SharePoint site URL",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "contoso.sharepoint.com/sites/mysite",
+      "key": "site_url"
+    },
+    {
+      "type": "string",
+      "value": "https://{{site_url}}/_api",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Title of the list.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "list_title"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7137dcc-e7e7-45a8-9592-e376e7218846",
+    "name": "SharePoint REST Files Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

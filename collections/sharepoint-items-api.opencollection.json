@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files Items API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Get List Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')/items",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "Tasks",
+                "type": "path",
+                "description": "Title of the list."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve items from a list."
+        },
+        {
+          "info": {
+            "name": "SharePoint Create List Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')/items",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new item to a list."
+        },
+        {
+          "info": {
+            "name": "SharePoint Get List Item by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')/items(:item_id)",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific list item by ID."
+        },
+        {
+          "info": {
+            "name": "SharePoint Update List Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')/items(:item_id)",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of a list item."
+        },
+        {
+          "info": {
+            "name": "SharePoint Delete List Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')/items(:item_id)",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a list item (moves to recycle bin)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

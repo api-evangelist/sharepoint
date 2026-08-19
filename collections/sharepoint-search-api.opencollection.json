@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files Search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Search Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/search/query",
+            "params": [
+              {
+                "name": "querytext",
+                "value": "SharePoint",
+                "type": "query",
+                "description": "Search query text."
+              },
+              {
+                "name": "selectproperties",
+                "value": "",
+                "type": "query",
+                "description": "Properties to return."
+              },
+              {
+                "name": "rowlimit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum results."
+              }
+            ]
+          },
+          "docs": "Execute a search query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

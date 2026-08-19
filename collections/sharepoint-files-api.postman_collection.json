@@ -1,0 +1,346 @@
+{
+  "item": [
+    {
+      "id": "4dc8fe62-66ca-4a4a-a61c-4aae02e6b3aa",
+      "name": "Files",
+      "description": {
+        "content": "File upload, download, and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "51a6f33e-df9e-4f06-af1a-46a55d840043",
+          "name": "SharePoint Get Files in Folder",
+          "request": {
+            "name": "SharePoint Get Files in Folder",
+            "description": {
+              "content": "Retrieve files in a folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "getfolderbyserverrelativeurl('{{folder_url}}')",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eea8a9f7-8747-4c94-a06d-8e5e56611500",
+              "name": "Collection of files.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "getfolderbyserverrelativeurl('{{folder_url}}')",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Name\": \"report.pdf\",\n      \"ServerRelativeUrl\": \"/sites/mysite/Shared Documents/report.pdf\",\n      \"Length\": 1048576,\n      \"TimeCreated\": \"2026-04-17T09:00:00Z\",\n      \"TimeLastModified\": \"2026-04-17T10:30:00Z\",\n      \"CheckOutType\": 2,\n      \"MajorVersion\": 3,\n      \"MinorVersion\": 0,\n      \"UniqueId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n    },\n    {\n      \"Name\": \"report.pdf\",\n      \"ServerRelativeUrl\": \"/sites/mysite/Shared Documents/report.pdf\",\n      \"Length\": 1048576,\n      \"TimeCreated\": \"2026-04-17T09:00:00Z\",\n      \"TimeLastModified\": \"2026-04-17T10:30:00Z\",\n      \"CheckOutType\": 2,\n      \"MajorVersion\": 3,\n      \"MinorVersion\": 0,\n      \"UniqueId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "893214b9-83cf-4ffc-a028-89da6b38cfcc",
+          "name": "SharePoint Upload File",
+          "request": {
+            "name": "SharePoint Upload File",
+            "description": {
+              "content": "Upload a file to a document library folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "getfolderbyserverrelativeurl('{{folder_url}}')",
+                "files",
+                "add(url='{{file_name}}',overwrite=true)"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "file"
+            }
+          },
+          "response": [
+            {
+              "id": "143dc489-c447-4d00-a28d-640ccaba8827",
+              "name": "File uploaded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "getfolderbyserverrelativeurl('{{folder_url}}')",
+                    "files",
+                    "add(url='{{file_name}}',overwrite=true)"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"report.pdf\",\n  \"ServerRelativeUrl\": \"/sites/mysite/Shared Documents/report.pdf\",\n  \"Length\": 1048576,\n  \"TimeCreated\": \"2026-04-17T09:00:00Z\",\n  \"TimeLastModified\": \"2026-04-17T10:30:00Z\",\n  \"CheckOutType\": 2,\n  \"MajorVersion\": 3,\n  \"MinorVersion\": 0,\n  \"UniqueId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "939c166a-ab4a-414c-b02e-1faaff2ab626",
+          "name": "SharePoint Download File",
+          "request": {
+            "name": "SharePoint Download File",
+            "description": {
+              "content": "Download file content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "getfilebyserverrelativeurl('{{file_url}}')",
+                "$value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5243a12-d3cb-4647-bbeb-57c7096dc8c1",
+              "name": "File content.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "getfilebyserverrelativeurl('{{file_url}}')",
+                    "$value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SharePoint site URL",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "contoso.sharepoint.com/sites/mysite",
+      "key": "site_url"
+    },
+    {
+      "type": "string",
+      "value": "https://{{site_url}}/_api",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Server-relative folder URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "folder_url"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "file_name"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "file_url"
+    }
+  ],
+  "info": {
+    "_postman_id": "6f039502-915e-4b79-ae25-1e7c567393f5",
+    "name": "SharePoint REST Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

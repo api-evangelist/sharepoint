@@ -1,0 +1,587 @@
+{
+  "item": [
+    {
+      "id": "7990161e-f171-4e80-b3f5-d45e19893089",
+      "name": "Items",
+      "description": {
+        "content": "List item operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4af773be-341e-42b2-9a67-f2d8902c98ec",
+          "name": "SharePoint Get List Items",
+          "request": {
+            "name": "SharePoint Get List Items",
+            "description": {
+              "content": "Retrieve items from a list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60cd23ec-8d12-4a80-aa0e-059d811f0a23",
+              "name": "Collection of list items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": 1,\n      \"Title\": \"My Task\",\n      \"Created\": \"2026-04-17T09:00:00Z\",\n      \"Modified\": \"2026-04-17T10:30:00Z\",\n      \"AuthorId\": 7,\n      \"EditorId\": 7\n    },\n    {\n      \"Id\": 1,\n      \"Title\": \"My Task\",\n      \"Created\": \"2026-04-17T09:00:00Z\",\n      \"Modified\": \"2026-04-17T10:30:00Z\",\n      \"AuthorId\": 7,\n      \"EditorId\": 7\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bb8a289-0253-437d-9207-18333de7952d",
+          "name": "SharePoint Create List Item",
+          "request": {
+            "name": "SharePoint Create List Item",
+            "description": {
+              "content": "Add a new item to a list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96c02860-ad73-4167-ad26-110db69732e2",
+              "name": "Item created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"__metadata\": {\n    \"type\": \"SP.Data.MyListListItem\"\n  },\n  \"Title\": \"New Item\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 1,\n  \"Title\": \"My Task\",\n  \"Created\": \"2026-04-17T09:00:00Z\",\n  \"Modified\": \"2026-04-17T10:30:00Z\",\n  \"AuthorId\": 7,\n  \"EditorId\": 7\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b3b552c-2f37-493e-9be9-9278ebff2ae0",
+          "name": "SharePoint Get List Item by ID",
+          "request": {
+            "name": "SharePoint Get List Item by ID",
+            "description": {
+              "content": "Retrieve a specific list item by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')",
+                "items({{item_id}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ce71ccd-c404-453b-9408-f3ef90b621bd",
+              "name": "List item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')",
+                    "items({{item_id}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 1,\n  \"Title\": \"My Task\",\n  \"Created\": \"2026-04-17T09:00:00Z\",\n  \"Modified\": \"2026-04-17T10:30:00Z\",\n  \"AuthorId\": 7,\n  \"EditorId\": 7\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ab8ac03-bdbc-4217-bc2c-1421e96b16fc",
+          "name": "SharePoint Update List Item",
+          "request": {
+            "name": "SharePoint Update List Item",
+            "description": {
+              "content": "Update properties of a list item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')",
+                "items({{item_id}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"__metadata\": {\n    \"type\": \"<string>\"\n  },\n  \"Title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5b0a582-12cd-4548-a061-edffba4dfefc",
+              "name": "Item updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')",
+                    "items({{item_id}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"__metadata\": {\n    \"type\": \"SP.Data.MyListListItem\"\n  },\n  \"Title\": \"New Item\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb3582de-806f-4689-a395-c042e243dca8",
+          "name": "SharePoint Delete List Item",
+          "request": {
+            "name": "SharePoint Delete List Item",
+            "description": {
+              "content": "Delete a list item (moves to recycle bin).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "lists",
+                "getbytitle('{{list_title}}')",
+                "items({{item_id}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f236746-981f-4983-8fae-513e44c469fe",
+              "name": "Item deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "lists",
+                    "getbytitle('{{list_title}}')",
+                    "items({{item_id}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SharePoint site URL",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "contoso.sharepoint.com/sites/mysite",
+      "key": "site_url"
+    },
+    {
+      "type": "string",
+      "value": "https://{{site_url}}/_api",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Title of the list.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "list_title"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "item_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "4dbde06b-8f69-4f10-900a-e552fdd85b66",
+    "name": "SharePoint REST Files Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

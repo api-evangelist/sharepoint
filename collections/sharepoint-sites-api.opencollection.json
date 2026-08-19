@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files Sites API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Get Web",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web",
+            "params": [
+              {
+                "name": "$select",
+                "value": "Title,Url,Description",
+                "type": "query",
+                "description": "Comma-separated list of properties to return."
+              }
+            ]
+          },
+          "docs": "Retrieve properties of the current site."
+        },
+        {
+          "info": {
+            "name": "SharePoint Get Web Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/title"
+          },
+          "docs": "Retrieve the title of the current site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

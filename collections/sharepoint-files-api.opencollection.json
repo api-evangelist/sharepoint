@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Get Files in Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/getfolderbyserverrelativeurl(':folder_url')/files",
+            "params": [
+              {
+                "name": "folder_url",
+                "value": "/sites/mysite/Shared Documents",
+                "type": "path",
+                "description": "Server-relative folder URL."
+              }
+            ]
+          },
+          "docs": "Retrieve files in a folder."
+        },
+        {
+          "info": {
+            "name": "SharePoint Upload File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site_url}/_api/web/getfolderbyserverrelativeurl(':folder_url')/files/add(url=':file_name',overwrite=true)",
+            "params": [
+              {
+                "name": "folder_url",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_name",
+                "value": "document.docx",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upload a file to a document library folder."
+        },
+        {
+          "info": {
+            "name": "SharePoint Download File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/getfilebyserverrelativeurl(':file_url')/$value",
+            "params": [
+              {
+                "name": "file_url",
+                "value": "/sites/mysite/Shared Documents/report.pdf",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download file content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

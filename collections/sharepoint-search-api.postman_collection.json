@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "c2f1730f-8cf2-46c4-a51e-252ec94760cb",
+      "name": "Search",
+      "description": {
+        "content": "Search query operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9311f2fa-7e4c-42ac-8f86-b4dbf8b220f7",
+          "name": "SharePoint Search Query",
+          "request": {
+            "name": "SharePoint Search Query",
+            "description": {
+              "content": "Execute a search query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "querytext",
+                  "value": "<string>",
+                  "description": "(Required) Search query text."
+                },
+                {
+                  "disabled": false,
+                  "key": "selectproperties",
+                  "value": "<string>",
+                  "description": "Properties to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "rowlimit",
+                  "value": "<integer>",
+                  "description": "Maximum results."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "SharePoint site URL",
+                  "type": "any",
+                  "value": "{{site_url}}",
+                  "key": "site_url"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4be69105-0e7b-4aa8-b793-dbb5c53337ea",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "querytext",
+                      "value": "SharePoint"
+                    },
+                    {
+                      "key": "selectproperties",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rowlimit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "SharePoint site URL",
+                      "type": "any",
+                      "value": "{{site_url}}",
+                      "key": "site_url"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PrimaryQueryResult\": {\n    \"RelevantResults\": {\n      \"TotalRows\": 42,\n      \"RowCount\": 10,\n      \"Table\": {\n        \"Rows\": [\n          {\n            \"Cells\": [\n              {\n                \"Key\": \"Title\",\n                \"Value\": \"Sample Document\"\n              },\n              {\n                \"Key\": \"Title\",\n                \"Value\": \"Sample Document\"\n              }\n            ]\n          },\n          {\n            \"Cells\": [\n              {\n                \"Key\": \"Title\",\n                \"Value\": \"Sample Document\"\n              },\n              {\n                \"Key\": \"Title\",\n                \"Value\": \"Sample Document\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SharePoint site URL",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "contoso.sharepoint.com/sites/mysite",
+      "key": "site_url"
+    },
+    {
+      "type": "string",
+      "value": "https://{{site_url}}/_api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3b56e217-10ce-4f34-8912-1bfd93d01a22",
+    "name": "SharePoint REST Files Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

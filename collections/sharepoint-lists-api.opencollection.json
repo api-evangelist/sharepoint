@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files Lists API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Get Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/lists",
+            "params": [
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Properties to return."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression."
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum results to return."
+              }
+            ]
+          },
+          "docs": "Retrieve all lists on the current site."
+        },
+        {
+          "info": {
+            "name": "SharePoint Create List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site_url}/_api/web/lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new list on the current site."
+        },
+        {
+          "info": {
+            "name": "SharePoint Get List by Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/web/lists/getbytitle(':list_title')",
+            "params": [
+              {
+                "name": "list_title",
+                "value": "Documents",
+                "type": "path",
+                "description": "Title of the list."
+              }
+            ]
+          },
+          "docs": "Retrieve a list by its title."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

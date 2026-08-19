@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SharePoint REST Files User Profiles API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SharePoint Get My User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site_url}/_api/SP.UserProfiles.PeopleManager/GetMyProperties"
+          },
+          "docs": "Retrieve the current user's profile properties."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
