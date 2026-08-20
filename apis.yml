@@ -18,6 +18,12 @@ accessModel:
 image: https://example.com/sharepoint-logo.png
 tags:
   - Collaboration
+  - Document-Management
+  - Enterprise Content Management
+  - Intranet
+  - Microsoft
+tags_raw:
+  - Collaboration
   - Document Management
   - Enterprise Content Management
   - Intranet
@@ -57,6 +63,11 @@ apis:
     https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
   baseUrl: https://{site_url}/_api/web/lists('{list-id}')/subscriptions
   tags:
+  - Event
+  - Notification
+  - Real-Time
+  - Webhook
+  tags_raw:
   - Events
   - Notifications
   - Real-Time
@@ -72,6 +83,8 @@ apis:
   name: Microsoft SharePoint Files API
   description: File upload, download, and management
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -92,6 +105,8 @@ apis:
   name: Microsoft SharePoint Items API
   description: List item operations
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -112,6 +127,8 @@ apis:
   name: Microsoft SharePoint Lists API
   description: List and library operations
   tags:
+  - List
+  tags_raw:
   - Lists
   properties:
   - type: OpenAPI
