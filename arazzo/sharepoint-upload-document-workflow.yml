@@ -13,8 +13,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: sharepointRestApi
-  url: ../openapi/sharepoint-rest-api.yaml
+- name: filesApi
+  url: ../openapi/sharepoint-files-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: upload-document

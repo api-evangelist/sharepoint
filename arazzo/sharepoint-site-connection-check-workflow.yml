@@ -14,8 +14,14 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: sharepointRestApi
-  url: ../openapi/sharepoint-rest-api.yaml
+- name: listsApi
+  url: ../openapi/sharepoint-lists-api-openapi.yml
+  type: openapi
+- name: sitesApi
+  url: ../openapi/sharepoint-sites-api-openapi.yml
+  type: openapi
+- name: userProfilesApi
+  url: ../openapi/sharepoint-user-profiles-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: site-connection-check
