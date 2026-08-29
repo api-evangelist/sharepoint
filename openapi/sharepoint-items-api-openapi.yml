@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: SharePoint REST Files Items API
   description: The SharePoint REST API enables developers to interact remotely with SharePoint data using any technology that supports REST web requests. Provides CRUD operations on sites, lists, items, files, folders, permissions, and user profiles using OData protocol standards.
@@ -178,25 +178,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListItemCreateRequest:
-      type: object
-      properties:
-        __metadata:
-          type: object
-          properties:
-            type:
-              type: string
-              example: SP.Data.MyListListItem
-        Title:
-          type: string
-          example: New Item
-    ListItemCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListItem'
     ListItem:
       type: object
       description: SharePoint list item.
@@ -221,6 +202,25 @@ components:
         EditorId:
           type: integer
           example: 7
+    ListItemCreateRequest:
+      type: object
+      properties:
+        __metadata:
+          type: object
+          properties:
+            type:
+              type: string
+              example: SP.Data.MyListListItem
+        Title:
+          type: string
+          example: New Item
+    ListItemCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListItem'
   securitySchemes:
     oauth2:
       type: oauth2

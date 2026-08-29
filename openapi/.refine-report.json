@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "sharepoint-files-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sharepoint-items-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sharepoint-lists-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sharepoint-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sharepoint-sites-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sharepoint-user-profiles-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
