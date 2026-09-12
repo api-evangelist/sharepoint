@@ -218,6 +218,8 @@ apis:
   - type: Authentication
     url: https://docs.microsoft.com/en-us/graph/auth/
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-sharepoint/overview
   - type: AgenticAccess
@@ -378,3 +380,5 @@ maintainers:
 aid: sharepoint
 type: Index
 specificationVersion: '0.23'
+x-parent: microsoft
+x-relationship: product
