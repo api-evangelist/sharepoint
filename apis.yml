@@ -1,7 +1,5 @@
 name: Microsoft SharePoint
-description: Microsoft SharePoint is a web-based collaborative platform that integrates
-  with Microsoft Office. It provides enterprise content management, document management,
-  and collaboration capabilities.
+description: Microsoft SharePoint is a web-based collaborative platform that integrates with Microsoft Office. It provides enterprise content management, document management, and collaboration capabilities.
 deliveryModel:
   model: saas
   open_source: false
@@ -29,28 +27,25 @@ accessModel:
   method: derived
 image: https://example.com/sharepoint-logo.png
 tags:
-  - Collaboration
-  - Document-Management
-  - Enterprise Content Management
-  - Intranet
-  - Microsoft
+- Collaboration
+- Document-Management
+- Enterprise Content Management
+- Intranet
+- Microsoft
 tags_raw:
-  - Collaboration
-  - Document Management
-  - Enterprise Content Management
-  - Intranet
-  - Microsoft
+- Collaboration
+- Document Management
+- Enterprise Content Management
+- Intranet
+- Microsoft
 created: '2024'
 modified: '2026-06-20'
-url: https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/apis.yml
+url: https://learn.microsoft.com/en-us/sharepoint/dev/
 apis:
 - name: SharePoint CSOM (Client-Side Object Model)
-  description: >-
-    Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed
-    or JavaScript libraries.
+  description: Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed or JavaScript libraries.
   image: https://example.com/sharepoint-csom.png
-  humanUrl: >-
-    https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+  humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
   baseUrl: N/A
   tags:
   - .NET
@@ -59,20 +54,16 @@ apis:
   - JavaScript
   properties:
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
   - type: NuGet Package
     url: https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/
   - type: JavaScript Reference
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
   aid: sharepoint:csom-client-side-object-model
 - name: SharePoint Webhooks API
-  description: >-
-    SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
+  description: SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
   image: https://example.com/sharepoint-webhooks.png
-  humanUrl: >-
-    https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+  humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
   baseUrl: https://{site_url}/_api/web/lists('{list-id}')/subscriptions
   tags:
   - Event
@@ -86,8 +77,7 @@ apis:
   - Webhooks
   properties:
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
   - type: GettingStarted
     url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
   aid: sharepoint:webhooks-api
@@ -102,11 +92,9 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-files-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -124,11 +112,9 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-items-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -146,11 +132,9 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-lists-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -166,11 +150,9 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-search-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -186,11 +168,9 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-sites-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -206,179 +186,279 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-user-profiles-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: >-
-      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
     url: https://docs.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: Authentication
     url: https://docs.microsoft.com/en-us/graph/auth/
+- aid: microsoft-sharepoint:graph-sites-api
+  name: Microsoft Graph SharePoint Sites API
+  tags:
+  - Microsoft Graph
+  - SharePoint
+  - Sites
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://graph.microsoft.com/v1.0/
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/sharepoint
+  properties:
+  - url: https://learn.microsoft.com/en-us/graph/api/resources/sharepoint
+    type: Documentation
+  description: The Microsoft Graph SharePoint Sites API provides access to SharePoint sites, lists, and document libraries through the unified Microsoft Graph endpoint. It enables developers to manage site content, list items, drive items, and site permissions using a consistent REST interface alongside other Microsoft 365 services.
+- aid: microsoft-sharepoint:search-api
+  name: SharePoint Search REST API
+  tags:
+  - Content Discovery
+  - Search
+  - SharePoint
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://{tenant}.sharepoint.com/_api/search/
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
+  properties:
+  - url: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
+    type: Documentation
+  description: The SharePoint Search REST API provides full-text search capabilities across SharePoint content including sites, lists, libraries, and documents. It supports keyword query language, query refinement, result sorting, and content source targeting for comprehensive enterprise search scenarios.
+- aid: microsoft-sharepoint:framework
+  name: SharePoint Framework (SPFx)
+  tags:
+  - Extensions
+  - Framework
+  - SharePoint
+  - Web Parts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
+  properties:
+  - url: https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
+    type: Documentation
+  description: The SharePoint Framework (SPFx) is a development model for building client-side web parts, extensions, and adaptive card extensions for SharePoint and Microsoft Teams. It uses modern web technologies including TypeScript, React, and Node.js to create customizations that run in the context of SharePoint pages.
+- aid: microsoft-sharepoint:microsoft-sharepoint-batch-api
+  name: Microsoft SharePoint $batch API
+  description: The $batch API from Microsoft SharePoint — 1 operation(s) for $batch.
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  baseURL: https://{tenant}.sharepoint.com/_api/
+  tags:
+  - Batch
+  tags_raw:
+  - $batch
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-batch-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+- aid: microsoft-sharepoint:microsoft-sharepoint-listitems-api
+  name: Microsoft SharePoint ListItems API
+  description: The ListItems API from Microsoft SharePoint — 2 operation(s) for listitems.
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  baseURL: https://{tenant}.sharepoint.com/_api/
+  tags:
+  - List Items
+  tags_raw:
+  - ListItems
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-listitems-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+- aid: microsoft-sharepoint:microsoft-sharepoint-site-api
+  name: Microsoft SharePoint Site API
+  description: The Site API from Microsoft SharePoint — 1 operation(s) for site.
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  baseURL: https://{tenant}.sharepoint.com/_api/
+  tags:
+  - Site
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-site-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+- aid: microsoft-sharepoint:microsoft-sharepoint-web-api
+  name: Microsoft SharePoint Web API
+  description: The Web API from Microsoft SharePoint — 2 operation(s) for web.
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  baseURL: https://{tenant}.sharepoint.com/_api/
+  tags:
+  - Web
+  properties:
+  - type: OpenAPI
+    url: openapi/sharepoint-web-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
 common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/microsoft-sharepoint/overview
-  - type: AgenticAccess
-    url: agentic-access/sharepoint-agentic-access.yml
-  - type: Authentication
-    url: authentication/sharepoint-authentication.yml
-  - type: OAuthScopes
-    url: scopes/sharepoint-scopes.yml
-  - type: Packages
-    url: packages/sharepoint-packages.yml
-  - type: WellKnown
-    url: well-known/sharepoint-well-known.yml
-  - type: SecurityTxt
-    url: well-known/sharepoint-security.txt
-  - type: MCPServer
-    url: mcp/sharepoint-mcp.yml
-  - type: LLMsTxt
-    url: llms/sharepoint-llms.txt
-  - type: Overlay
-    url: overlays/sharepoint-rest-api-overlay.yaml
-  - type: Conformance
-    url: conformance/sharepoint-conformance.yml
-  - type: ErrorCatalog
-    url: errors/sharepoint-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/sharepoint-lifecycle.yml
-  - type: DomainSecurity
-    url: security/sharepoint-domain-security.yml
-  - type: VulnerabilityDisclosure
-    url: security/sharepoint-vulnerability-disclosure.yml
-  - type: TrustCenter
-    url: security/sharepoint-trust-center.yml
-  - type: Sandbox
-    url: sandbox/sharepoint-sandbox.yml
-  - type: Conventions
-    url: conventions/sharepoint-conventions.yml
-  - type: ChangeLog
-    url: changelog/sharepoint-changelog.yml
-  - type: CLI
-    url: cli/sharepoint-cli.yml
-  - type: Components
-    url: components/sharepoint-components.yml
-  - type: DataModel
-    url: data-model/sharepoint-data-model.yml
-  - type: Arazzo
-    url: arazzo/sharepoint-site-connection-check-workflow.yml
-    name: Microsoft SharePoint Verify Site Connection and Identity
-  - type: Arazzo
-    url: arazzo/sharepoint-provision-list-workflow.yml
-    name: Microsoft SharePoint Provision a List and Seed Its First Item
-  - type: Arazzo
-    url: arazzo/sharepoint-ensure-list-item-workflow.yml
-    name: Microsoft SharePoint Ensure a List Item Exists
-  - type: Arazzo
-    url: arazzo/sharepoint-list-item-lifecycle-workflow.yml
-    name: Microsoft SharePoint List Item Full Lifecycle
-  - type: Arazzo
-    url: arazzo/sharepoint-upload-document-workflow.yml
-    name: Microsoft SharePoint Upload a Document and Verify It
-  - type: Arazzo
-    url: arazzo/sharepoint-search-and-download-workflow.yml
-    name: Microsoft SharePoint Search for a Document and Download It
-  - type: Arazzo
-    url: arazzo/sharepoint-site-content-inventory-workflow.yml
-    name: Microsoft SharePoint Site Content Inventory
-  - type: GitHubOrganization
-    url: https://github.com/SharePoint
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/sharepoint
-  - type: DeveloperPortal
-    url: https://developer.microsoft.com/en-us/sharepoint
-  - type: CodeExamples
-    url: https://pnp.github.io/
-  - type: Community
-    url: https://techcommunity.microsoft.com/t5/sharepoint/ct-p/SharePoint
-  - type: Support
-    url: https://support.microsoft.com/en-us/sharepoint
-  - type: Pricing
-    url: https://www.microsoft.com/en-us/microsoft-365/sharepoint/compare-sharepoint-plans
-  - type: StatusPage
-    url: https://status.cloud.microsoft/
-  - type: Features
-    data:
-    - name: Sites and Webs
-      description: Create, read, update, and delete SharePoint sites and subsites.
-    - name: Lists and Libraries
-      description: Full CRUD operations on lists, document libraries, and list items.
-    - name: Document Management
-      description: Upload, download, check in/out, and manage documents and file versions.
-    - name: Folders and Files
-      description: Create folder hierarchies and manage files within document libraries.
-    - name: Permissions and Security
-      description: Manage site, list, and item-level permissions with role assignments.
-    - name: Search
-      description: Full-text search across sites, documents, and content using the Search
-        REST API.
-    - name: User Profiles
-      description: Access user profile properties, people search, and organizational
-        data.
-    - name: Content Types
-      description: Manage content types, site columns, and metadata schemas.
-    - name: Webhooks
-      description: Subscribe to change notifications for lists and libraries via webhooks.
-    - name: Microsoft Graph Integration
-      description: Access SharePoint data through Microsoft Graph API for unified Microsoft
-        365 integration.
-    - name: Batch Requests
-      description: Combine multiple REST operations into a single batch request.
-    - name: OData Query Support
-      description: Filter, select, expand, and order data using OData query operators.
-  - type: UseCases
-    data:
-    - name: Document Automation
-      description: Automate document upload, metadata tagging, and approval workflows.
-    - name: Intranet Content Management
-      description: Programmatically manage site pages, news posts, and navigation.
-    - name: Data Integration
-      description: Sync SharePoint list data with external databases and applications.
-    - name: Migration
-      description: Migrate content between SharePoint sites or from file shares to SharePoint.
-    - name: Custom Applications
-      description: Build SPFx web parts and extensions with SharePoint Framework.
-    - name: Compliance and Governance
-      description: Manage retention policies, sensitivity labels, and audit logs.
-    - name: Search Integration
-      description: Build custom search experiences with facets, refiners, and result
-        types.
-    - name: Power Automate Flows
-      description: Trigger and manage automated workflows based on SharePoint events.
-  - type: Integrations
-    data:
-    - name: Microsoft 365
-      description: Native integration with Teams, OneDrive, Outlook, and other Microsoft
-        365 apps.
-    - name: Microsoft Graph
-      description: Unified API access to SharePoint alongside all Microsoft 365 services.
-    - name: Power Platform
-      description: Power Apps, Power Automate, and Power BI integration for low-code
-        solutions.
-    - name: Azure
-      description: Azure AD for authentication, Azure Functions for serverless processing.
-    - name: Teams
-      description: SharePoint powers file storage and document collaboration in Microsoft
-        Teams.
-  - type: Solutions
-    data:
-    - name: SharePoint Online
-      description: Cloud-hosted SharePoint as part of Microsoft 365 with REST and Graph
-        APIs.
-    - name: SharePoint Server
-      description: On-premises SharePoint with REST, CSOM, and server-side object model.
-    - name: SharePoint Framework (SPFx)
-      description: Modern client-side development framework for building web parts and
-        extensions.
+- type: Portal
+  url: https://portal.azure.com/
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/sharepoint/dev/
+- type: SDKs
+  url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+- type: TermsOfService
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Blog
+  url: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SPBlog
+- type: Website
+  url: https://www.microsoft.com/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/microsoft-sharepoint/overview
+- type: AgenticAccess
+  url: agentic-access/sharepoint-agentic-access.yml
+- type: Authentication
+  url: authentication/sharepoint-authentication.yml
+- type: OAuthScopes
+  url: scopes/sharepoint-scopes.yml
+- type: Packages
+  url: packages/sharepoint-packages.yml
+- type: WellKnown
+  url: well-known/sharepoint-well-known.yml
+- type: SecurityTxt
+  url: well-known/sharepoint-security.txt
+- type: MCPServer
+  url: mcp/sharepoint-mcp.yml
+- type: LLMsTxt
+  url: llms/sharepoint-llms.txt
+- type: Overlay
+  url: overlays/sharepoint-rest-api-overlay.yaml
+- type: Conformance
+  url: conformance/sharepoint-conformance.yml
+- type: ErrorCatalog
+  url: errors/sharepoint-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/sharepoint-lifecycle.yml
+- type: DomainSecurity
+  url: security/sharepoint-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/sharepoint-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/sharepoint-trust-center.yml
+- type: Sandbox
+  url: sandbox/sharepoint-sandbox.yml
+- type: Conventions
+  url: conventions/sharepoint-conventions.yml
+- type: ChangeLog
+  url: changelog/sharepoint-changelog.yml
+- type: CLI
+  url: cli/sharepoint-cli.yml
+- type: Components
+  url: components/sharepoint-components.yml
+- type: DataModel
+  url: data-model/sharepoint-data-model.yml
+- type: Arazzo
+  url: arazzo/sharepoint-site-connection-check-workflow.yml
+  name: Microsoft SharePoint Verify Site Connection and Identity
+- type: Arazzo
+  url: arazzo/sharepoint-provision-list-workflow.yml
+  name: Microsoft SharePoint Provision a List and Seed Its First Item
+- type: Arazzo
+  url: arazzo/sharepoint-ensure-list-item-workflow.yml
+  name: Microsoft SharePoint Ensure a List Item Exists
+- type: Arazzo
+  url: arazzo/sharepoint-list-item-lifecycle-workflow.yml
+  name: Microsoft SharePoint List Item Full Lifecycle
+- type: Arazzo
+  url: arazzo/sharepoint-upload-document-workflow.yml
+  name: Microsoft SharePoint Upload a Document and Verify It
+- type: Arazzo
+  url: arazzo/sharepoint-search-and-download-workflow.yml
+  name: Microsoft SharePoint Search for a Document and Download It
+- type: Arazzo
+  url: arazzo/sharepoint-site-content-inventory-workflow.yml
+  name: Microsoft SharePoint Site Content Inventory
+- type: GitHubOrganization
+  url: https://github.com/SharePoint
+- type: LinkedIn
+  url: https://www.linkedin.com/company/sharepoint
+- type: DeveloperPortal
+  url: https://developer.microsoft.com/en-us/sharepoint
+- type: CodeExamples
+  url: https://pnp.github.io/
+- type: Community
+  url: https://techcommunity.microsoft.com/t5/sharepoint/ct-p/SharePoint
+- type: Support
+  url: https://support.microsoft.com/en-us/sharepoint
+- type: Pricing
+  url: https://www.microsoft.com/en-us/microsoft-365/sharepoint/compare-sharepoint-plans
+- type: StatusPage
+  url: https://status.cloud.microsoft/
+- type: Features
+  data:
+  - name: Sites and Webs
+    description: Create, read, update, and delete SharePoint sites and subsites.
+  - name: Lists and Libraries
+    description: Full CRUD operations on lists, document libraries, and list items.
+  - name: Document Management
+    description: Upload, download, check in/out, and manage documents and file versions.
+  - name: Folders and Files
+    description: Create folder hierarchies and manage files within document libraries.
+  - name: Permissions and Security
+    description: Manage site, list, and item-level permissions with role assignments.
+  - name: Search
+    description: Full-text search across sites, documents, and content using the Search REST API.
+  - name: User Profiles
+    description: Access user profile properties, people search, and organizational data.
+  - name: Content Types
+    description: Manage content types, site columns, and metadata schemas.
+  - name: Webhooks
+    description: Subscribe to change notifications for lists and libraries via webhooks.
+  - name: Microsoft Graph Integration
+    description: Access SharePoint data through Microsoft Graph API for unified Microsoft 365 integration.
+  - name: Batch Requests
+    description: Combine multiple REST operations into a single batch request.
+  - name: OData Query Support
+    description: Filter, select, expand, and order data using OData query operators.
+- type: UseCases
+  data:
+  - name: Document Automation
+    description: Automate document upload, metadata tagging, and approval workflows.
+  - name: Intranet Content Management
+    description: Programmatically manage site pages, news posts, and navigation.
+  - name: Data Integration
+    description: Sync SharePoint list data with external databases and applications.
+  - name: Migration
+    description: Migrate content between SharePoint sites or from file shares to SharePoint.
+  - name: Custom Applications
+    description: Build SPFx web parts and extensions with SharePoint Framework.
+  - name: Compliance and Governance
+    description: Manage retention policies, sensitivity labels, and audit logs.
+  - name: Search Integration
+    description: Build custom search experiences with facets, refiners, and result types.
+  - name: Power Automate Flows
+    description: Trigger and manage automated workflows based on SharePoint events.
+- type: Integrations
+  data:
+  - name: Microsoft 365
+    description: Native integration with Teams, OneDrive, Outlook, and other Microsoft 365 apps.
+  - name: Microsoft Graph
+    description: Unified API access to SharePoint alongside all Microsoft 365 services.
+  - name: Power Platform
+    description: Power Apps, Power Automate, and Power BI integration for low-code solutions.
+  - name: Azure
+    description: Azure AD for authentication, Azure Functions for serverless processing.
+  - name: Teams
+    description: SharePoint powers file storage and document collaboration in Microsoft Teams.
+- type: Solutions
+  data:
+  - name: SharePoint Online
+    description: Cloud-hosted SharePoint as part of Microsoft 365 with REST and Graph APIs.
+  - name: SharePoint Server
+    description: On-premises SharePoint with REST, CSOM, and server-side object model.
+  - name: SharePoint Framework (SPFx)
+    description: Modern client-side development framework for building web parts and extensions.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 aid: sharepoint
 type: Index
 specificationVersion: '0.23'
-x-parent: microsoft
+x-parent: microsoft-365
 x-relationship: product
