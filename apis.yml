@@ -43,9 +43,12 @@ modified: '2026-06-20'
 url: https://learn.microsoft.com/en-us/sharepoint/dev/
 apis:
 - name: SharePoint CSOM (Client-Side Object Model)
-  description: Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed or JavaScript libraries.
+  description: >-
+    Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed
+    or JavaScript libraries.
   image: https://example.com/sharepoint-csom.png
-  humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+  humanUrl: >-
+    https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
   baseUrl: N/A
   tags:
   - .NET
@@ -54,16 +57,20 @@ apis:
   - JavaScript
   properties:
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code
   - type: NuGet Package
     url: https://www.nuget.org/packages/Microsoft.SharePointOnline.CSOM/
   - type: JavaScript Reference
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint
   aid: sharepoint:csom-client-side-object-model
 - name: SharePoint Webhooks API
-  description: SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
+  description: >-
+    SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
   image: https://example.com/sharepoint-webhooks.png
-  humanUrl: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+  humanUrl: >-
+    https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
   baseUrl: https://{site_url}/_api/web/lists('{list-id}')/subscriptions
   tags:
   - Event
@@ -77,7 +84,8 @@ apis:
   - Webhooks
   properties:
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks
   - type: GettingStarted
     url: https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/get-started-webhooks
   aid: sharepoint:webhooks-api
@@ -92,9 +100,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-files-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -112,9 +122,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-items-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -132,9 +144,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-lists-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -150,9 +164,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-search-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -168,9 +184,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-sites-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -186,9 +204,11 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-user-profiles-api-openapi.yml
   - type: Documentation
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints
   - type: Authentication
-    url: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
+    url: >-
+      https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/authorization-and-authentication-of-sharepoint-add-ins
   - type: Documentation
     url: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
   - type: SDKs
@@ -207,7 +227,11 @@ apis:
   properties:
   - url: https://learn.microsoft.com/en-us/graph/api/resources/sharepoint
     type: Documentation
-  description: The Microsoft Graph SharePoint Sites API provides access to SharePoint sites, lists, and document libraries through the unified Microsoft Graph endpoint. It enables developers to manage site content, list items, drive items, and site permissions using a consistent REST interface alongside other Microsoft 365 services.
+  description: >-
+    The Microsoft Graph SharePoint Sites API provides access to SharePoint sites, lists, and document
+    libraries through the unified Microsoft Graph endpoint. It enables developers to manage site content,
+    list items, drive items, and site permissions using a consistent REST interface alongside other Microsoft
+    365 services.
 - aid: microsoft-sharepoint:search-api
   name: SharePoint Search REST API
   tags:
@@ -216,11 +240,16 @@ apis:
   - SharePoint
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://{tenant}.sharepoint.com/_api/search/
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
+  humanURL: >-
+    https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
   properties:
-  - url: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
+  - url: >-
+      https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview
     type: Documentation
-  description: The SharePoint Search REST API provides full-text search capabilities across SharePoint content including sites, lists, libraries, and documents. It supports keyword query language, query refinement, result sorting, and content source targeting for comprehensive enterprise search scenarios.
+  description: >-
+    The SharePoint Search REST API provides full-text search capabilities across SharePoint content including
+    sites, lists, libraries, and documents. It supports keyword query language, query refinement, result
+    sorting, and content source targeting for comprehensive enterprise search scenarios.
 - aid: microsoft-sharepoint:framework
   name: SharePoint Framework (SPFx)
   tags:
@@ -233,11 +262,15 @@ apis:
   properties:
   - url: https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
     type: Documentation
-  description: The SharePoint Framework (SPFx) is a development model for building client-side web parts, extensions, and adaptive card extensions for SharePoint and Microsoft Teams. It uses modern web technologies including TypeScript, React, and Node.js to create customizations that run in the context of SharePoint pages.
+  description: >-
+    The SharePoint Framework (SPFx) is a development model for building client-side web parts, extensions,
+    and adaptive card extensions for SharePoint and Microsoft Teams. It uses modern web technologies including
+    TypeScript, React, and Node.js to create customizations that run in the context of SharePoint pages.
 - aid: microsoft-sharepoint:microsoft-sharepoint-batch-api
   name: Microsoft SharePoint $batch API
   description: The $batch API from Microsoft SharePoint — 1 operation(s) for $batch.
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  humanURL: >-
+    https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   baseURL: https://{tenant}.sharepoint.com/_api/
   tags:
   - Batch
@@ -247,13 +280,15 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-batch-api-openapi.yml
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+    url: >-
+      https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   - type: Reference
     url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
 - aid: microsoft-sharepoint:microsoft-sharepoint-listitems-api
   name: Microsoft SharePoint ListItems API
   description: The ListItems API from Microsoft SharePoint — 2 operation(s) for listitems.
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  humanURL: >-
+    https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   baseURL: https://{tenant}.sharepoint.com/_api/
   tags:
   - List Items
@@ -263,13 +298,15 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-listitems-api-openapi.yml
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+    url: >-
+      https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   - type: Reference
     url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
 - aid: microsoft-sharepoint:microsoft-sharepoint-site-api
   name: Microsoft SharePoint Site API
   description: The Site API from Microsoft SharePoint — 1 operation(s) for site.
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+  humanURL: >-
+    https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   baseURL: https://{tenant}.sharepoint.com/_api/
   tags:
   - Site
@@ -277,21 +314,8 @@ apis:
   - type: OpenAPI
     url: openapi/sharepoint-site-api-openapi.yml
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
-- aid: microsoft-sharepoint:microsoft-sharepoint-web-api
-  name: Microsoft SharePoint Web API
-  description: The Web API from Microsoft SharePoint — 2 operation(s) for web.
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
-  baseURL: https://{tenant}.sharepoint.com/_api/
-  tags:
-  - Web
-  properties:
-  - type: OpenAPI
-    url: openapi/sharepoint-web-api-openapi.yml
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
+    url: >-
+      https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service
   - type: Reference
     url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
 common:
