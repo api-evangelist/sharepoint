@@ -106,13 +106,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FileCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
     File:
       type: object
       description: SharePoint file.
@@ -146,6 +139,13 @@ components:
         UniqueId:
           type: string
           example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    FileCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
   securitySchemes:
     oauth2:
       type: oauth2
