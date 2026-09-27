@@ -28,7 +28,7 @@ accessModel:
 image: https://example.com/sharepoint-logo.png
 tags:
 - Collaboration
-- Document-Management
+- Document Management
 - Enterprise Content Management
 - Intranet
 - Microsoft
@@ -38,6 +38,7 @@ tags_raw:
 - Enterprise Content Management
 - Intranet
 - Microsoft
+- Document-Management
 created: '2024'
 modified: '2026-06-20'
 url: https://learn.microsoft.com/en-us/sharepoint/dev/

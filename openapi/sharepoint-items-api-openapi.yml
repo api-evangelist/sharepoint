@@ -178,6 +178,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ListItemCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListItem'
     ListItemCreateRequest:
       type: object
       properties:
@@ -214,13 +221,6 @@ components:
         EditorId:
           type: integer
           example: 7
-    ListItemCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListItem'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -101,42 +101,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/List'
-    ListCreateRequest:
-      type: object
-      description: Request to create a new SharePoint list.
-      required:
-      - Title
-      - BaseTemplate
-      properties:
-        __metadata:
-          type: object
-          properties:
-            type:
-              type: string
-              example: SP.List
-        Title:
-          type: string
-          example: My New List
-        Description:
-          type: string
-          example: A custom list
-        BaseTemplate:
-          type: integer
-          example: 100
-          description: 100=Generic List, 101=Document Library, 104=Announcements
-        AllowContentTypes:
-          type: boolean
-          example: true
-        ContentTypesEnabled:
-          type: boolean
-          example: true
     List:
       type: object
       description: SharePoint list or document library.
@@ -169,6 +133,42 @@ components:
         EnableVersioning:
           type: boolean
           example: true
+    ListCreateRequest:
+      type: object
+      description: Request to create a new SharePoint list.
+      required:
+      - Title
+      - BaseTemplate
+      properties:
+        __metadata:
+          type: object
+          properties:
+            type:
+              type: string
+              example: SP.List
+        Title:
+          type: string
+          example: My New List
+        Description:
+          type: string
+          example: A custom list
+        BaseTemplate:
+          type: integer
+          example: 100
+          description: 100=Generic List, 101=Document Library, 104=Announcements
+        AllowContentTypes:
+          type: boolean
+          example: true
+        ContentTypesEnabled:
+          type: boolean
+          example: true
+    ListCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/List'
   securitySchemes:
     oauth2:
       type: oauth2
