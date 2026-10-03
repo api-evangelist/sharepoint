@@ -133,6 +133,13 @@ components:
         EnableVersioning:
           type: boolean
           example: true
+    ListCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/List'
     ListCreateRequest:
       type: object
       description: Request to create a new SharePoint list.
@@ -162,13 +169,6 @@ components:
         ContentTypesEnabled:
           type: boolean
           example: true
-    ListCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/List'
   securitySchemes:
     oauth2:
       type: oauth2

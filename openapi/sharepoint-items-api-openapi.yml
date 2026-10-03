@@ -178,25 +178,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListItemCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListItem'
-    ListItemCreateRequest:
-      type: object
-      properties:
-        __metadata:
-          type: object
-          properties:
-            type:
-              type: string
-              example: SP.Data.MyListListItem
-        Title:
-          type: string
-          example: New Item
     ListItem:
       type: object
       description: SharePoint list item.
@@ -221,6 +202,25 @@ components:
         EditorId:
           type: integer
           example: 7
+    ListItemCreateRequest:
+      type: object
+      properties:
+        __metadata:
+          type: object
+          properties:
+            type:
+              type: string
+              example: SP.Data.MyListListItem
+        Title:
+          type: string
+          example: New Item
+    ListItemCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListItem'
   securitySchemes:
     oauth2:
       type: oauth2
