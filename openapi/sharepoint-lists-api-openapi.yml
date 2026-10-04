@@ -101,38 +101,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    List:
-      type: object
-      description: SharePoint list or document library.
-      properties:
-        Id:
-          type: string
-          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-        Title:
-          type: string
-          example: Documents
-        Description:
-          type: string
-          example: Shared documents library
-        BaseTemplate:
-          type: integer
-          example: 101
-        ItemCount:
-          type: integer
-          example: 42
-        Created:
-          type: string
-          format: date-time
-          example: '2024-01-15T12:00:00Z'
-        LastItemModifiedDate:
-          type: string
-          format: date-time
-        Hidden:
-          type: boolean
-          example: false
-        EnableVersioning:
-          type: boolean
-          example: true
     ListCollection:
       type: object
       properties:
@@ -167,6 +135,38 @@ components:
           type: boolean
           example: true
         ContentTypesEnabled:
+          type: boolean
+          example: true
+    List:
+      type: object
+      description: SharePoint list or document library.
+      properties:
+        Id:
+          type: string
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        Title:
+          type: string
+          example: Documents
+        Description:
+          type: string
+          example: Shared documents library
+        BaseTemplate:
+          type: integer
+          example: 101
+        ItemCount:
+          type: integer
+          example: 42
+        Created:
+          type: string
+          format: date-time
+          example: '2024-01-15T12:00:00Z'
+        LastItemModifiedDate:
+          type: string
+          format: date-time
+        Hidden:
+          type: boolean
+          example: false
+        EnableVersioning:
           type: boolean
           example: true
   securitySchemes:
