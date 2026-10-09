@@ -144,3 +144,54 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - data
+  - seat
+  plans:
+  - name: SharePoint (Plan 1)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Business Standard
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Business Standard (no Teams)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Copilot (add-on)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Office 365 / Microsoft 365 Enterprise
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
