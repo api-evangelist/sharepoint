@@ -121,7 +121,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: sharepoint-fivetran
   label: Fivetran
@@ -147,7 +147,7 @@
     - connectors/files/share-point
     vendor_link: https://www.microsoft.com/en-in/microsoft-365/sharepoint/collaboration
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: sharepoint-meltano
   label: Meltano
@@ -176,5 +176,5 @@
     quality:
     - gold
     builder: 'community (Meltano Hub variant maintainers: storebrand)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
