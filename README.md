@@ -1,4 +1,4 @@
-# Microsoft SharePoint (sharepoint)
+# Microsoft SharePoint
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,110 +64,247 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Microsoft SharePoint is a web-based collaborative platform providing enterprise content management, document management, and collaboration capabilities with comprehensive REST and Graph APIs.
+Microsoft SharePoint is a web-based collaborative platform that integrates with Microsoft Office. It provides enterprise content management, document management, and collaboration capabilities.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/sharepoint/refs/heads/main/apis.yml)
+**Areas:** Collaboration · Document Management · Enterprise Content Management · Intranet · Microsoft
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Microsoft SharePoint on APIs.io
 
-## Tags:
+Everything profiled for Microsoft SharePoint is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sharepoint/](https://apis.io/providers/sharepoint/)** — or go straight to one of the APIs or properties below.
 
- - Collaboration, Document Management, Enterprise Content Management, Intranet, Microsoft
+### APIs (14)
 
-## Timestamps
+- [SharePoint CSOM (Client-Side Object Model)](https://apis.io/apis/sharepoint/csom-client-side-object-model/) — Client-side object model for SharePoint that provides access to SharePoint objects through .NET managed or JavaScript libraries.
+- [SharePoint Webhooks API](https://apis.io/apis/sharepoint/webhooks-api/) — SharePoint webhooks provide a way to get notified about changes to SharePoint lists and document libraries.
+- [Microsoft SharePoint Files API](https://apis.io/apis/sharepoint/sharepoint-files-api/) — File upload, download, and management
+- [Microsoft SharePoint Items API](https://apis.io/apis/sharepoint/sharepoint-items-api/) — List item operations
+- [Microsoft SharePoint Lists API](https://apis.io/apis/sharepoint/sharepoint-lists-api/) — List and library operations
+- [Microsoft SharePoint Search API](https://apis.io/apis/sharepoint/sharepoint-search-api/) — Search query operations
+- [Microsoft SharePoint Sites API](https://apis.io/apis/sharepoint/sharepoint-sites-api/) — Site and web operations
+- [Microsoft SharePoint User Profiles API](https://apis.io/apis/sharepoint/sharepoint-user-profiles-api/) — User profile operations
+- [Microsoft Graph SharePoint Sites API](https://apis.io/apis/sharepoint/graph-sites-api/) — The Microsoft Graph SharePoint Sites API provides access to SharePoint sites, lists, and document libraries through the unified Microsoft Graph endpoint. It…
+- [SharePoint Search REST API](https://apis.io/apis/sharepoint/search-api/) — The SharePoint Search REST API provides full-text search capabilities across SharePoint content including sites, lists, libraries, and documents. It…
+- [SharePoint Framework (SPFx)](https://apis.io/apis/sharepoint/framework/) — The SharePoint Framework (SPFx) is a development model for building client-side web parts, extensions, and adaptive card extensions for SharePoint and…
+- [Microsoft SharePoint $batch API](https://apis.io/apis/sharepoint/microsoft-sharepoint-batch-api/) — The $batch API from Microsoft SharePoint — 1 operation(s) for $batch.
+- [Microsoft SharePoint ListItems API](https://apis.io/apis/sharepoint/microsoft-sharepoint-listitems-api/) — The ListItems API from Microsoft SharePoint — 2 operation(s) for listitems.
+- [Microsoft SharePoint Site API](https://apis.io/apis/sharepoint/microsoft-sharepoint-site-api/) — The Site API from Microsoft SharePoint — 1 operation(s) for site.
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-04-17
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-4 APIs: SharePoint REST API, Microsoft Graph API (SharePoint), SharePoint CSOM, SharePoint Webhooks API.
+#### Arazzo workflows (7)
 
-## Features
+Multi-step workflows that chain operations into a business task.
 
-| Name | Description |
-|------|-------------|
-| Sites and Webs | Create, read, update, and delete SharePoint sites and subsites. |
-| Lists and Libraries | Full CRUD operations on lists, document libraries, and list items. |
-| Document Management | Upload, download, check in/out, and manage documents and versions. |
-| Folders and Files | Create folder hierarchies and manage files within libraries. |
-| Permissions and Security | Manage site, list, and item-level permissions. |
-| Search | Full-text search across sites, documents, and content. |
-| User Profiles | Access user profile properties and organizational data. |
-| Content Types | Manage content types, site columns, and metadata schemas. |
-| Webhooks | Subscribe to change notifications for lists and libraries. |
-| Microsoft Graph Integration | Access SharePoint through unified Microsoft 365 API. |
-| Batch Requests | Combine multiple REST operations in a single request. |
-| OData Query Support | Filter, select, expand, and order using OData operators. |
+- [SharePoint Ensure a List Item Exists](https://apis.io/arazzos/sharepoint/sharepoint-ensure-list-item-workflow/)
+- [SharePoint List Item Full Lifecycle](https://apis.io/arazzos/sharepoint/sharepoint-list-item-lifecycle-workflow/)
+- [SharePoint Provision a List and Seed Its First Item](https://apis.io/arazzos/sharepoint/sharepoint-provision-list-workflow/)
+- [SharePoint Search for a Document and Download It](https://apis.io/arazzos/sharepoint/sharepoint-search-and-download-workflow/)
+- [SharePoint Verify Site Connection and Identity](https://apis.io/arazzos/sharepoint/sharepoint-site-connection-check-workflow/)
+- [SharePoint Site Content Inventory](https://apis.io/arazzos/sharepoint/sharepoint-site-content-inventory-workflow/)
+- [SharePoint Upload a Document and Verify It](https://apis.io/arazzos/sharepoint/sharepoint-upload-document-workflow/)
 
-## Use Cases
+#### MCP servers (1)
 
-| Name | Description |
-|------|-------------|
-| Document Automation | Automate upload, metadata tagging, and approval workflows. |
-| Intranet Content Management | Manage site pages, news posts, and navigation. |
-| Data Integration | Sync list data with external databases and applications. |
-| Migration | Migrate content between sites or from file shares. |
-| Custom Applications | Build SPFx web parts and extensions. |
-| Compliance and Governance | Manage retention policies and audit logs. |
-| Search Integration | Build custom search with facets and refiners. |
-| Power Automate Flows | Trigger workflows based on SharePoint events. |
+Model Context Protocol servers that expose the API to agents.
 
-## Solutions
+- [Work IQ SharePoint](https://apis.io/servers/sharepoint/work-iq-sharepoint/)
 
-| Name | Description |
-|------|-------------|
-| SharePoint Online | Cloud-hosted SharePoint with REST and Graph APIs. |
-| SharePoint Server | On-premises with REST, CSOM, and server-side APIs. |
-| SharePoint Framework (SPFx) | Modern client-side development for web parts and extensions. |
+#### Agentic access (1)
 
-## Artifacts
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### OpenAPI
+- [Sharepoint Agentic Access](https://apis.io/agentic-access/sharepoint/sharepoint-agentic-access/)
 
-- [SharePoint REST API](openapi/sharepoint-rest-api.yaml) — 14 endpoints, 11 schemas (generated from documentation)
+#### JSON Schema (11)
 
-### JSON Schema
+The data models the API reads and writes.
 
-11 standalone JSON Schema files in [json-schema/](json-schema/).
+- [File](https://apis.io/schemas/sharepoint/sharepoint-file/)
+- [FileCollection](https://apis.io/schemas/sharepoint/sharepoint-file-collection/)
+- [List](https://apis.io/schemas/sharepoint/sharepoint-list/)
+- [ListCollection](https://apis.io/schemas/sharepoint/sharepoint-list-collection/)
+- [ListCreateRequest](https://apis.io/schemas/sharepoint/sharepoint-list-create-request/)
+- [ListItem](https://apis.io/schemas/sharepoint/sharepoint-list-item/)
+- [ListItemCollection](https://apis.io/schemas/sharepoint/sharepoint-list-item-collection/)
+- [ListItemCreateRequest](https://apis.io/schemas/sharepoint/sharepoint-list-item-create-request/)
+- [SearchResult](https://apis.io/schemas/sharepoint/sharepoint-search-result/)
+- [UserProfile](https://apis.io/schemas/sharepoint/sharepoint-user-profile/)
+- [Web](https://apis.io/schemas/sharepoint/sharepoint-web/)
 
-### JSON Structure
+#### JSON Structure (11)
 
-11 JSON Structure files in [json-structure/](json-structure/).
+Data models expressed in JSON Structure.
 
-### JSON-LD
+- [Sharepoint File Collection Structure](https://apis.io/json-structure/sharepoint/sharepoint-file-collection-structure/)
+- [Sharepoint File Structure](https://apis.io/json-structure/sharepoint/sharepoint-file-structure/)
+- [Sharepoint List Collection Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-collection-structure/)
+- [Sharepoint List Create Request Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-create-request-structure/)
+- [Sharepoint List Item Collection Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-item-collection-structure/)
+- [Sharepoint List Item Create Request Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-item-create-request-structure/)
+- [Sharepoint List Item Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-item-structure/)
+- [Sharepoint List Structure](https://apis.io/json-structure/sharepoint/sharepoint-list-structure/)
+- [Sharepoint Search Result Structure](https://apis.io/json-structure/sharepoint/sharepoint-search-result-structure/)
+- [Sharepoint User Profile Structure](https://apis.io/json-structure/sharepoint/sharepoint-user-profile-structure/)
+- [Sharepoint Web Structure](https://apis.io/json-structure/sharepoint/sharepoint-web-structure/)
 
-- [SharePoint Context](json-ld/sharepoint-context.jsonld) — 11 types, 35 properties
+#### JSON-LD (1)
 
-### Examples
+Linked-data contexts for the provider's vocabulary.
 
-11 example JSON files in [examples/](examples/).
+- [Sharepoint Context](https://apis.io/jsonld/sharepoint/sharepoint-context/)
 
-## Capabilities
+#### Vocabulary (1)
 
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
+The provider's domain terms, defined.
 
-### Shared Per-API Definitions
+- [Sharepoint Vocabulary](https://apis.io/vocabularies/sharepoint/sharepoint-vocabulary/)
 
-- [Sites and Lists](capabilities/shared/sites-and-lists.yaml) — 10 operations for site, list, and item management
-- [Files and Search](capabilities/shared/files-and-search.yaml) — 5 operations for file management, search, and user profiles
+#### Examples (11)
 
-### Workflow Capabilities
+Example requests and responses.
 
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Content Management](capabilities/content-management.yaml) | Sites/Lists + Files/Search | 12 | Content Manager / Site Admin |
+- [Sharepoint File Collection Example](https://apis.io/examples/sharepoint/sharepoint-file-collection-example/)
+- [Sharepoint File Example](https://apis.io/examples/sharepoint/sharepoint-file-example/)
+- [Sharepoint List Collection Example](https://apis.io/examples/sharepoint/sharepoint-list-collection-example/)
+- [Sharepoint List Create Request Example](https://apis.io/examples/sharepoint/sharepoint-list-create-request-example/)
+- [Sharepoint List Example](https://apis.io/examples/sharepoint/sharepoint-list-example/)
+- [Sharepoint List Item Collection Example](https://apis.io/examples/sharepoint/sharepoint-list-item-collection-example/)
+- [Sharepoint List Item Create Request Example](https://apis.io/examples/sharepoint/sharepoint-list-item-create-request-example/)
+- [Sharepoint List Item Example](https://apis.io/examples/sharepoint/sharepoint-list-item-example/)
+- [Sharepoint Search Result Example](https://apis.io/examples/sharepoint/sharepoint-search-result-example/)
+- [Sharepoint User Profile Example](https://apis.io/examples/sharepoint/sharepoint-user-profile-example/)
+- [Sharepoint Web Example](https://apis.io/examples/sharepoint/sharepoint-web-example/)
 
-## Vocabulary
+#### Collections (12)
 
-- [SharePoint Vocabulary](vocabulary/sharepoint-vocabulary.yaml) — 10 resources, 4 APIs, 5 domains, 5 personas
+Postman and Open Collection request collections.
 
-## Rules
+- [SharePoint REST Files API](https://apis.io/collections/sharepoint/open-sharepoint-files-api/)
+- [SharePoint REST Files Items API](https://apis.io/collections/sharepoint/open-sharepoint-items-api/)
+- [SharePoint REST Files Lists API](https://apis.io/collections/sharepoint/open-sharepoint-lists-api/)
+- [SharePoint REST Files Search API](https://apis.io/collections/sharepoint/open-sharepoint-search-api/)
+- [SharePoint REST Files Sites API](https://apis.io/collections/sharepoint/open-sharepoint-sites-api/)
+- [SharePoint REST Files User Profiles API](https://apis.io/collections/sharepoint/open-sharepoint-user-profiles-api/)
+- [SharePoint REST Files API](https://apis.io/collections/sharepoint/postman-sharepoint-files-api/)
+- [SharePoint REST Files Items API](https://apis.io/collections/sharepoint/postman-sharepoint-items-api/)
+- [SharePoint REST Files Lists API](https://apis.io/collections/sharepoint/postman-sharepoint-lists-api/)
+- [SharePoint REST Files Search API](https://apis.io/collections/sharepoint/postman-sharepoint-search-api/)
+- [SharePoint REST Files Sites API](https://apis.io/collections/sharepoint/postman-sharepoint-sites-api/)
+- [SharePoint REST Files User Profiles API](https://apis.io/collections/sharepoint/postman-sharepoint-user-profiles-api/)
 
-- [SharePoint Spectral Rules](rules/sharepoint-spectral-rules.yml) — 17 rules
+#### Overlays (1)
 
-## Maintainers
+OpenAPI overlays, including conversational phrasing for each operation.
 
-**FN:** Kin Lane
+- [Sharepoint Rest Api Overlay](https://apis.io/overlays/sharepoint/sharepoint-rest-api-overlay/)
 
-**Email:** kin@apievangelist.com
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Microsoft SharePoint — jsonschema rules](https://apis.io/rules/sharepoint/sharepoint-jsonschema-spectral-rules/)
+- [Microsoft SharePoint API Rules](https://apis.io/rules/sharepoint/sharepoint-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sharepoint Authentication](https://apis.io/security/sharepoint/sharepoint-authentication/)
+- [Sharepoint Domain Security](https://apis.io/security/sharepoint/sharepoint-domain-security/)
+- [Sharepoint Trust Center](https://apis.io/security/sharepoint/sharepoint-trust-center/)
+- [Sharepoint Vulnerability Disclosure](https://apis.io/security/sharepoint/sharepoint-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Sharepoint Scopes](https://apis.io/scopes/sharepoint/sharepoint-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Sharepoint Plans Pricing](https://apis.io/plans/sharepoint/sharepoint-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Sharepoint Rate Limits](https://apis.io/rate-limits/sharepoint/sharepoint-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Sharepoint Finops](https://apis.io/finops/sharepoint/sharepoint-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.microsoft.com/)
+- [Documentation](https://learn.microsoft.com/en-us/sharepoint/dev/)
+- [Pricing](https://www.microsoft.com/en-us/microsoft-365/sharepoint/compare-sharepoint-plans)
+- [Support](https://support.microsoft.com/en-us/sharepoint)
+- [Blog](https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SPBlog)
+- [Terms of service](https://www.microsoft.com/en-us/legal/terms-of-use)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [GitHub](https://github.com/SharePoint)
+- [Status](https://status.cloud.microsoft/)
+
+## API Evangelist rating
+
+**Kin Score 51.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 61.7 |
+| Contract quality | 36.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 79.8 |
+| Access clarity | 42.1 |
+
+**Agent readiness 34.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sharepoint/](https://apis.io/providers/sharepoint/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft SharePoint: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sharepoint/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
